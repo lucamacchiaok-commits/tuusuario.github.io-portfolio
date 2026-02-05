@@ -1,1 +1,534 @@
 index.html    
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio — Editor de Video</title>
+  <meta name="description" content="Portafolio de edición de video: reels, shorts, YouTube y anuncios." />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#101828;
+      --card2:#0e1626;
+      --text:#e6e9ef;
+      --muted:#a8b0c0;
+      --line:rgba(255,255,255,.10);
+      --accent:#7c5cff;
+      --accent2:#22c55e;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --w:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
+                  radial-gradient(900px 500px at 85% 0%, rgba(34,197,94,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--w); margin:0 auto; padding:24px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,23,.75);
+      border-bottom:1px solid var(--line);
+    }
+    .navin{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px; max-width:var(--w); margin:0 auto;}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 0 18px rgba(124,92,255,.35)}
+    .links{display:flex; gap:14px; flex-wrap:wrap}
+    .links a{color:var(--muted); font-size:14px; padding:8px 10px; border-radius:10px}
+    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:12px; font-weight:650; font-size:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      box-shadow: none;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.18)}
+    .btn.primary{
+      border-color: rgba(124,92,255,.55);
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(124,92,255,.65));
+      box-shadow: 0 10px 24px rgba(124,92,255,.18);
+    }
+    .btn.primary:hover{background:linear-gradient(135deg, rgba(124,92,255,1), rgba(124,92,255,.72))}
+    .btn.green{
+      border-color: rgba(34,197,94,.55);
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(34,197,94,.60));
+      box-shadow: 0 10px 24px rgba(34,197,94,.14);
+    }
+
+    header{padding:36px 0 10px}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      background: rgba(255,255,255,.04);
+      font-size:13px;
+      width:fit-content;
+    }
+    h1{margin:14px 0 10px; font-size:44px; line-height:1.02; letter-spacing:-.8px}
+    .sub{color:var(--muted); font-size:16px; margin:0 0 16px}
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .mini{
+      display:flex; flex-direction:column; justify-content:space-between;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,24,40,.85), rgba(14,22,38,.85));
+    }
+    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px}
+    .kpi{
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .kpi b{display:block; font-size:18px}
+    .kpi span{color:var(--muted); font-size:12px}
+    .note{color:var(--muted); font-size:12px; margin-top:12px}
+
+    section{padding:22px 0}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+    }
+    .card h3{margin:0 0 6px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+    .sec-title{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:12px}
+    .sec-title h2{margin:0; font-size:22px; letter-spacing:-.2px}
+    .sec-title span{color:var(--muted); font-size:13px}
+
+    .clients{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    .client{
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(255,255,255,.04);
+    }
+    .client b{display:block; font-size:14px}
+    .client small{color:var(--muted)}
+    .pill{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 8px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:11px;
+      margin-top:8px;
+    }
+
+    .portfolio{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .work{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      background: rgba(255,255,255,.04);
+    }
+    .thumb{
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(34,197,94,.18));
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(230,233,239,.7);
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .workin{padding:14px}
+    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .tag{
+      font-size:11px; color:var(--muted);
+      padding:5px 8px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .quote{
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .quote p{margin:0 0 10px; color:var(--text)}
+    .quote small{color:var(--muted)}
+
+    footer{
+      padding:22px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .clients{grid-template-columns:1fr 1fr}
+      .portfolio{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+      h1{font-size:38px}
+      .navin{flex-wrap:wrap}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="navin">
+      <div class="brand">
+        <span class="dot"></span>
+        <span id="brandName">Tu Nombre</span>
+      </div>
+
+      <div class="links">
+        <a href="#clientes">Clientes</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <div class="cta">
+        <a class="btn" id="btnWork" href="#portfolio">Ver mi trabajo</a>
+        <a class="btn primary" id="btnWhats" href="#" target="_blank" rel="noreferrer">Contactar</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="hero">
+        <div>
+          <div class="badge">🎬 Editor de video • Reels/Shorts • YouTube • Ads</div>
+          <h1 id="headline">Creo videos que retienen y venden.</h1>
+          <p class="sub" id="subline">
+            Edición enfocada en ritmo, storytelling y retención. Entrego rápido, prolijo y listo para publicar.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn green" id="btnReel" href="#" target="_blank" rel="noreferrer">Ver showreel</a>
+            <a class="btn" href="#clientes">Ver clientes</a>
+            <a class="btn" href="#servicios">Ver servicios</a>
+          </div>
+
+          <p class="note">
+            Tip: cambiá los textos y links abajo en el bloque “CONFIG” del final.
+          </p>
+        </div>
+
+        <div class="mini">
+          <div>
+            <div class="sec-title" style="margin:0 0 10px">
+              <h2 style="font-size:18px;margin:0">Resultados</h2>
+              <span>ejemplos</span>
+            </div>
+            <div class="kpis">
+              <div class="kpi"><b id="kpi1">+120%</b><span>retención (caso)</span></div>
+              <div class="kpi"><b id="kpi2">+3.2M</b><span>views (mes)</span></div>
+              <div class="kpi"><b id="kpi3">48h</b><span>entrega promedio</span></div>
+              <div class="kpi"><b id="kpi4">4K</b><span>calidad final</span></div>
+            </div>
+          </div>
+
+          <div class="note" style="margin:14px 0 0">
+            Si no tenés métricas todavía, dejá estos números como “propuesta” o poné algo realista.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="clientes">
+      <div class="sec-title">
+        <h2>He trabajado con</h2>
+        <span>prueba social</span>
+      </div>
+
+      <div class="clients" id="clientsGrid">
+        <div class="client">
+          <b>Cliente / Canal 1</b>
+          <small>+250k suscriptores</small>
+          <div class="pill">✅ cliente activo</div>
+        </div>
+        <div class="client">
+          <b>Marca / Negocio 2</b>
+          <small>Ads + contenido orgánico</small>
+          <div class="pill">⚡ entregas rápidas</div>
+        </div>
+        <div class="client">
+          <b>Creador 3</b>
+          <small>Shorts & Reels</small>
+          <div class="pill">📈 enfoque retención</div>
+        </div>
+        <div class="client">
+          <b>Proyecto 4</b>
+          <small>YouTube long-form</small>
+          <div class="pill">🎬 storytelling</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="sec-title">
+        <h2>Servicios</h2>
+        <span>qué hago</span>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Reels / Shorts</h3>
+          <p>Ritmo, cortes, subtítulos, zooms, memes, SFX, y edición enfocada en retención.</p>
+        </div>
+        <div class="card">
+          <h3>YouTube long-form</h3>
+          <p>Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
+        </div>
+        <div class="card">
+          <h3>Ads / UGC</h3>
+          <p>Hook fuerte, edición para conversión, variantes A/B, formato para Meta/TikTok.</p>
+        </div>
+        <div class="card">
+          <h3>Subtítulos pro</h3>
+          <p>Subtítulos con estilo, jerarquía, resaltados y lectura rápida (sin ensuciar).</p>
+        </div>
+        <div class="card">
+          <h3>Color + look</h3>
+          <p>Corrección básica, look consistente, y export final optimizado.</p>
+        </div>
+        <div class="card">
+          <h3>Paquetes mensuales</h3>
+          <p>Producción constante con calendario, entregas semanales y revisión incluida.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="sec-title">
+        <h2>Portfolio</h2>
+        <span>mis trabajos</span>
+      </div>
+
+      <div class="portfolio" id="portfolioGrid">
+        <a class="work" href="#" target="_blank" rel="noreferrer">
+          <div class="thumb">VIDEO 1</div>
+          <div class="workin">
+            <h3 style="margin:0 0 6px">Proyecto / Clip #1</h3>
+            <p style="margin:0; color:var(--muted); font-size:13px">Short/Reel • Hook + ritmo • 9:16</p>
+            <div class="meta">
+              <span class="tag">retención</span><span class="tag">subtítulos</span><span class="tag">SFX</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="work" href="#" target="_blank" rel="noreferrer">
+          <div class="thumb">VIDEO 2</div>
+          <div class="workin">
+            <h3 style="margin:0 0 6px">Proyecto / Clip #2</h3>
+            <p style="margin:0; color:var(--muted); font-size:13px">YouTube • Storytelling • 16:9</p>
+            <div class="meta">
+              <span class="tag">story</span><span class="tag">audio clean</span><span class="tag">chapters</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="work" href="#" target="_blank" rel="noreferrer">
+          <div class="thumb">VIDEO 3</div>
+          <div class="workin">
+            <h3 style="margin:0 0 6px">Proyecto / Clip #3</h3>
+            <p style="margin:0; color:var(--muted); font-size:13px">Ads • Conversión • 9:16</p>
+            <div class="meta">
+              <span class="tag">hook</span><span class="tag">CTA</span><span class="tag">variantes</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="note" style="margin-top:12px">
+        Poné links de YouTube/Drive/Dropbox en cada card. Si no querés links públicos, usá un Google Drive “cualquiera con link”.
+      </div>
+    </section>
+
+    <section id="testimonios">
+      <div class="sec-title">
+        <h2>Testimonios</h2>
+        <span>lo que dicen</span>
+      </div>
+
+      <div class="two" id="testimonialsGrid">
+        <div class="quote">
+          <p>“Edición rápida y prolija. Mejoró el ritmo y la retención del canal.”</p>
+          <small>— Cliente 1, YouTube</small>
+        </div>
+        <div class="quote">
+          <p>“Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”</p>
+          <small>— Cliente 2, Reels/Ads</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="sec-title">
+        <h2>Contacto</h2>
+        <span>trabajemos</span>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>WhatsApp</h3>
+          <p>Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
+          <div style="margin-top:10px">
+            <a class="btn primary" id="btnWhats2" href="#" target="_blank" rel="noreferrer">Escribirme</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Email</h3>
+          <p>Para briefs largos o marcas. Respondés con referencias y objetivos.</p>
+          <div style="margin-top:10px">
+            <a class="btn" id="btnMail" href="#">Enviar mail</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Redes</h3>
+          <p>Portfolio y contacto rápido.</p>
+          <div class="meta" style="margin-top:10px">
+            <a class="tag" id="linkIG" href="#" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="tag" id="linkYT" href="#" target="_blank" rel="noreferrer">YouTube</a>
+            <a class="tag" id="linkBH" href="#" target="_blank" rel="noreferrer">Behance</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <span>© <span id="year"></span> <span id="footName">Tu Nombre</span>. Todos los derechos reservados.</span>
+        <span>Hecho con GitHub Pages.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // =========================
+    // CONFIG (EDITÁ ACÁ)
+    // =========================
+    const CONFIG = {
+      name: "Tu Nombre",
+      headline: "Creo videos que retienen y venden.",
+      subline: "Edición enfocada en ritmo, storytelling y retención. Entrego rápido, prolijo y listo para publicar.",
+      showreelUrl: "https://youtube.com/",
+      whatsappUrl: "https://wa.me/54911XXXXXXXX?text=Hola%20quiero%20presupuesto%20de%20edicion",
+      email: "tucorreo@gmail.com",
+      instagramUrl: "https://instagram.com/",
+      youtubeUrl: "https://youtube.com/",
+      behanceUrl: "https://behance.net/",
+      kpis: ["+120%", "+3.2M", "48h", "4K"],
+
+      // Portfolio: agregá tus links reales
+      portfolio: [
+        { title: "Proyecto / Clip #1", desc: "Short/Reel • Hook + ritmo • 9:16", url: "https://youtube.com/", tags: ["retención","subtítulos","SFX"] },
+        { title: "Proyecto / Clip #2", desc: "YouTube • Storytelling • 16:9", url: "https://youtube.com/", tags: ["story","audio clean","chapters"] },
+        { title: "Proyecto / Clip #3", desc: "Ads • Conversión • 9:16", url: "https://youtube.com/", tags: ["hook","CTA","variantes"] },
+      ],
+    };
+
+    // =========================
+    // APPLY CONFIG
+    // =========================
+    const $ = (id) => document.getElementById(id);
+
+    $("brandName").textContent = CONFIG.name;
+    $("footName").textContent = CONFIG.name;
+    $("headline").textContent = CONFIG.headline;
+    $("subline").textContent = CONFIG.subline;
+
+    $("btnReel").href = CONFIG.showreelUrl;
+
+    $("btnWhats").href = CONFIG.whatsappUrl;
+    $("btnWhats2").href = CONFIG.whatsappUrl;
+
+    $("btnMail").href = `mailto:${CONFIG.email}?subject=Edición%20de%20video&body=Hola%20${encodeURIComponent(CONFIG.name)}%2C%20`;
+    $("linkIG").href = CONFIG.instagramUrl;
+    $("linkYT").href = CONFIG.youtubeUrl;
+    $("linkBH").href = CONFIG.behanceUrl;
+
+    $("kpi1").textContent = CONFIG.kpis[0];
+    $("kpi2").textContent = CONFIG.kpis[1];
+    $("kpi3").textContent = CONFIG.kpis[2];
+    $("kpi4").textContent = CONFIG.kpis[3];
+
+    // Render portfolio cards
+    const grid = $("portfolioGrid");
+    grid.innerHTML = "";
+    CONFIG.portfolio.forEach((item, i) => {
+      const a = document.createElement("a");
+      a.className = "work";
+      a.href = item.url || "#";
+      a.target = "_blank";
+      a.rel = "noreferrer";
+
+      const thumb = document.createElement("div");
+      thumb.className = "thumb";
+      thumb.textContent = `VIDEO ${i+1}`;
+
+      const inner = document.createElement("div");
+      inner.className = "workin";
+      inner.innerHTML = `
+        <h3 style="margin:0 0 6px">${item.title}</h3>
+        <p style="margin:0; color:var(--muted); font-size:13px">${item.desc}</p>
+        <div class="meta">${(item.tags||[]).map(t => `<span class="tag">${t}</span>`).join("")}</div>
+      `;
+
+      a.appendChild(thumb);
+      a.appendChild(inner);
+      grid.appendChild(a);
+    });
+
+    $("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
