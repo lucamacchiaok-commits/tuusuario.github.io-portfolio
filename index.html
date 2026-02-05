@@ -4,8 +4,8 @@ index.html
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portafolio — Editor de Video</title>
-  <meta name="description" content="Portafolio de edición de video: reels, shorts, YouTube y anuncios." />
+  <title>Portafolio — Luca Macchia</title>
+  <meta name="description" content="Portafolio de edición de video: Reels/Shorts y YouTube." />
   <style>
     :root{
       --bg:#0b0f17;
@@ -135,12 +135,14 @@ index.html
       display:grid;
       grid-template-columns: repeat(4, 1fr);
       gap:12px;
+      align-items:stretch;
     }
     .client{
       padding:14px;
       border:1px solid var(--line);
       border-radius:16px;
       background: rgba(255,255,255,.04);
+      min-height:110px;
     }
     .client b{display:block; font-size:14px}
     .client small{color:var(--muted)}
@@ -152,6 +154,50 @@ index.html
       color:var(--muted);
       font-size:11px;
       margin-top:8px;
+    }
+
+    /* Referencia tipo “card con número grande” para el cliente 1 */
+    .client.featured{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      text-align:center;
+      padding:18px 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+    }
+    .client.featured .avatar{
+      width:58px;
+      height:58px;
+      border-radius:999px;
+      margin:0 auto 10px;
+      border:3px solid rgba(124,92,255,.35);
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.35), rgba(34,197,94,.18));
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(230,233,239,.9);
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .client.featured .big{
+      font-size:26px;
+      font-weight:850;
+      margin:8px 0 2px;
+      color:rgba(230,233,239,.95);
+    }
+    .client.featured .big2{
+      font-size:28px;
+      font-weight:900;
+      margin:10px 0 0;
+      color: rgba(124,92,255,.95);
+    }
+    .client.featured .label{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+    }
+    .client.featured .pill{
+      margin:12px auto 0;
+      width:fit-content;
     }
 
     .portfolio{
@@ -221,7 +267,7 @@ index.html
     <div class="navin">
       <div class="brand">
         <span class="dot"></span>
-        <span id="brandName">Tu Nombre</span>
+        <span id="brandName">Luca Macchia</span>
       </div>
 
       <div class="links">
@@ -243,10 +289,12 @@ index.html
     <header>
       <div class="hero">
         <div>
-          <div class="badge">🎬 Editor de video • Reels/Shorts • YouTube • Ads</div>
-          <h1 id="headline">Creo videos que retienen y venden.</h1>
+          <div class="badge">🎬 Editor de video • Reels/Shorts • YouTube</div>
+
+          <h1 id="headline">Transformo videos aburridos en piezas cinematográficas</h1>
+
           <p class="sub" id="subline">
-            Edición enfocada en ritmo, storytelling y retención. Entrego rápido, prolijo y listo para publicar.
+            Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales
           </p>
 
           <div class="hero-actions">
@@ -256,7 +304,7 @@ index.html
           </div>
 
           <p class="note">
-            Tip: cambiá los textos y links abajo en el bloque “CONFIG” del final.
+            Si querés, después ajustamos showreel, WhatsApp y los links del portfolio.
           </p>
         </div>
 
@@ -275,7 +323,7 @@ index.html
           </div>
 
           <div class="note" style="margin:14px 0 0">
-            Si no tenés métricas todavía, dejá estos números como “propuesta” o poné algo realista.
+            Si no tenés métricas todavía, podés cambiarlas por datos reales o por algo más neutro.
           </div>
         </div>
       </div>
@@ -288,14 +336,18 @@ index.html
       </div>
 
       <div class="clients" id="clientsGrid">
-        <div class="client">
-          <b>Cliente / Canal 1</b>
-          <small>+250k suscriptores</small>
+        <!-- Cliente 1 modificado + estilo referencia -->
+        <div class="client featured">
+          <div class="avatar">DJ</div>
+          <b style="font-size:16px">dj.cuenca</b>
+          <div class="big2">125k</div>
+          <div class="label">seguidores</div>
           <div class="pill">✅ cliente activo</div>
         </div>
+
         <div class="client">
           <b>Marca / Negocio 2</b>
-          <small>Ads + contenido orgánico</small>
+          <small>Contenido orgánico</small>
           <div class="pill">⚡ entregas rápidas</div>
         </div>
         <div class="client">
@@ -322,22 +374,17 @@ index.html
           <h3>Reels / Shorts</h3>
           <p>Ritmo, cortes, subtítulos, zooms, memes, SFX, y edición enfocada en retención.</p>
         </div>
+
         <div class="card">
           <h3>YouTube long-form</h3>
           <p>Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
         </div>
+
         <div class="card">
-          <h3>Ads / UGC</h3>
-          <p>Hook fuerte, edición para conversión, variantes A/B, formato para Meta/TikTok.</p>
+          <h3>Motion Graphics en After Effects</h3>
+          <p>Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
         </div>
-        <div class="card">
-          <h3>Subtítulos pro</h3>
-          <p>Subtítulos con estilo, jerarquía, resaltados y lectura rápida (sin ensuciar).</p>
-        </div>
-        <div class="card">
-          <h3>Color + look</h3>
-          <p>Corrección básica, look consistente, y export final optimizado.</p>
-        </div>
+
         <div class="card">
           <h3>Paquetes mensuales</h3>
           <p>Producción constante con calendario, entregas semanales y revisión incluida.</p>
@@ -351,40 +398,7 @@ index.html
         <span>mis trabajos</span>
       </div>
 
-      <div class="portfolio" id="portfolioGrid">
-        <a class="work" href="#" target="_blank" rel="noreferrer">
-          <div class="thumb">VIDEO 1</div>
-          <div class="workin">
-            <h3 style="margin:0 0 6px">Proyecto / Clip #1</h3>
-            <p style="margin:0; color:var(--muted); font-size:13px">Short/Reel • Hook + ritmo • 9:16</p>
-            <div class="meta">
-              <span class="tag">retención</span><span class="tag">subtítulos</span><span class="tag">SFX</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="work" href="#" target="_blank" rel="noreferrer">
-          <div class="thumb">VIDEO 2</div>
-          <div class="workin">
-            <h3 style="margin:0 0 6px">Proyecto / Clip #2</h3>
-            <p style="margin:0; color:var(--muted); font-size:13px">YouTube • Storytelling • 16:9</p>
-            <div class="meta">
-              <span class="tag">story</span><span class="tag">audio clean</span><span class="tag">chapters</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="work" href="#" target="_blank" rel="noreferrer">
-          <div class="thumb">VIDEO 3</div>
-          <div class="workin">
-            <h3 style="margin:0 0 6px">Proyecto / Clip #3</h3>
-            <p style="margin:0; color:var(--muted); font-size:13px">Ads • Conversión • 9:16</p>
-            <div class="meta">
-              <span class="tag">hook</span><span class="tag">CTA</span><span class="tag">variantes</span>
-            </div>
-          </div>
-        </a>
-      </div>
+      <div class="portfolio" id="portfolioGrid"></div>
 
       <div class="note" style="margin-top:12px">
         Poné links de YouTube/Drive/Dropbox en cada card. Si no querés links públicos, usá un Google Drive “cualquiera con link”.
@@ -404,7 +418,7 @@ index.html
         </div>
         <div class="quote">
           <p>“Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”</p>
-          <small>— Cliente 2, Reels/Ads</small>
+          <small>— Cliente 2, Reels</small>
         </div>
       </div>
     </section>
@@ -425,20 +439,20 @@ index.html
         </div>
 
         <div class="card">
-          <h3>Email</h3>
-          <p>Para briefs largos o marcas. Respondés con referencias y objetivos.</p>
-          <div style="margin-top:10px">
-            <a class="btn" id="btnMail" href="#">Enviar mail</a>
+          <h3>Twitter</h3>
+          <p>Escribime y coordinamos.</p>
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn" id="linkX" href="https://x.com/Lucaeditor_" target="_blank" rel="noreferrer">Twitter</a>
+            <a class="btn primary" id="ctaX" href="https://x.com/Lucaeditor_" target="_blank" rel="noreferrer">Escribime</a>
           </div>
         </div>
 
         <div class="card">
-          <h3>Redes</h3>
+          <h3>Links rápidos</h3>
           <p>Portfolio y contacto rápido.</p>
           <div class="meta" style="margin-top:10px">
-            <a class="tag" id="linkIG" href="#" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="tag" id="linkYT" href="#" target="_blank" rel="noreferrer">YouTube</a>
-            <a class="tag" id="linkBH" href="#" target="_blank" rel="noreferrer">Behance</a>
+            <a class="tag" href="#portfolio">Ver portfolio</a>
+            <a class="tag" href="#servicios">Ver servicios</a>
           </div>
         </div>
       </div>
@@ -446,7 +460,7 @@ index.html
 
     <footer>
       <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <span>© <span id="year"></span> <span id="footName">Tu Nombre</span>. Todos los derechos reservados.</span>
+        <span>© <span id="year"></span> <span id="footName">Luca Macchia</span>. Todos los derechos reservados.</span>
         <span>Hecho con GitHub Pages.</span>
       </div>
     </footer>
@@ -457,22 +471,18 @@ index.html
     // CONFIG (EDITÁ ACÁ)
     // =========================
     const CONFIG = {
-      name: "Tu Nombre",
-      headline: "Creo videos que retienen y venden.",
-      subline: "Edición enfocada en ritmo, storytelling y retención. Entrego rápido, prolijo y listo para publicar.",
+      name: "Luca Macchia",
+      headline: "Transformo videos aburridos en piezas cinematográficas",
+      subline: "Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales",
       showreelUrl: "https://youtube.com/",
       whatsappUrl: "https://wa.me/54911XXXXXXXX?text=Hola%20quiero%20presupuesto%20de%20edicion",
-      email: "tucorreo@gmail.com",
-      instagramUrl: "https://instagram.com/",
-      youtubeUrl: "https://youtube.com/",
-      behanceUrl: "https://behance.net/",
       kpis: ["+120%", "+3.2M", "48h", "4K"],
 
       // Portfolio: agregá tus links reales
       portfolio: [
         { title: "Proyecto / Clip #1", desc: "Short/Reel • Hook + ritmo • 9:16", url: "https://youtube.com/", tags: ["retención","subtítulos","SFX"] },
         { title: "Proyecto / Clip #2", desc: "YouTube • Storytelling • 16:9", url: "https://youtube.com/", tags: ["story","audio clean","chapters"] },
-        { title: "Proyecto / Clip #3", desc: "Ads • Conversión • 9:16", url: "https://youtube.com/", tags: ["hook","CTA","variantes"] },
+        { title: "Proyecto / Clip #3", desc: "Edición • Cinemático • 9:16", url: "https://youtube.com/", tags: ["look","ritmo","impacto"] },
       ],
     };
 
@@ -487,14 +497,8 @@ index.html
     $("subline").textContent = CONFIG.subline;
 
     $("btnReel").href = CONFIG.showreelUrl;
-
     $("btnWhats").href = CONFIG.whatsappUrl;
     $("btnWhats2").href = CONFIG.whatsappUrl;
-
-    $("btnMail").href = `mailto:${CONFIG.email}?subject=Edición%20de%20video&body=Hola%20${encodeURIComponent(CONFIG.name)}%2C%20`;
-    $("linkIG").href = CONFIG.instagramUrl;
-    $("linkYT").href = CONFIG.youtubeUrl;
-    $("linkBH").href = CONFIG.behanceUrl;
 
     $("kpi1").textContent = CONFIG.kpis[0];
     $("kpi2").textContent = CONFIG.kpis[1];
@@ -532,3 +536,4 @@ index.html
   </script>
 </body>
 </html>
+
