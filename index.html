@@ -2,631 +2,558 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portafolio — Luca Macchia</title>
-  <meta name="description" content="Portafolio de edición de video: Reels/Shorts y YouTube." />
+  <meta name="description" content="Portafolio de edición de video: Reels/Shorts y YouTube long-form." />
 
   <style>
     :root{
       --bg:#0b0f17;
       --card:#101828;
-      --card2:#0e1626;
       --text:#e6e9ef;
       --muted:#a8b0c0;
       --line:rgba(255,255,255,.10);
 
+      /* acento */
       --accent:#7c5cff;
       --accent2:#22c55e;
 
-      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
       --radius:18px;
       --w:1100px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1100px 640px at 15% 10%, rgba(124,92,255,.18), transparent 60%),
-        radial-gradient(900px 520px at 85% 0%, rgba(34,197,94,.10), transparent 55%),
-        var(--bg);
       color:var(--text);
-      line-height:1.35;
+      background:
+        radial-gradient(1000px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 85% 0%, rgba(34,197,94,.10), transparent 55%),
+        var(--bg);
     }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--w); margin:0 auto; padding:24px; }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--w); margin:0 auto; padding:24px}
-    .section{padding:34px 0}
-    .h2{
-      font-size:28px;
-      margin:0 0 14px;
-      letter-spacing:.2px;
-    }
-    .muted{color:var(--muted)}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:13px;
-      backdrop-filter: blur(10px);
-    }
-    .dot{
-      width:8px; height:8px; border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 0 3px rgba(124,92,255,.16);
-    }
-
-    /* NAV */
+    /* ---------- NAV ---------- */
     .nav{
-      position:sticky; top:0; z-index:5;
-      background:rgba(11,15,23,.70);
-      backdrop-filter: blur(14px);
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,23,.55);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      font-weight:700;
-      letter-spacing:.2px;
-    }
-    .nav-links{
-      display:flex; gap:18px; align-items:center;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .nav-links a{padding:10px 8px; border-radius:10px}
-    .nav-links a:hover{background:rgba(255,255,255,.04); color:var(--text)}
-    .nav-cta{display:flex; gap:10px; align-items:center}
+    .nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 24px; max-width:var(--w); margin:0 auto; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; }
+    .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(124,92,255,.18); }
+    .navlinks{ display:flex; align-items:center; gap:18px; color:var(--muted); font-weight:600; font-size:14px; }
+    .navlinks a:hover{ color:var(--text); }
+    .navactions{ display:flex; align-items:center; gap:10px; }
+
+    /* ---------- BUTTONS + HOVER MOTION ---------- */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
-      padding:11px 14px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       color:var(--text);
-      font-weight:600;
+      font-weight:700;
       cursor:pointer;
-      transition:.15s ease;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      will-change: transform;
       user-select:none;
-      white-space:nowrap;
     }
-    .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
     .btn.primary{
-      border-color: rgba(124,92,255,.45);
-      background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(124,92,255,.55));
+      background: linear-gradient(180deg, rgba(124,92,255,.95), rgba(124,92,255,.70));
+      border-color: rgba(124,92,255,.55);
+      box-shadow: 0 14px 34px rgba(124,92,255,.18);
+    }
+    .btn:hover{
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.05);
+    }
+    .btn.primary:hover{
+      box-shadow: 0 18px 55px rgba(124,92,255,.25);
+      border-color: rgba(124,92,255,.65);
     }
 
-    /* HERO */
-    .hero{
-      padding:42px 0 10px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      align-items:start;
-    }
-    .hero h1{
-      font-size:54px;
-      line-height:1.05;
-      margin:12px 0 10px;
-      letter-spacing:-.8px;
-    }
-    .hero p{
-      margin:0;
-      font-size:16px;
-      color:var(--muted);
-      max-width: 60ch;
-    }
-    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    /* ---------- CARDS + HOVER MOTION ---------- */
     .card{
-      border:1px solid var(--line);
-      background:rgba(16,24,40,.60);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
     }
-    .hero-card{
-      padding:18px;
+    .hover-pop{
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      will-change: transform;
     }
-    .list{
-      display:grid; gap:10px;
+    .hover-pop:hover{
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      border-color: rgba(255,255,255,.14);
     }
-    .mini{
-      padding:14px 14px;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;
-      background:rgba(255,255,255,.03);
-    }
-    .mini b{display:block; margin-bottom:6px}
 
-    /* GRIDS */
-    .grid-3{
+    /* ---------- HERO ---------- */
+    .hero{ padding:30px 0 10px; }
+    .hero-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+      grid-template-columns: 1fr; /* ✅ panel derecho eliminado */
+      gap:18px;
+      align-items:stretch;
     }
-
-    /* CLIENTS — estilo centrado referencia */
-    .client-card{
-      padding:18px;
+    .hero-left{
+      padding:28px;
       border-radius: 22px;
-      border:1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(900px 360px at 50% 0%, rgba(124,92,255,.14), transparent 60%),
-        rgba(16,24,40,.55);
+        radial-gradient(700px 380px at 20% 30%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(650px 380px at 90% 10%, rgba(124,92,255,.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      text-align:center;
-      min-height: 300px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-      align-items:center;
     }
-    .client-avatar{
-      width:92px; height:92px;
-      border-radius:999px;
-      padding:4px;
-      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.8), rgba(124,92,255,.15));
-      margin-top:8px;
-    }
-    .client-avatar img{
-      width:100%; height:100%;
-      border-radius:999px;
-      object-fit:cover;
-      border:2px solid rgba(255,255,255,.10);
-      display:block;
-    }
-    .client-name{
-      margin-top:12px;
-      font-weight:800;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .client-number{
-      margin-top:10px;
-      font-weight:900;
-      font-size:40px;
-      letter-spacing:-.6px;
-      color: var(--accent);
-    }
-    .client-sub{
-      margin-top:2px;
-      font-size:13px;
-      color: var(--muted);
-      letter-spacing:.2px;
-    }
-    .client-sep{
-      width:100%;
-      height:1px;
-      background: rgba(255,255,255,.10);
-      margin:16px 0 12px;
-    }
-    .client-status{
-      margin-top:auto;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:10px 12px;
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
       border-radius: 999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
+      color:var(--muted);
       font-weight:700;
       font-size:13px;
+      margin-bottom:14px;
+    }
+    .hero-title{
+      font-size: clamp(36px, 4.6vw, 58px);
+      line-height: 1.02;
+      margin: 6px 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub{
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 16px;
+      line-height: 1.45;
+      margin:0 0 18px;
+    }
+    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+
+    /* ---------- SECTIONS ---------- */
+    section{ padding:34px 0 6px; }
+    .h2{ font-size:22px; margin:0 0 14px; letter-spacing:-0.01em; }
+
+    /* ---------- CLIENTS (He trabajado con) ---------- */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width: 920px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    .client-card{
+      padding:22px 18px 18px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .client-card:before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:260px; height:260px;
+      background: radial-gradient(circle, rgba(124,92,255,.22), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .avatar-xl{
+      width:82px; height:82px;
+      border-radius: 999px;
+      object-fit:cover;
+      border:3px solid rgba(124,92,255,.45);
+      box-shadow: 0 16px 30px rgba(0,0,0,.35);
+      margin: 4px auto 10px;
+      display:block;
+      background:#0d1220;
+    }
+    .client-name{
+      font-weight:800;
+      font-size:18px;
+      margin: 0 0 6px;
+    }
+    .client-metric{
+      font-size:44px;
+      letter-spacing:-0.03em;
+      font-weight:900;
+      margin: 0;
+      color: var(--accent);
+    }
+    .client-metric small{
+      display:block;
+      font-size:13px;
+      color: var(--muted);
+      font-weight:700;
+      margin-top:2px;
+      letter-spacing:0;
+    }
+    .client-badge{
+      margin: 14px auto 0;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       color: var(--text);
+      font-weight:800;
+      font-size:13px;
     }
     .check{
-      width:18px;height:18px;border-radius:6px;
-      display:inline-flex;align-items:center;justify-content:center;
-      background: rgba(34,197,94,.16);
+      width:16px; height:16px; border-radius:5px;
+      background: rgba(34,197,94,.18);
       border:1px solid rgba(34,197,94,.45);
-      color: var(--accent2);
-      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      color: #b7ffd2;
       line-height:1;
     }
 
-    /* SERVICES */
+    /* ---------- SERVICES ---------- */
+    .services-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width: 920px){
+      .services-grid{ grid-template-columns: 1fr; }
+    }
     .service-card{
       padding:18px;
       display:flex;
       gap:14px;
       align-items:flex-start;
-      min-height: 120px;
     }
-    .icon-sq{
-      width:44px;
-      height:44px;
+    .iconbox{
+      width:42px; height:42px;
       border-radius:12px;
       background: rgba(124,92,255,.18);
       border:1px solid rgba(124,92,255,.35);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex: 0 0 auto;
-      box-shadow: 0 10px 22px rgba(0,0,0,.25);
-    }
-    .icon-sq img{
-      width:22px; height:22px;
-      filter: brightness(0) invert(1);
-      display:block;
-    }
-    .service-card h3{
-      margin:0 0 6px;
-      font-size:16px;
-    }
-    .service-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:13.5px;
-    }
-
-    /* TESTIMONIOS — paleta del sitio */
-    .test-card{
-      padding:18px;
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(900px 380px at 15% 0%, rgba(124,92,255,.12), transparent 55%),
-        rgba(16,24,40,.55);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      min-height: 220px;
-    }
-    .test-head{
-      display:flex; align-items:center; gap:12px;
-    }
-    .test-avatar{
-      width:44px;height:44px;border-radius:999px;
-      padding:2px;
-      background: rgba(124,92,255,.30);
-      border:1px solid rgba(124,92,255,.35);
+      display:flex; align-items:center; justify-content:center;
       flex:0 0 auto;
     }
-    .test-avatar img{
-      width:100%; height:100%;
+    .iconbox img{
+      width:22px; height:22px;
+      object-fit:contain;
+      filter: brightness(0) invert(1); /* ✅ blanco */
+    }
+    .service-title{ font-weight:900; margin:0 0 6px; }
+    .service-desc{ margin:0; color:var(--muted); line-height:1.45; }
+
+    /* ---------- TESTIMONIOS ---------- */
+    .testi-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width: 920px){
+      .testi-grid{ grid-template-columns: 1fr; }
+    }
+    .t-card{
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .t-card:before{
+      content:"";
+      position:absolute; inset:-120px auto auto -120px;
+      width:260px; height:260px;
+      background: radial-gradient(circle, rgba(124,92,255,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .t-top{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .avatar-sm{
+      width:44px; height:44px;
       border-radius:999px;
       object-fit:cover;
-      border:1px solid rgba(255,255,255,.10);
-      display:block;
+      border:2px solid rgba(124,92,255,.45);
+      background:#0d1220;
     }
-    .test-title{
-      font-weight:800;
-      margin:0;
-      line-height:1.05;
-    }
-    .stars{
-      display:flex; gap:4px;
-      color: var(--accent);
-      font-size:14px;
-      letter-spacing:1px;
-    }
+    .t-name{ margin:0; font-weight:900; }
+    .t-sub{ margin:2px 0 0; color:var(--muted); font-weight:700; font-size:13px; }
+    .stars{ color: rgba(124,92,255,.95); font-weight:900; letter-spacing:1px; margin: 8px 0 10px; }
     .quote{
       margin:0;
       color: var(--text);
       font-style: italic;
-      font-size: 13.5px;
-      line-height:1.45;
+      line-height: 1.45;
     }
-    .test-foot{
-      margin-top:auto;
+    .t-foot{
+      margin-top:14px;
       padding-top:12px;
-      border-top:1px solid rgba(255,255,255,.10);
-      display:flex; align-items:center; gap:10px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      gap:10px;
       color: var(--muted);
+      font-weight:800;
       font-size:13px;
     }
-    .verified-dot{
-      width:10px; height:10px;
-      border-radius:999px;
-      background: rgba(124,92,255,.35);
-      border:1px solid rgba(124,92,255,.55);
-      box-shadow:0 0 0 3px rgba(124,92,255,.12);
+    .dot-ok{
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(124,92,255,.65);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
     }
 
-    /* CONTACT */
-    .contact-card{padding:18px; min-height: 150px}
-    .contact-card h3{margin:0 0 6px; font-size:16px}
-    .contact-card p{margin:0 0 12px; color:var(--muted); font-size:13.5px}
-
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns: 1fr}
-      .grid-3{grid-template-columns: 1fr}
-      .nav-links{display:none}
-      .hero h1{font-size:44px}
+    /* ---------- CONTACTO ---------- */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr)); /* ✅ sin “Directo” */
+      gap:14px;
     }
+    @media (max-width: 920px){
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+    .contact-card{ padding:18px; }
+    .contact-title{ margin:0 0 6px; font-weight:900; }
+    .contact-desc{ margin:0 0 12px; color:var(--muted); line-height:1.45; }
+    .contact-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* ---------- FOOTER ---------- */
+    .footer{ padding:26px 0 40px; color:rgba(255,255,255,.45); font-weight:700; font-size:13px; }
   </style>
 </head>
 
 <body>
+  <!-- NAV -->
   <div class="nav">
-    <div class="wrap nav-inner">
+    <div class="inner">
       <div class="brand">
         <span class="dot"></span>
         <span>Luca Macchia</span>
       </div>
 
-      <div class="nav-links">
+      <div class="navlinks">
         <a href="#clientes">Clientes</a>
         <a href="#servicios">Servicios</a>
-        <a href="#portfolio">Portfolio</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
       </div>
 
-      <div class="nav-cta">
-        <a class="btn" href="#portfolio">Ver mi trabajo</a>
+      <div class="navactions">
+        <a class="btn" href="#clientes">Ver mi trabajo</a>
         <a class="btn primary" href="#contacto">Contactar</a>
       </div>
     </div>
   </div>
 
-  <header class="wrap hero" id="top">
-    <div class="pill">
-      <span>Editor de video</span>
-      <span>•</span>
-      <span>Reels/Shorts</span>
-      <span>•</span>
-      <span>YouTube</span>
-    </div>
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="kicker">Editor de video • Reels/Shorts • YouTube</div>
 
-    <div class="hero-grid">
-      <div>
-        <h1>Transformo videos aburridos en piezas cinematográficas</h1>
-        <p>Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales</p>
+          <!-- ✅ título en 2 renglones -->
+          <h1 class="hero-title">
+            Transformo videos aburridos<br>
+            en piezas cinematográficas
+          </h1>
 
-        <div class="hero-actions">
-          <a class="btn primary" id="btnHeroWhatsapp" href="#">Escribime por WhatsApp</a>
-          <a class="btn" href="#clientes">Ver clientes</a>
-        </div>
-      </div>
+          <p class="hero-sub">
+            Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales
+          </p>
 
-      <div class="card hero-card">
-        <div class="list">
-          <div class="mini">
-            <b>Edición con foco en retención</b>
-            <span class="muted">Ritmo, cortes, subtítulos, estructura y ritmo narrativo.</span>
-          </div>
-          <div class="mini">
-            <b>Entrega lista para publicar</b>
-            <span class="muted">Archivos exportados y adaptados a plataforma (Reels/Shorts/YouTube).</span>
-          </div>
-          <div class="mini">
-            <b>Comunicación clara</b>
-            <span class="muted">Iteraciones rápidas + seguimiento para llegar al resultado que buscás.</span>
+          <div class="hero-cta">
+            <!-- ✅ WhatsApp con tu número -->
+            <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">
+              Escribime por WhatsApp
+            </a>
+            <a class="btn" href="#clientes">Ver clientes</a>
           </div>
         </div>
+
+        <!-- ✅ Panel derecho eliminado -->
       </div>
-    </div>
-  </header>
+    </section>
 
-  <section class="wrap section" id="clientes">
-    <h2 class="h2">He trabajado con</h2>
+    <!-- CLIENTES -->
+    <section id="clientes">
+      <h2 class="h2">He trabajado con</h2>
 
-    <div class="grid-3">
-      <div class="client-card">
-        <div class="client-avatar">
-          <!-- ✅ RUTA CORREGIDA -->
-          <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
+      <!-- ✅ estilo centrado tipo referencia + hover -->
+      <div class="grid3">
+        <div class="card client-card hover-pop">
+          <img class="avatar-xl" src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
+          <p class="client-name">dj.cuenca</p>
+          <p class="client-metric">125k <small>seguidores</small></p>
+          <div class="client-badge"><span class="check">✓</span> Cliente activo</div>
         </div>
-        <div class="client-name">dj.cuenca</div>
-        <div class="client-number">125K</div>
-        <div class="client-sub">Seguidores</div>
-        <div class="client-sep"></div>
-        <div class="client-status">
-          <span class="check">✓</span>
-          <span>Cliente activo</span>
-        </div>
-      </div>
 
-      <div class="client-card">
-        <div class="client-avatar">
-          <!-- ✅ RUTA CORREGIDA -->
-          <img src="assets/assets/adri-kastel.jpg" alt="Adri Kastel" />
+        <div class="card client-card hover-pop">
+          <img class="avatar-xl" src="assets/assets/adri-kastel.jpg" alt="Adri Kastel">
+          <p class="client-name">Adri Kastel</p>
+          <p class="client-metric">29k <small>seguidores</small></p>
+          <div class="client-badge"><span class="check">✓</span> Cliente activo</div>
         </div>
-        <div class="client-name">Adri Kastel</div>
-        <div class="client-number">29K</div>
-        <div class="client-sub">Seguidores</div>
-        <div class="client-sep"></div>
-        <div class="client-status">
-          <span class="check">✓</span>
-          <span>Cliente activo</span>
+
+        <div class="card client-card hover-pop">
+          <img class="avatar-xl" src="assets/assets/lalo-trading.jpg" alt="Lalo Trading">
+          <p class="client-name">Lalo Trading</p>
+          <p class="client-metric">25k <small>seguidores</small></p>
+          <div class="client-badge"><span class="check">✓</span> Cliente activo</div>
         </div>
       </div>
+    </section>
 
-      <div class="client-card">
-        <div class="client-avatar">
-          <!-- ✅ RUTA CORREGIDA -->
-          <img src="assets/assets/lalo-trading.jpg" alt="Lalo Trading" />
-        </div>
-        <div class="client-name">Lalo Trading</div>
-        <div class="client-number">25K</div>
-        <div class="client-sub">Seguidores</div>
-        <div class="client-sep"></div>
-        <div class="client-status">
-          <span class="check">✓</span>
-          <span>Cliente activo</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <h2 class="h2">Servicios</h2>
 
-  <section class="wrap section" id="servicios">
-    <h2 class="h2">Servicios</h2>
-
-    <div class="grid-3">
-      <div class="card service-card">
-        <div class="icon-sq" aria-hidden="true">
-          <!-- ✅ RUTA CORREGIDA -->
-          <img src="assets/assets/15874.png" alt="" />
-        </div>
-        <div>
-          <h3>Reels / Shorts</h3>
-          <p>Ritmo, cortes, subtítulos, zooms, memes, SFX, y edición enfocada en retención.</p>
-        </div>
-      </div>
-
-      <div class="card service-card">
-        <div class="icon-sq" aria-hidden="true">
-          <!-- ✅ RUTA CORREGIDA -->
-          <img src="assets/assets/4324682.png" alt="" />
-        </div>
-        <div>
-          <h3>YouTube long-form</h3>
-          <p>Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
-        </div>
-      </div>
-
-      <div class="card service-card">
-        <div class="icon-sq" aria-hidden="true">
-          <!-- ✅ RUTA CORREGIDA -->
-          <img src="assets/assets/1533971.png" alt="" />
-        </div>
-        <div>
-          <h3>Motion Graphics en After Effects</h3>
-          <p>Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap section" id="portfolio">
-    <h2 class="h2">Portfolio</h2>
-    <div class="card" style="padding:18px;">
-      <p class="muted" style="margin:0;">(Acá va tu grilla de trabajos / embeds.)</p>
-    </div>
-  </section>
-
-  <section class="wrap section" id="testimonios">
-    <h2 class="h2">Testimonios</h2>
-
-    <div class="grid-3">
-      <div class="test-card">
-        <div class="test-head">
-          <div class="test-avatar">
-            <!-- ✅ RUTA CORREGIDA -->
-            <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
+      <!-- ✅ respetar colores del sitio + iconos blancos en caja color acento -->
+      <div class="services-grid">
+        <div class="card service-card hover-pop">
+          <div class="iconbox">
+            <img src="assets/assets/15874.png" alt="Reels/Shorts icon">
           </div>
           <div>
-            <div class="test-title">dj.cuenca</div>
-            <div class="muted" style="font-size:13px;">Cliente • Shorts/Reels</div>
+            <p class="service-title">Reels / Shorts</p>
+            <p class="service-desc">Ritmo, cortes, subtítulos, zooms, memes, SFX, y edición enfocada en retención.</p>
           </div>
         </div>
 
-        <div class="stars" aria-label="5 estrellas">★★★★★</div>
-
-        <p class="quote">"la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video"</p>
-
-        <div class="test-foot">
-          <span class="verified-dot"></span>
-          <span>Proyecto verificado</span>
-        </div>
-      </div>
-
-      <div class="test-card">
-        <div class="test-head">
-          <div class="test-avatar">
-            <!-- ✅ RUTA CORREGIDA -->
-            <img src="assets/assets/adri-kastel.jpg" alt="Cliente 2" />
+        <div class="card service-card hover-pop">
+          <div class="iconbox">
+            <img src="assets/assets/4324682.png" alt="YouTube long-form icon">
           </div>
           <div>
-            <div class="test-title">Cliente 2</div>
-            <div class="muted" style="font-size:13px;">Reels</div>
+            <p class="service-title">YouTube long-form</p>
+            <p class="service-desc">Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
           </div>
         </div>
 
-        <div class="stars" aria-label="5 estrellas">★★★★★</div>
-
-        <p class="quote">"Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar."</p>
-
-        <div class="test-foot">
-          <span class="verified-dot"></span>
-          <span>Proyecto verificado</span>
-        </div>
-      </div>
-
-      <div class="test-card">
-        <div class="test-head">
-          <div class="test-avatar">
-            <!-- ✅ RUTA CORREGIDA -->
-            <img src="assets/assets/lalo-trading.jpg" alt="Entrega y comunicación" />
+        <div class="card service-card hover-pop">
+          <div class="iconbox">
+            <img src="assets/assets/1533971.png" alt="Motion Graphics icon">
           </div>
           <div>
-            <div class="test-title">Entrega y comunicación</div>
-            <div class="muted" style="font-size:13px;">Workflow</div>
+            <p class="service-title">Motion Graphics en After Effects</p>
+            <p class="service-desc">Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios">
+      <h2 class="h2">Testimonios</h2>
+
+      <!-- ✅ colores del sitio (sin look rojizo) + hover -->
+      <div class="testi-grid">
+        <div class="card t-card hover-pop">
+          <div class="t-top">
+            <img class="avatar-sm" src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
+            <div>
+              <p class="t-name">dj.cuenca</p>
+              <p class="t-sub">Cliente • Shorts/Reels</p>
+            </div>
+          </div>
+
+          <div class="stars">★★★★★</div>
+
+          <p class="quote">“la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video”</p>
+
+          <div class="t-foot">
+            <span class="dot-ok"></span>
+            <span>Proyecto verificado</span>
           </div>
         </div>
 
-        <div class="stars" aria-label="5 estrellas">★★★★★</div>
+        <div class="card t-card hover-pop">
+          <div class="t-top">
+            <img class="avatar-sm" src="assets/assets/adri-kastel.jpg" alt="Adri kaste">
+            <div>
+              <p class="t-name">Adri kaste</p>
+              <!-- ✅ mismo formato que dj.cuenca, pero subtítulo long-form -->
+              <p class="t-sub">Cliente • YouTube long-form</p>
+            </div>
+          </div>
 
-        <p class="quote">"Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención."</p>
+          <div class="stars">★★★★★</div>
 
-        <div class="test-foot">
-          <span class="verified-dot"></span>
-          <span>Proyecto verificado</span>
+          <p class="quote">“Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”</p>
+
+          <div class="t-foot">
+            <span class="dot-ok"></span>
+            <span>Proyecto verificado</span>
+          </div>
+        </div>
+
+        <div class="card t-card hover-pop">
+          <div class="t-top">
+            <img class="avatar-sm" src="assets/assets/lalo-trading.jpg" alt="lalo trading">
+            <div>
+              <p class="t-name">lalo trading</p>
+              <!-- ✅ mismo formato que dj.cuenca, pero subtítulo long-form -->
+              <p class="t-sub">Cliente • YouTube long-form</p>
+            </div>
+          </div>
+
+          <div class="stars">★★★★★</div>
+
+          <p class="quote">“Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención.”</p>
+
+          <div class="t-foot">
+            <span class="dot-ok"></span>
+            <span>Proyecto verificado</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="wrap section" id="contacto">
-    <h2 class="h2">Contacto</h2>
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2 class="h2">Contacto</h2>
 
-    <div class="grid-3">
-      <div class="card contact-card">
-        <h3>WhatsApp</h3>
-        <p>Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
-        <a class="btn primary" id="btnWhatsapp" href="#">Escribirme</a>
-      </div>
+      <!-- ✅ sin “Directo” + hover -->
+      <div class="contact-grid">
+        <div class="card contact-card hover-pop">
+          <p class="contact-title">WhatsApp</p>
+          <p class="contact-desc">Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
+          <div class="contact-actions">
+            <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">Escribirme</a>
+          </div>
+        </div>
 
-      <div class="card contact-card">
-        <h3>Twitter</h3>
-        <p>Escribime y coordinamos.</p>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="https://x.com/Lucaeditor_" target="_blank" rel="noreferrer">Twitter</a>
-          <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noreferrer">Escribime</a>
+        <div class="card contact-card hover-pop">
+          <p class="contact-title">Twitter</p>
+          <p class="contact-desc">Escribime y coordinamos.</p>
+          <div class="contact-actions">
+            <a class="btn" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Twitter</a>
+            <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="card contact-card">
-        <h3>Directo</h3>
-        <p>Si tocás “Escribirme”, te manda a tu chat de WhatsApp automáticamente.</p>
-        <a class="btn" href="#top">Volver arriba</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="wrap" style="padding:28px 24px 40px; color:var(--muted); font-size:13px;">
-    © <span id="year"></span> Luca Macchia — Portfolio
-  </footer>
+    <div class="footer">© <span id="y"></span> Luca Macchia</div>
+  </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // WhatsApp
-    const phone = "541153323199"; // +54 11 5332 3199
-    const msg = encodeURIComponent("Hola Luca, te escribo por la edición de un video. Mi idea es:");
-    const waLink = `https://wa.me/${phone}?text=${msg}`;
-
-    const btnWhatsapp = document.getElementById("btnWhatsapp");
-    const btnHeroWhatsapp = document.getElementById("btnHeroWhatsapp");
-
-    if (btnWhatsapp) btnWhatsapp.href = waLink;
-    if (btnHeroWhatsapp) btnHeroWhatsapp.href = waLink;
+    // año dinámico
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
