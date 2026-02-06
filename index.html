@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio — Luca Macchia</title>
   <meta name="description" content="Portafolio de edición de video: Reels/Shorts y YouTube." />
+
   <style>
     :root{
       --bg:#0b0f17;
@@ -13,15 +14,14 @@
       --text:#e6e9ef;
       --muted:#a8b0c0;
       --line:rgba(255,255,255,.10);
+
+      /* acento del sitio */
       --accent:#7c5cff;
       --accent2:#22c55e;
 
-      --red:#ef4444;
-      --red2:#b91c1c;
-
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --w: 1100px;
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --w:1100px;
     }
 
     *{box-sizing:border-box}
@@ -30,598 +30,613 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
-        radial-gradient(900px 500px at 85% 0%, rgba(34,197,94,.14), transparent 55%),
+        radial-gradient(1100px 640px at 15% 10%, rgba(124,92,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 85% 0%, rgba(34,197,94,.10), transparent 55%),
         var(--bg);
       color:var(--text);
       line-height:1.35;
     }
+
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--w); margin:0 auto; padding:24px}
-
-    /* Topbar */
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      background: rgba(11,15,23,.70);
-      backdrop-filter: blur(14px);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:16px;
-      max-width:var(--w); margin:0 auto; padding:14px 24px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px; font-weight:700;
+    .section{padding:34px 0}
+    .h2{
+      font-size:28px;
+      margin:0 0 14px;
       letter-spacing:.2px;
     }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.85));
-      box-shadow: 0 0 0 6px rgba(124,92,255,.10);
-    }
-    nav{
-      display:flex; align-items:center; gap:18px;
-      color:var(--muted);
-      font-weight:600; font-size:14px;
-    }
-    nav a{opacity:.9}
-    nav a:hover{opacity:1; color:var(--text)}
-    .actions{
-      display:flex; gap:10px; align-items:center;
-    }
-    .btn{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:14px;
-      font-weight:700;
-      font-size:14px;
-      cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.04)}
-    .btn.primary{
-      border:none;
-      background: linear-gradient(135deg, var(--accent), rgba(124,92,255,.65));
-      box-shadow: 0 10px 26px rgba(124,92,255,.18);
-    }
+    .muted{color:var(--muted)}
     .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color: var(--muted);
-      font-weight:700;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
       font-size:13px;
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 3px rgba(124,92,255,.16);
     }
 
-    /* Hero */
-    .hero{padding:36px 0 18px}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:5;
+      background:rgba(11,15,23,.70);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .nav-links{
+      display:flex; gap:18px; align-items:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .nav-links a{padding:10px 8px; border-radius:10px}
+    .nav-links a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    .nav-cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:600;
+      cursor:pointer;
+      transition:.15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+    .btn.primary{
+      border-color: rgba(124,92,255,.45);
+      background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(124,92,255,.55));
+    }
+
+    /* HERO */
+    .hero{
+      padding:42px 0 10px;
+    }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:22px;
-      align-items:stretch;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:start;
     }
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero-left{padding:26px}
     .hero h1{
-      margin:14px 0 12px;
-      font-size: clamp(34px, 4.4vw, 50px);
+      font-size:54px;
       line-height:1.05;
-      letter-spacing:-.6px;
+      margin:12px 0 10px;
+      letter-spacing:-.8px;
     }
     .hero p{
       margin:0;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 62ch;
+      font-size:16px;
+      color:var(--muted);
+      max-width: 60ch;
     }
-    .hero-cta{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:18px;
-    }
-    .kpis{
-      padding:22px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:14px;
-    }
-    .kpi{
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .card{
       border:1px solid var(--line);
-      border-radius: 16px;
-      padding:14px;
-      background: rgba(16,24,40,.55);
+      background:rgba(16,24,40,.60);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
     }
-    .kpi strong{display:block; font-size:16px; margin-bottom:6px}
-    .kpi span{color:var(--muted); font-size:13px}
+    .hero-card{
+      padding:18px;
+    }
+    .list{
+      display:grid; gap:10px;
+    }
+    .mini{
+      padding:14px 14px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .mini b{display:block; margin-bottom:6px}
 
-    /* Sections */
-    section{padding:18px 0}
-    .section-title{
-      display:flex; align-items:center; justify-content:space-between;
-      margin:0 0 12px;
-    }
-    .section-title h2{
-      margin:0;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
-
-    /* Clients */
+    /* GRIDS */
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
     }
+
+    /* CLIENTS — estilo referencia (centrada) */
     .client-card{
-      padding:16px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(16,24,40,.45);
-      position:relative;
-      overflow:hidden;
-      min-height: 150px;
+      padding:18px;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 360px at 50% 0%, rgba(124,92,255,.14), transparent 60%),
+        rgba(16,24,40,.55);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      text-align:center;
+      min-height: 300px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      align-items:center;
     }
-    .client-card:before{
-      content:"";
-      position:absolute; inset:-40px -40px auto auto;
-      width:220px; height:220px;
-      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.35), transparent 60%);
-      filter: blur(0px);
-      pointer-events:none;
-    }
-    .client-top{
-      display:flex; align-items:center; gap:12px;
-    }
-    .avatar{
-      width:46px; height:46px; border-radius:999px;
-      border:3px solid rgba(124,92,255,.35);
-      overflow:hidden;
-      flex:0 0 auto;
-      background: rgba(255,255,255,.04);
-      display:grid; place-items:center;
-    }
-    .avatar img{width:100%; height:100%; object-fit:cover}
-    .client-name{font-weight:800}
-    .client-handle{color:var(--muted); font-size:13px; margin-top:2px}
-    .client-meta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .badge{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:7px 10px;
+    .client-avatar{
+      width:92px; height:92px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.02);
-      color: var(--muted);
+      padding:4px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.8), rgba(124,92,255,.15));
+      margin-top:8px;
+    }
+    .client-avatar img{
+      width:100%; height:100%;
+      border-radius:999px;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,.10);
+      display:block;
+    }
+    .client-name{
+      margin-top:12px;
       font-weight:800;
-      font-size:12px;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .client-number{
+      margin-top:10px;
+      font-weight:900;
+      font-size:40px;
+      letter-spacing:-.6px;
+      color: var(--accent);
+    }
+    .client-sub{
+      margin-top:2px;
+      font-size:13px;
+      color: var(--muted);
+      letter-spacing:.2px;
+    }
+    .client-sep{
+      width:100%;
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin:16px 0 12px;
+    }
+    .client-status{
+      margin-top:auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      font-weight:700;
+      font-size:13px;
+      color: var(--text);
     }
     .check{
-      width:14px; height:14px; border-radius:4px;
-      display:inline-grid; place-items:center;
-      background: rgba(34,197,94,.18);
-      border: 1px solid rgba(34,197,94,.35);
-      color: #bff5cf;
-      font-size:11px;
+      width:18px;height:18px;border-radius:6px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background: rgba(34,197,94,.16);
+      border:1px solid rgba(34,197,94,.45);
+      color: var(--accent2);
       font-weight:900;
+      line-height:1;
     }
 
-    /* Services (red style) */
-    .services-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .svc{
+    /* SERVICES */
+    .service-card{
       padding:18px;
-      border-radius: var(--radius);
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      min-height: 120px;
+    }
+    .icon-sq{
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      background: rgba(124,92,255,.18);
+      border:1px solid rgba(124,92,255,.35);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+    }
+    .icon-sq img{
+      width:22px; height:22px;
+      filter: brightness(0) invert(1);
+      display:block;
+    }
+    .service-card h3{
+      margin:0 0 6px;
+      font-size:16px;
+    }
+    .service-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+    }
+
+    /* TESTIMONIOS — paleta del sitio (sin rojizo) */
+    .test-card{
+      padding:18px;
+      border-radius: 18px;
       border:1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(800px 220px at 20% 0%, rgba(239,68,68,.18), transparent 55%),
-        rgba(16,24,40,.35);
-      position:relative;
-      overflow:hidden;
+        radial-gradient(900px 380px at 15% 0%, rgba(124,92,255,.12), transparent 55%),
+        rgba(16,24,40,.55);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      min-height: 220px;
     }
-    .svc:before{
-      content:"";
-      position:absolute; inset:auto -60px -80px auto;
-      width:220px; height:220px;
-      background: radial-gradient(circle at 40% 40%, rgba(185,28,28,.35), transparent 65%);
-      pointer-events:none;
+    .test-head{
+      display:flex; align-items:center; gap:12px;
     }
-    .svc h3{margin:0 0 8px; font-size:18px; letter-spacing:-.2px}
-    .svc p{margin:0; color:var(--muted); font-size:14px}
-
-    /* Portfolio placeholder */
-    .portfolio{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px dashed rgba(255,255,255,.20);
-      background: rgba(255,255,255,.02);
-      color: var(--muted);
-      font-weight:700;
-    }
-
-    /* Testimonials (reference style) */
-    .test-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      align-items:start;
-    }
-    .tcard{
-      padding:18px;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(900px 360px at 20% 0%, rgba(185,28,28,.18), transparent 55%),
-        rgba(16,24,40,.35);
-      overflow:hidden;
-    }
-    .t-head{
-      display:flex; gap:12px; align-items:center;
-      margin-bottom:10px;
-    }
-    .t-avatar{
-      width:44px; height:44px; border-radius:999px; overflow:hidden;
-      border:2px solid rgba(239,68,68,.35);
-      background: rgba(255,255,255,.04);
+    .test-avatar{
+      width:44px;height:44px;border-radius:999px;
+      padding:2px;
+      background: rgba(124,92,255,.30);
+      border:1px solid rgba(124,92,255,.35);
       flex:0 0 auto;
     }
-    .t-avatar img{width:100%; height:100%; object-fit:cover}
-    .t-name{font-weight:900; line-height:1.05}
-    .t-sub{color:var(--muted); font-size:13px; margin-top:2px}
-    .t-stars{
-      display:flex; gap:4px; margin:10px 0 10px;
+    .test-avatar img{
+      width:100%; height:100%;
+      border-radius:999px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.10);
+      display:block;
     }
-    .star{
-      width:16px; height:16px;
-      display:inline-block;
-      background: conic-gradient(from 0deg, var(--red), var(--red2));
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      opacity:.95;
-    }
-    .t-quote{
+    .test-title{
+      font-weight:800;
       margin:0;
-      color:rgba(230,233,239,.92);
-      font-style:italic;
-      font-size:14px;
-      line-height:1.5;
+      line-height:1.05;
     }
-    .t-foot{
-      margin-top:14px;
+    .stars{
+      display:flex; gap:4px;
+      color: var(--accent);
+      font-size:14px;
+      letter-spacing:1px;
+    }
+    .quote{
+      margin:0;
+      color: var(--text);
+      font-style: italic;
+      font-size: 13.5px;
+      line-height:1.45;
+    }
+    .test-foot{
+      margin-top:auto;
       padding-top:12px;
       border-top:1px solid rgba(255,255,255,.10);
-      color:var(--muted);
+      display:flex; align-items:center; gap:10px;
+      color: var(--muted);
       font-size:13px;
-      display:flex; align-items:center; gap:8px;
     }
-    .dot-red{
-      width:8px; height:8px; border-radius:999px;
-      background: rgba(239,68,68,.8);
-      box-shadow: 0 0 0 6px rgba(239,68,68,.12);
-    }
-
-    /* Contact */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-    }
-    .contact-card{padding:18px}
-    .contact-card h3{margin:0 0 8px}
-    .contact-card p{margin:0; color:var(--muted); font-size:14px}
-    .contact-actions{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
-
-    footer{
-      padding:22px 0 30px;
-      color:rgba(168,176,192,.9);
-      font-size:13px;
-      border-top:1px solid var(--line);
-      margin-top:18px;
+    .verified-dot{
+      width:10px; height:10px;
+      border-radius:999px;
+      background: rgba(124,92,255,.35);
+      border:1px solid rgba(124,92,255,.55);
+      box-shadow:0 0 0 3px rgba(124,92,255,.12);
     }
 
+    /* CONTACT */
+    .contact-card{padding:18px; min-height: 150px}
+    .contact-card h3{margin:0 0 6px; font-size:16px}
+    .contact-card p{margin:0 0 12px; color:var(--muted); font-size:13.5px}
+
+    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns: 1fr}
       .grid-3{grid-template-columns: 1fr}
-      .services-grid{grid-template-columns: 1fr}
-      .test-grid{grid-template-columns: 1fr}
-      .contact-grid{grid-template-columns: 1fr}
-      nav{display:none}
+      .nav-links{display:none}
+      .hero h1{font-size:44px}
     }
   </style>
 </head>
 
 <body>
-  <!-- Topbar -->
-  <header class="topbar">
-    <div class="topbar-inner">
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-inner">
       <div class="brand">
         <span class="dot"></span>
         <span>Luca Macchia</span>
       </div>
 
-      <nav aria-label="Secciones">
+      <div class="nav-links">
         <a href="#clientes">Clientes</a>
         <a href="#servicios">Servicios</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
-      </nav>
+      </div>
 
-      <div class="actions">
+      <div class="nav-cta">
         <a class="btn" href="#portfolio">Ver mi trabajo</a>
-        <a class="btn primary" id="btnContactarTop" href="#contacto">Contactar</a>
+        <a class="btn primary" id="btnNavContactar" href="#contacto">Contactar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="wrap hero" id="top">
+    <div class="pill">
+      <span>Editor de video</span>
+      <span>•</span>
+      <span>Reels/Shorts</span>
+      <span>•</span>
+      <span>YouTube</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Transformo videos aburridos en piezas cinematográficas</h1>
+        <p>Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales</p>
+
+        <div class="hero-actions">
+          <a class="btn primary" id="btnHeroWhatsapp" href="#">Escribime por WhatsApp</a>
+          <a class="btn" href="#clientes">Ver clientes</a>
+        </div>
+      </div>
+
+      <!-- Bloque de valor (sin métricas automáticas; solo estático) -->
+      <div class="card hero-card">
+        <div class="list">
+          <div class="mini">
+            <b>Edición con foco en retención</b>
+            <span class="muted">Ritmo, cortes, subtítulos, estructura y ritmo narrativo.</span>
+          </div>
+          <div class="mini">
+            <b>Entrega lista para publicar</b>
+            <span class="muted">Archivos exportados y adaptados a plataforma (Reels/Shorts/YouTube).</span>
+          </div>
+          <div class="mini">
+            <b>Comunicación clara</b>
+            <span class="muted">Iteraciones rápidas + seguimiento para llegar al resultado que buscás.</span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- Hero -->
-    <section class="hero" id="inicio">
-      <div class="hero-grid">
-        <div class="card hero-left">
-          <span class="pill">Editor de video • Reels/Shorts • YouTube</span>
+  <!-- CLIENTES -->
+  <section class="wrap section" id="clientes">
+    <h2 class="h2">He trabajado con</h2>
 
-          <h1>Transformo videos aburridos en piezas cinematográficas</h1>
-          <p>Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales</p>
-
-          <div class="hero-cta">
-            <a class="btn primary" id="btnWhatsHero" href="#">Escribime por WhatsApp</a>
-            <a class="btn" href="#portfolio">Ver portfolio</a>
-          </div>
+    <div class="grid-3">
+      <!-- dj.cuenca (avatar con la foto que pediste poner en el círculo) -->
+      <div class="client-card">
+        <div class="client-avatar">
+          <img src="assets/assets/488386639_599642349762515_7119154842092892815_n.jpg" alt="dj.cuenca" />
         </div>
-
-        <aside class="card kpis">
-          <div class="kpi">
-            <strong>Edición con foco en retención</strong>
-            <span>Ritmo, cortes, subtítulos, estructura y ritmo narrativo.</span>
-          </div>
-          <div class="kpi">
-            <strong>Entrega lista para publicar</strong>
-            <span>Archivos exportados y adaptados a plataforma (Reels/Shorts/YouTube).</span>
-          </div>
-          <div class="kpi">
-            <strong>Comunicación clara</strong>
-            <span>Iteraciones rápidas + seguimiento para llegar al resultado que buscás.</span>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Clients -->
-    <section id="clientes">
-      <div class="section-title">
-        <h2>He trabajado con</h2>
-      </div>
-
-      <div class="grid-3">
-        <!-- DJ.CUENCA -->
-        <div class="client-card card">
-          <div class="client-top">
-            <div class="avatar">
-              <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
-            </div>
-            <div>
-              <div class="client-name">dj.cuenca</div>
-              <div class="client-handle">125k seguidores</div>
-            </div>
-          </div>
-
-          <div class="client-meta">
-            <span class="badge"><span class="check">✓</span> cliente activo</span>
-            <span class="badge">Shorts & Reels</span>
-            <span class="badge">storytelling</span>
-          </div>
-        </div>
-
-        <!-- ADRI KASTEL -->
-        <div class="client-card card">
-          <div class="client-top">
-            <div class="avatar">
-              <img src="assets/assets/adri-kastel.jpg" alt="Adri Kastel" />
-            </div>
-            <div>
-              <div class="client-name">Adri Kastel</div>
-              <div class="client-handle">29k seguidores</div>
-            </div>
-          </div>
-
-          <div class="client-meta">
-            <span class="badge">contenido orgánico</span>
-            <span class="badge">entregas rápidas</span>
-          </div>
-        </div>
-
-        <!-- LALO TRADING -->
-        <div class="client-card card">
-          <div class="client-top">
-            <div class="avatar">
-              <img src="assets/assets/lalo-trading.jpg" alt="Lalo Trading" />
-            </div>
-            <div>
-              <div class="client-name">Lalo Trading</div>
-              <div class="client-handle">25k seguidores</div>
-            </div>
-          </div>
-
-          <div class="client-meta">
-            <span class="badge">enfoque retención</span>
-            <span class="badge">Shorts & Reels</span>
-          </div>
+        <div class="client-name">dj.cuenca</div>
+        <div class="client-number">125K</div>
+        <div class="client-sub">Seguidores</div>
+        <div class="client-sep"></div>
+        <div class="client-status">
+          <span class="check">✓</span>
+          <span>Cliente activo</span>
         </div>
       </div>
-    </section>
 
-    <!-- Services -->
-    <section id="servicios">
-      <div class="section-title">
-        <h2>Servicios</h2>
+      <!-- Adri Kastel -->
+      <div class="client-card">
+        <div class="client-avatar">
+          <img src="assets/assets/376214631_269607586005756_5790813686293717936_n.jpg" alt="Adri Kastel" />
+        </div>
+        <div class="client-name">Adri Kastel</div>
+        <div class="client-number">29K</div>
+        <div class="client-sub">Seguidores</div>
+        <div class="client-sep"></div>
+        <div class="client-status">
+          <span class="check">✓</span>
+          <span>Cliente activo</span>
+        </div>
       </div>
 
-      <div class="services-grid">
-        <div class="svc">
+      <!-- Lalo Trading -->
+      <div class="client-card">
+        <div class="client-avatar">
+          <img src="assets/assets/channels4_profile.jpg" alt="Lalo Trading" />
+        </div>
+        <div class="client-name">Lalo Trading</div>
+        <div class="client-number">25K</div>
+        <div class="client-sub">Seguidores</div>
+        <div class="client-sep"></div>
+        <div class="client-status">
+          <span class="check">✓</span>
+          <span>Cliente activo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="wrap section" id="servicios">
+    <h2 class="h2">Servicios</h2>
+
+    <div class="grid-3">
+      <div class="card service-card">
+        <div class="icon-sq" aria-hidden="true">
+          <img src="assets/assets/15874.png" alt="" />
+        </div>
+        <div>
           <h3>Reels / Shorts</h3>
-          <p>Ritmo, cortes, subtítulos, zooms, memes, SFX y edición enfocada en retención.</p>
+          <p>Ritmo, cortes, subtítulos, zooms, memes, SFX, y edición enfocada en retención.</p>
         </div>
+      </div>
 
-        <div class="svc">
+      <div class="card service-card">
+        <div class="icon-sq" aria-hidden="true">
+          <img src="assets/assets/4324682.png" alt="" />
+        </div>
+        <div>
           <h3>YouTube long-form</h3>
           <p>Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
         </div>
+      </div>
 
-        <div class="svc">
+      <div class="card service-card">
+        <div class="icon-sq" aria-hidden="true">
+          <img src="assets/assets/1533971.png" alt="" />
+        </div>
+        <div>
           <h3>Motion Graphics en After Effects</h3>
           <p>Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Portfolio -->
-    <section id="portfolio">
-      <div class="section-title">
-        <h2>Portfolio</h2>
-      </div>
-      <div class="portfolio">
-        Pegá acá tus links de trabajos (YouTube/Drive/Behance) cuando quieras. Si querés, después lo dejo armado con cards y previews.
-      </div>
-    </section>
+  <!-- PORTFOLIO (placeholder) -->
+  <section class="wrap section" id="portfolio">
+    <h2 class="h2">Portfolio</h2>
+    <div class="card" style="padding:18px;">
+      <p class="muted" style="margin:0;">(Acá va tu grilla de trabajos / embeds. Si querés, después lo armamos igual de prolijo que el resto.)</p>
+    </div>
+  </section>
 
-    <!-- Testimonials -->
-    <section id="testimonios">
-      <div class="section-title">
-        <h2>Testimonios</h2>
-      </div>
+  <!-- TESTIMONIOS -->
+  <section class="wrap section" id="testimonios">
+    <h2 class="h2">Testimonios</h2>
 
-      <div class="test-grid">
-        <!-- DJ.CUENCA testimonial -->
-        <article class="tcard">
-          <div class="t-head">
-            <div class="t-avatar">
-              <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
-            </div>
-            <div>
-              <div class="t-name">dj.cuenca</div>
-              <div class="t-sub">Cliente • Shorts/Reels</div>
-            </div>
+    <div class="grid-3">
+      <div class="test-card">
+        <div class="test-head">
+          <div class="test-avatar">
+            <img src="assets/assets/488386639_599642349762515_7119154842092892815_n.jpg" alt="dj.cuenca" />
           </div>
-
-          <div class="t-stars" aria-label="5 estrellas">
-            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-          </div>
-
-          <p class="t-quote">“la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video”</p>
-
-          <div class="t-foot">
-            <span class="dot-red"></span>
-            <span>Proyecto verificado</span>
-          </div>
-        </article>
-
-        <!-- second testimonial stays same (generic) -->
-        <article class="tcard">
-          <div class="t-head">
-            <div class="t-avatar" style="border-color: rgba(124,92,255,.35);">
-              <div style="width:100%;height:100%;display:grid;place-items:center;color:rgba(230,233,239,.9);font-weight:900;background:rgba(255,255,255,.04);">C</div>
-            </div>
-            <div>
-              <div class="t-name">Cliente 2</div>
-              <div class="t-sub">Reels</div>
-            </div>
-          </div>
-
-          <div class="t-stars" aria-label="5 estrellas">
-            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-          </div>
-
-          <p class="t-quote">“Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”</p>
-
-          <div class="t-foot">
-            <span class="dot-red"></span>
-            <span>Proyecto verificado</span>
-          </div>
-        </article>
-
-        <!-- extra testimonial (optional) -->
-        <article class="tcard">
-          <div class="t-head">
-            <div class="t-avatar" style="border-color: rgba(34,197,94,.35);">
-              <div style="width:100%;height:100%;display:grid;place-items:center;color:rgba(230,233,239,.9);font-weight:900;background:rgba(255,255,255,.04);">✓</div>
-            </div>
-            <div>
-              <div class="t-name">Entrega y comunicación</div>
-              <div class="t-sub">Workflow</div>
-            </div>
-          </div>
-
-          <div class="t-stars" aria-label="5 estrellas">
-            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-          </div>
-
-          <p class="t-quote">“Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención.”</p>
-
-          <div class="t-foot">
-            <span class="dot-red"></span>
-            <span>Proyecto verificado</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contacto">
-      <div class="section-title">
-        <h2>Contacto</h2>
-      </div>
-
-      <div class="contact-grid">
-        <div class="card contact-card">
-          <h3>WhatsApp</h3>
-          <p>Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
-          <div class="contact-actions">
-            <a class="btn primary" id="btnWhatsApp" href="#">Escribirme</a>
+          <div>
+            <div class="test-title">dj.cuenca</div>
+            <div class="muted" style="font-size:13px;">Cliente • Shorts/Reels</div>
           </div>
         </div>
 
-        <div class="card contact-card">
-          <h3>Twitter</h3>
-          <p>Escribime y coordinamos.</p>
-          <div class="contact-actions">
-            <a class="btn" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Twitter</a>
-            <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
-          </div>
+        <div class="stars" aria-label="5 estrellas">★★★★★</div>
+
+        <p class="quote">"la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video"</p>
+
+        <div class="test-foot">
+          <span class="verified-dot"></span>
+          <span>Proyecto verificado</span>
         </div>
       </div>
-    </section>
 
-    <footer>
-      © <span id="year"></span> Luca Macchia — Editor de video
-    </footer>
-  </main>
+      <div class="test-card">
+        <div class="test-head">
+          <div class="test-avatar" style="background:rgba(124,92,255,.22);">
+            <img src="assets/assets/376214631_269607586005756_5790813686293717936_n.jpg" alt="Cliente 2" />
+          </div>
+          <div>
+            <div class="test-title">Cliente 2</div>
+            <div class="muted" style="font-size:13px;">Reels</div>
+          </div>
+        </div>
+
+        <div class="stars" aria-label="5 estrellas">★★★★★</div>
+
+        <p class="quote">"Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar."</p>
+
+        <div class="test-foot">
+          <span class="verified-dot"></span>
+          <span>Proyecto verificado</span>
+        </div>
+      </div>
+
+      <div class="test-card">
+        <div class="test-head">
+          <div class="test-avatar" style="background:rgba(34,197,94,.18); border-color: rgba(34,197,94,.35);">
+            <img src="assets/assets/channels4_profile.jpg" alt="Entrega y comunicación" />
+          </div>
+          <div>
+            <div class="test-title">Entrega y comunicación</div>
+            <div class="muted" style="font-size:13px;">Workflow</div>
+          </div>
+        </div>
+
+        <div class="stars" aria-label="5 estrellas">★★★★★</div>
+
+        <p class="quote">"Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención."</p>
+
+        <div class="test-foot">
+          <span class="verified-dot"></span>
+          <span>Proyecto verificado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="wrap section" id="contacto">
+    <h2 class="h2">Contacto</h2>
+
+    <div class="grid-3">
+      <div class="card contact-card">
+        <h3>WhatsApp</h3>
+        <p>Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
+        <a class="btn primary" id="btnWhatsapp" href="#">Escribirme</a>
+      </div>
+
+      <div class="card contact-card">
+        <h3>Twitter</h3>
+        <p>Escribime y coordinamos.</p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="https://x.com/Lucaeditor_" target="_blank" rel="noreferrer">Twitter</a>
+          <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noreferrer">Escribime</a>
+        </div>
+      </div>
+
+      <!-- (Se elimina "Links rápidos" como pediste) -->
+      <div class="card contact-card">
+        <h3>Directo</h3>
+        <p>Si tocás “Escribirme”, te manda a tu chat de WhatsApp automáticamente.</p>
+        <a class="btn" href="#top">Volver arriba</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap" style="padding:28px 24px 40px; color:var(--muted); font-size:13px;">
+    © <span id="year"></span> Luca Macchia — Portfolio
+  </footer>
 
   <script>
     // Año
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // WhatsApp direct chat
+    // WhatsApp
     const phone = "541153323199"; // +54 11 5332 3199
-    const waLink = `https://wa.me/${phone}?text=${encodeURIComponent("Hola Luca! Te escribo por la edición de video. 👋")}`;
+    const msg = encodeURIComponent("Hola Luca, te escribo por la edición de un video. Mi idea es:");
+    const waLink = `https://wa.me/${phone}?text=${msg}`;
 
-    const btn1 = document.getElementById("btnWhatsApp");
-    const btn2 = document.getElementById("btnWhatsHero");
+    const btnWhatsapp = document.getElementById("btnWhatsapp");
+    const btnHeroWhatsapp = document.getElementById("btnHeroWhatsapp");
+    const btnNavContactar = document.getElementById("btnNavContactar");
 
-    if (btn1) btn1.href = waLink;
-    if (btn2) btn2.href = waLink;
+    if (btnWhatsapp) btnWhatsapp.href = waLink;
+    if (btnHeroWhatsapp) btnHeroWhatsapp.href = waLink;
+
+    // (El botón "Contactar" del nav baja a contacto, no cambia)
+    // Si querés que "Contactar" también abra WhatsApp, decímelo y lo ajusto.
   </script>
 </body>
 </html>
