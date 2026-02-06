@@ -1,4 +1,3 @@
-index.html    
 <!doctype html>
 <html lang="es">
 <head>
@@ -6,686 +5,623 @@ index.html
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio — Luca Macchia</title>
   <meta name="description" content="Portafolio de edición de video: Reels/Shorts y YouTube." />
-
   <style>
     :root{
       --bg:#0b0f17;
+      --card:#101828;
+      --card2:#0e1626;
       --text:#e6e9ef;
       --muted:#a8b0c0;
       --line:rgba(255,255,255,.10);
-
       --accent:#7c5cff;
       --accent2:#22c55e;
 
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --w:1100px;
-
       --red:#ef4444;
       --red2:#b91c1c;
+
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --w: 1100px;
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(1000px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
+        radial-gradient(1200px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
         radial-gradient(900px 500px at 85% 0%, rgba(34,197,94,.14), transparent 55%),
         var(--bg);
       color:var(--text);
       line-height:1.35;
     }
-
     a{color:inherit; text-decoration:none}
-
     .wrap{max-width:var(--w); margin:0 auto; padding:24px}
 
-    /* NAV */
-    .nav{
+    /* Topbar */
+    .topbar{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,15,23,.75);
+      background: rgba(11,15,23,.70);
+      backdrop-filter: blur(14px);
       border-bottom:1px solid var(--line);
     }
-    .navin{
-      display:flex; align-items:center; justify-content:space-between; gap:16px;
-      padding:14px 24px; max-width:var(--w); margin:0 auto;
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      max-width:var(--w); margin:0 auto; padding:14px 24px;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .dot{
-      width:10px;height:10px;border-radius:999px;
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
-      box-shadow:0 0 18px rgba(124,92,255,.35)
-    }
-    .links{display:flex; gap:14px; flex-wrap:wrap}
-    .links a{color:var(--muted); font-size:14px; padding:8px 10px; border-radius:10px}
-    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-
-    .cta{display:flex; gap:10px; align-items:center}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:12px; font-weight:650; font-size:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      cursor:pointer;
-      user-select:none;
-    }
-    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.18)}
-    .btn.primary{
-      border-color: rgba(124,92,255,.55);
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(124,92,255,.65));
-      box-shadow: 0 10px 24px rgba(124,92,255,.18);
-    }
-
-    /* HERO */
-    header{padding:36px 0 10px}
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
-      align-items:stretch;
-      padding:22px;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-    }
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      color:var(--muted);
-      background: rgba(255,255,255,.04);
-      font-size:13px;
-      width:fit-content;
-    }
-    h1{margin:14px 0 10px; font-size:44px; line-height:1.02; letter-spacing:-.8px}
-    .sub{color:var(--muted); font-size:16px; margin:0 0 16px}
-    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
-
-    .mini{
-      display:flex; flex-direction:column; justify-content:space-between;
-      padding:16px;
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(16,24,40,.85), rgba(14,22,38,.85));
-    }
-    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px}
-    .kpi{
-      padding:12px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-    }
-    .kpi b{display:block; font-size:18px}
-    .kpi span{color:var(--muted); font-size:12px}
-    .note{color:var(--muted); font-size:12px; margin-top:12px}
-
-    section{padding:22px 0}
-    .sec-title{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:12px}
-    .sec-title h2{margin:0; font-size:22px; letter-spacing:-.2px}
-    .sec-title span{color:var(--muted); font-size:13px}
-
-    /* CLIENTES */
-    .clients{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-      align-items:stretch;
-    }
-    .client{
-      padding:14px;
-      border:1px solid var(--line);
-      border-radius:16px;
-      background: rgba(255,255,255,.04);
-      min-height:110px;
-    }
-
-    /* Formato tipo "featured" (como dj.cuenca) */
-    .client.featured{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      text-align:center;
-      padding:18px 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: 0 12px 28px rgba(0,0,0,.22);
-    }
-    .avatar{
-      width:58px;
-      height:58px;
-      border-radius:999px;
-      margin:0 auto 10px;
-      border:3px solid rgba(124,92,255,.35);
-      background: rgba(255,255,255,.06);
-      overflow:hidden;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .client.featured b{display:block; font-size:16px}
-    .big2{
-      font-size:28px;
-      font-weight:900;
-      margin:10px 0 0;
-      color: rgba(124,92,255,.95);
-    }
-    .label{
-      color:var(--muted);
-      font-size:12px;
-      margin-top:2px;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:4px 8px; border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:11px;
-      margin-top:12px;
-      width:fit-content;
-      margin-left:auto;
-      margin-right:auto;
-    }
-
-    /* SERVICIOS (formato referencia "cards premium" + icono rojo) */
-    .services{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .s-card{
-      padding:18px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(420px 220px at 15% 20%, rgba(185,28,28,.22), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: 0 16px 34px rgba(0,0,0,.28);
-      position:relative;
-      min-height:150px;
-    }
-    .icon{
-      width:34px; height:34px;
-      border-radius:10px;
-      background: linear-gradient(135deg, rgba(239,68,68,.95), rgba(185,28,28,.85));
-      display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 12px 22px rgba(239,68,68,.14);
-      margin-bottom:12px;
-      border:1px solid rgba(255,255,255,.08);
-      color: rgba(255,255,255,.92);
-      font-weight:900;
-      font-size:16px;
-    }
-    .s-card h3{margin:0 0 8px; font-size:18px; letter-spacing:-.2px}
-    .s-card p{margin:0; color:rgba(230,233,239,.78); font-size:14px; line-height:1.45}
-
-    /* PORTFOLIO */
-    .portfolio{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .work{
-      border:1px solid var(--line);
-      border-radius:18px;
-      overflow:hidden;
-      background: rgba(255,255,255,.04);
-    }
-    .thumb{
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(34,197,94,.18));
-      border-bottom:1px solid var(--line);
-      display:flex; align-items:center; justify-content:center;
-      color: rgba(230,233,239,.7);
-      font-weight:700;
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700;
       letter-spacing:.2px;
     }
-    .workin{padding:14px}
-    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .tag{
-      font-size:11px; color:var(--muted);
-      padding:5px 8px; border-radius:999px;
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), rgba(34,197,94,.85));
+      box-shadow: 0 0 0 6px rgba(124,92,255,.10);
+    }
+    nav{
+      display:flex; align-items:center; gap:18px;
+      color:var(--muted);
+      font-weight:600; font-size:14px;
+    }
+    nav a{opacity:.9}
+    nav a:hover{opacity:1; color:var(--text)}
+    .actions{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.02);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.04)}
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), rgba(124,92,255,.65));
+      box-shadow: 0 10px 26px rgba(124,92,255,.18);
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-weight:700;
+      font-size:13px;
     }
 
-    /* TESTIMONIOS (estilo referencia) */
-    .t-grid{
+    /* Hero */
+    .hero{padding:36px 0 18px}
+    .hero-grid{
       display:grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{padding:26px}
+    .hero h1{
+      margin:14px 0 12px;
+      font-size: clamp(34px, 4.4vw, 50px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .hero p{
+      margin:0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+    .hero-cta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:18px;
+    }
+    .kpis{
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1fr;
       gap:14px;
     }
-    .t-card{
+    .kpi{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:14px;
+      background: rgba(16,24,40,.55);
+    }
+    .kpi strong{display:block; font-size:16px; margin-bottom:6px}
+    .kpi span{color:var(--muted); font-size:13px}
+
+    /* Sections */
+    section{padding:18px 0}
+    .section-title{
+      display:flex; align-items:center; justify-content:space-between;
+      margin:0 0 12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+
+    /* Clients */
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .client-card{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(16,24,40,.45);
+      position:relative;
+      overflow:hidden;
+      min-height: 150px;
+    }
+    .client-card:before{
+      content:"";
+      position:absolute; inset:-40px -40px auto auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.35), transparent 60%);
+      filter: blur(0px);
+      pointer-events:none;
+    }
+    .client-top{
+      display:flex; align-items:center; gap:12px;
+    }
+    .avatar{
+      width:46px; height:46px; border-radius:999px;
+      border:3px solid rgba(124,92,255,.35);
+      overflow:hidden;
+      flex:0 0 auto;
+      background: rgba(255,255,255,.04);
+      display:grid; place-items:center;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover}
+    .client-name{font-weight:800}
+    .client-handle{color:var(--muted); font-size:13px; margin-top:2px}
+    .client-meta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
+    .check{
+      width:14px; height:14px; border-radius:4px;
+      display:inline-grid; place-items:center;
+      background: rgba(34,197,94,.18);
+      border: 1px solid rgba(34,197,94,.35);
+      color: #bff5cf;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    /* Services (red style) */
+    .services-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .svc{
       padding:18px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(520px 260px at 15% 20%, rgba(185,28,28,.20), transparent 60%),
-        rgba(255,255,255,.03);
-      box-shadow: 0 16px 34px rgba(0,0,0,.28);
+        radial-gradient(800px 220px at 20% 0%, rgba(239,68,68,.18), transparent 55%),
+        rgba(16,24,40,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .svc:before{
+      content:"";
+      position:absolute; inset:auto -60px -80px auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 40% 40%, rgba(185,28,28,.35), transparent 65%);
+      pointer-events:none;
+    }
+    .svc h3{margin:0 0 8px; font-size:18px; letter-spacing:-.2px}
+    .svc p{margin:0; color:var(--muted); font-size:14px}
+
+    /* Portfolio placeholder */
+    .portfolio{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px dashed rgba(255,255,255,.20);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    /* Testimonials (reference style) */
+    .test-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      align-items:start;
+    }
+    .tcard{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(900px 360px at 20% 0%, rgba(185,28,28,.18), transparent 55%),
+        rgba(16,24,40,.35);
+      overflow:hidden;
     }
     .t-head{
-      display:flex; align-items:center; gap:12px;
+      display:flex; gap:12px; align-items:center;
       margin-bottom:10px;
     }
     .t-avatar{
-      width:44px; height:44px; border-radius:999px;
-      overflow:hidden;
-      border:2px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
+      width:44px; height:44px; border-radius:999px; overflow:hidden;
+      border:2px solid rgba(239,68,68,.35);
+      background: rgba(255,255,255,.04);
       flex:0 0 auto;
     }
-    .t-avatar img{width:100%; height:100%; object-fit:cover; display:block}
-    .t-name{display:flex; flex-direction:column; gap:2px}
-    .t-name b{font-size:15px}
-    .t-name small{color:rgba(230,233,239,.65)}
-    .chip{
-      margin-left:auto;
-      display:inline-flex; align-items:center; gap:6px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(239,68,68,.12);
-      color: rgba(255,255,255,.82);
-      font-size:12px;
-      white-space:nowrap;
+    .t-avatar img{width:100%; height:100%; object-fit:cover}
+    .t-name{font-weight:900; line-height:1.05}
+    .t-sub{color:var(--muted); font-size:13px; margin-top:2px}
+    .t-stars{
+      display:flex; gap:4px; margin:10px 0 10px;
     }
-    .stars{display:flex; gap:4px; margin:10px 0 10px}
     .star{
       width:16px; height:16px;
-      background: rgba(239,68,68,.95);
+      display:inline-block;
+      background: conic-gradient(from 0deg, var(--red), var(--red2));
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      box-shadow: 0 8px 18px rgba(239,68,68,.10);
       opacity:.95;
     }
     .t-quote{
       margin:0;
-      color: rgba(230,233,239,.85);
+      color:rgba(230,233,239,.92);
+      font-style:italic;
       font-size:14px;
-      line-height:1.55;
+      line-height:1.5;
     }
     .t-foot{
       margin-top:14px;
       padding-top:12px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color: rgba(230,233,239,.65);
-      font-size:12px;
-      display:flex;
-      align-items:center;
-      gap:8px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-size:13px;
+      display:flex; align-items:center; gap:8px;
     }
     .dot-red{
       width:8px; height:8px; border-radius:999px;
-      background: rgba(239,68,68,.95);
+      background: rgba(239,68,68,.8);
+      box-shadow: 0 0 0 6px rgba(239,68,68,.12);
     }
 
-    /* CONTACTO */
-    .grid{
+    /* Contact */
+    .contact-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap:14px;
     }
-    .card{
-      padding:16px;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 10px 26px rgba(0,0,0,.18);
-    }
-    .card h3{margin:0 0 6px; font-size:16px}
-    .card p{margin:0; color:var(--muted); font-size:13px}
+    .contact-card{padding:18px}
+    .contact-card h3{margin:0 0 8px}
+    .contact-card p{margin:0; color:var(--muted); font-size:14px}
+    .contact-actions{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
 
     footer{
-      padding:22px 0 40px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
+      padding:22px 0 30px;
+      color:rgba(168,176,192,.9);
       font-size:13px;
+      border-top:1px solid var(--line);
+      margin-top:18px;
     }
 
     @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
-      .clients{grid-template-columns:1fr 1fr}
-      .services{grid-template-columns:1fr}
-      .portfolio{grid-template-columns:1fr}
-      .t-grid{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      h1{font-size:38px}
-      .navin{flex-wrap:wrap}
+      .hero-grid{grid-template-columns: 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .services-grid{grid-template-columns: 1fr}
+      .test-grid{grid-template-columns: 1fr}
+      .contact-grid{grid-template-columns: 1fr}
+      nav{display:none}
     }
   </style>
 </head>
 
 <body>
-  <div class="nav">
-    <div class="navin">
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
       <div class="brand">
         <span class="dot"></span>
-        <span id="brandName">Luca Macchia</span>
+        <span>Luca Macchia</span>
       </div>
 
-      <div class="links">
+      <nav aria-label="Secciones">
         <a href="#clientes">Clientes</a>
         <a href="#servicios">Servicios</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
-      </div>
+      </nav>
 
-      <div class="cta">
+      <div class="actions">
         <a class="btn" href="#portfolio">Ver mi trabajo</a>
-        <a class="btn primary" id="btnWhats" href="#" target="_blank" rel="noreferrer">Contactar</a>
+        <a class="btn primary" id="btnContactarTop" href="#contacto">Contactar</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <div class="wrap">
-    <header>
-      <div class="hero">
-        <div>
-          <div class="badge">🎬 Editor de video • Reels/Shorts • YouTube</div>
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="hero-grid">
+        <div class="card hero-left">
+          <span class="pill">Editor de video • Reels/Shorts • YouTube</span>
 
-          <h1 id="headline">Transformo videos aburridos en piezas cinematográficas</h1>
+          <h1>Transformo videos aburridos en piezas cinematográficas</h1>
+          <p>Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales</p>
 
-          <p class="sub" id="subline">
-            Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" id="btnReel" href="#" target="_blank" rel="noreferrer">Ver showreel</a>
-            <a class="btn" href="#clientes">Ver clientes</a>
-            <a class="btn" href="#servicios">Ver servicios</a>
-          </div>
-
-          <p class="note">
-            Si querés, después ajustamos showreel y links del portfolio.
-          </p>
-        </div>
-
-        <div class="mini">
-          <div>
-            <div class="sec-title" style="margin:0 0 10px">
-              <h2 style="font-size:18px;margin:0">Resultados</h2>
-              <span>ejemplos</span>
-            </div>
-            <div class="kpis">
-              <div class="kpi"><b id="kpi1">+120%</b><span>retención (caso)</span></div>
-              <div class="kpi"><b id="kpi2">+3.2M</b><span>views (mes)</span></div>
-              <div class="kpi"><b id="kpi3">48h</b><span>entrega promedio</span></div>
-              <div class="kpi"><b id="kpi4">4K</b><span>calidad final</span></div>
-            </div>
-          </div>
-          <div class="note" style="margin:14px 0 0">
-            Si no tenés métricas todavía, podés cambiarlas por datos reales.
+          <div class="hero-cta">
+            <a class="btn primary" id="btnWhatsHero" href="#">Escribime por WhatsApp</a>
+            <a class="btn" href="#portfolio">Ver portfolio</a>
           </div>
         </div>
+
+        <aside class="card kpis">
+          <div class="kpi">
+            <strong>Edición con foco en retención</strong>
+            <span>Ritmo, cortes, subtítulos, estructura y ritmo narrativo.</span>
+          </div>
+          <div class="kpi">
+            <strong>Entrega lista para publicar</strong>
+            <span>Archivos exportados y adaptados a plataforma (Reels/Shorts/YouTube).</span>
+          </div>
+          <div class="kpi">
+            <strong>Comunicación clara</strong>
+            <span>Iteraciones rápidas + seguimiento para llegar al resultado que buscás.</span>
+          </div>
+        </aside>
       </div>
-    </header>
+    </section>
 
-    <!-- CLIENTES -->
+    <!-- Clients -->
     <section id="clientes">
-      <div class="sec-title">
+      <div class="section-title">
         <h2>He trabajado con</h2>
-        <span>prueba social</span>
       </div>
 
-      <div class="clients">
-        <div class="client featured">
-          <div class="avatar">
-            <img src="assets/dj-cuenca.jpg" alt="dj.cuenca" />
+      <div class="grid-3">
+        <!-- DJ.CUENCA -->
+        <div class="client-card card">
+          <div class="client-top">
+            <div class="avatar">
+              <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
+            </div>
+            <div>
+              <div class="client-name">dj.cuenca</div>
+              <div class="client-handle">125k seguidores</div>
+            </div>
           </div>
-          <b>dj.cuenca</b>
-          <div class="big2">125k</div>
-          <div class="label">seguidores</div>
-          <div class="pill">✅ cliente activo</div>
+
+          <div class="client-meta">
+            <span class="badge"><span class="check">✓</span> cliente activo</span>
+            <span class="badge">Shorts & Reels</span>
+            <span class="badge">storytelling</span>
+          </div>
         </div>
 
-        <div class="client featured">
-          <div class="avatar">
-            <img src="assets/adri-kastel.jpg" alt="Adri Kastel" />
+        <!-- ADRI KASTEL -->
+        <div class="client-card card">
+          <div class="client-top">
+            <div class="avatar">
+              <img src="assets/assets/adri-kastel.jpg" alt="Adri Kastel" />
+            </div>
+            <div>
+              <div class="client-name">Adri Kastel</div>
+              <div class="client-handle">29k seguidores</div>
+            </div>
           </div>
-          <b>Adri Kastel</b>
-          <div class="big2">29k</div>
-          <div class="label">seguidores</div>
-          <div class="pill">✅ cliente activo</div>
+
+          <div class="client-meta">
+            <span class="badge">contenido orgánico</span>
+            <span class="badge">entregas rápidas</span>
+          </div>
         </div>
 
-        <div class="client featured">
-          <div class="avatar">
-            <img src="assets/lalo-trading.jpg" alt="Lalo trading" />
+        <!-- LALO TRADING -->
+        <div class="client-card card">
+          <div class="client-top">
+            <div class="avatar">
+              <img src="assets/assets/lalo-trading.jpg" alt="Lalo Trading" />
+            </div>
+            <div>
+              <div class="client-name">Lalo Trading</div>
+              <div class="client-handle">25k seguidores</div>
+            </div>
           </div>
-          <b>Lalo trading</b>
-          <div class="big2">25k</div>
-          <div class="label">seguidores</div>
-          <div class="pill">✅ cliente activo</div>
-        </div>
 
-        <div class="client">
-          <b>Marca / Negocio 2</b>
-          <small>Ads + contenido orgánico</small>
-          <div class="pill" style="margin-left:0;margin-right:0;">⚡ entregas rápidas</div>
+          <div class="client-meta">
+            <span class="badge">enfoque retención</span>
+            <span class="badge">Shorts & Reels</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVICIOS -->
+    <!-- Services -->
     <section id="servicios">
-      <div class="sec-title">
+      <div class="section-title">
         <h2>Servicios</h2>
-        <span>qué hago</span>
       </div>
 
-      <div class="services">
-        <div class="s-card">
-          <div class="icon">🎬</div>
+      <div class="services-grid">
+        <div class="svc">
           <h3>Reels / Shorts</h3>
           <p>Ritmo, cortes, subtítulos, zooms, memes, SFX y edición enfocada en retención.</p>
         </div>
 
-        <div class="s-card">
-          <div class="icon">▶</div>
+        <div class="svc">
           <h3>YouTube long-form</h3>
           <p>Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
         </div>
 
-        <div class="s-card">
-          <div class="icon">AE</div>
+        <div class="svc">
           <h3>Motion Graphics en After Effects</h3>
           <p>Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
+    <!-- Portfolio -->
     <section id="portfolio">
-      <div class="sec-title">
+      <div class="section-title">
         <h2>Portfolio</h2>
-        <span>mis trabajos</span>
       </div>
-
-      <div class="portfolio" id="portfolioGrid"></div>
-
-      <div class="note" style="margin-top:12px">
-        Poné links de YouTube/Drive/Dropbox en cada card.
+      <div class="portfolio">
+        Pegá acá tus links de trabajos (YouTube/Drive/Behance) cuando quieras. Si querés, después lo dejo armado con cards y previews.
       </div>
     </section>
 
-    <!-- TESTIMONIOS -->
+    <!-- Testimonials -->
     <section id="testimonios">
-      <div class="sec-title">
+      <div class="section-title">
         <h2>Testimonios</h2>
-        <span>lo que dicen</span>
       </div>
 
-      <div class="t-grid">
-        <div class="t-card">
+      <div class="test-grid">
+        <!-- DJ.CUENCA testimonial -->
+        <article class="tcard">
           <div class="t-head">
             <div class="t-avatar">
-              <img src="assets/dj-cuenca.jpg" alt="dj.cuenca" />
+              <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
             </div>
-            <div class="t-name">
-              <b>dj.cuenca</b>
-              <small>Cliente</small>
+            <div>
+              <div class="t-name">dj.cuenca</div>
+              <div class="t-sub">Cliente • Shorts/Reels</div>
             </div>
-            <div class="chip">125k seguidores</div>
           </div>
 
-          <div class="stars" aria-label="5 estrellas">
-            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          <div class="t-stars" aria-label="5 estrellas">
+            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
           </div>
 
-          <p class="t-quote">
-            “la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video”
-          </p>
+          <p class="t-quote">“la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video”</p>
 
           <div class="t-foot">
             <span class="dot-red"></span>
             <span>Proyecto verificado</span>
           </div>
-        </div>
+        </article>
 
-        <div class="t-card">
+        <!-- second testimonial stays same (generic) -->
+        <article class="tcard">
           <div class="t-head">
-            <div class="t-avatar" style="display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8);font-weight:800;">
-              LM
+            <div class="t-avatar" style="border-color: rgba(124,92,255,.35);">
+              <div style="width:100%;height:100%;display:grid;place-items:center;color:rgba(230,233,239,.9);font-weight:900;background:rgba(255,255,255,.04);">C</div>
             </div>
-            <div class="t-name">
-              <b>Cliente 2</b>
-              <small>Reels/Ads</small>
+            <div>
+              <div class="t-name">Cliente 2</div>
+              <div class="t-sub">Reels</div>
             </div>
-            <div class="chip">★★★★★</div>
           </div>
 
-          <div class="stars" aria-label="5 estrellas">
-            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          <div class="t-stars" aria-label="5 estrellas">
+            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
           </div>
 
-          <p class="t-quote">
-            “Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”
-          </p>
+          <p class="t-quote">“Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”</p>
 
           <div class="t-foot">
             <span class="dot-red"></span>
             <span>Proyecto verificado</span>
           </div>
-        </div>
+        </article>
+
+        <!-- extra testimonial (optional) -->
+        <article class="tcard">
+          <div class="t-head">
+            <div class="t-avatar" style="border-color: rgba(34,197,94,.35);">
+              <div style="width:100%;height:100%;display:grid;place-items:center;color:rgba(230,233,239,.9);font-weight:900;background:rgba(255,255,255,.04);">✓</div>
+            </div>
+            <div>
+              <div class="t-name">Entrega y comunicación</div>
+              <div class="t-sub">Workflow</div>
+            </div>
+          </div>
+
+          <div class="t-stars" aria-label="5 estrellas">
+            <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+          </div>
+
+          <p class="t-quote">“Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención.”</p>
+
+          <div class="t-foot">
+            <span class="dot-red"></span>
+            <span>Proyecto verificado</span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- Contact -->
     <section id="contacto">
-      <div class="sec-title">
+      <div class="section-title">
         <h2>Contacto</h2>
-        <span>trabajemos</span>
       </div>
 
-      <div class="grid">
-        <div class="card">
+      <div class="contact-grid">
+        <div class="card contact-card">
           <h3>WhatsApp</h3>
           <p>Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
-          <div style="margin-top:10px">
-            <a class="btn primary" id="btnWhats2" href="#" target="_blank" rel="noreferrer">Escribirme</a>
+          <div class="contact-actions">
+            <a class="btn primary" id="btnWhatsApp" href="#">Escribirme</a>
           </div>
         </div>
 
-        <div class="card">
-          <h3>Contacto directo</h3>
-          <p>Si tocás cualquiera de estos botones, te abre mi chat de WhatsApp.</p>
-          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
-            <a class="btn" id="linkWA" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn primary" id="ctaWA" href="#" target="_blank" rel="noreferrer">Escribime</a>
+        <div class="card contact-card">
+          <h3>Twitter</h3>
+          <p>Escribime y coordinamos.</p>
+          <div class="contact-actions">
+            <a class="btn" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Twitter</a>
+            <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
           </div>
-        </div>
-
-        <div class="card">
-          <h3>Disponibilidad</h3>
-          <p>Trabajo por entregas y también por proyectos. Si estás apurado, decímelo en el mensaje.</p>
         </div>
       </div>
     </section>
 
     <footer>
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-        <span>© <span id="year"></span> <span id="footName">Luca Macchia</span>. Todos los derechos reservados.</span>
-        <span>Hecho con GitHub Pages.</span>
-      </div>
+      © <span id="year"></span> Luca Macchia — Editor de video
     </footer>
-  </div>
+  </main>
 
   <script>
-    const CONFIG = {
-      name: "Luca Macchia",
-      headline: "Transformo videos aburridos en piezas cinematográficas",
-      subline: "Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales",
-      showreelUrl: "https://youtube.com/",
-      // WhatsApp (TU NUMERO) + mensaje
-      whatsappUrl: "https://wa.me/5491153323199?text=Hola%20Luca%2C%20quiero%20presupuesto%20de%20edicion",
-      kpis: ["+120%", "+3.2M", "48h", "4K"],
+    // Año
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-      portfolio: [
-        { title: "Proyecto / Clip #1", desc: "Short/Reel • Hook + ritmo • 9:16", url: "https://youtube.com/", tags: ["retención","subtítulos","SFX"] },
-        { title: "Proyecto / Clip #2", desc: "YouTube • Storytelling • 16:9", url: "https://youtube.com/", tags: ["story","audio clean","chapters"] },
-        { title: "Proyecto / Clip #3", desc: "Edición • Cinemático • 9:16", url: "https://youtube.com/", tags: ["look","ritmo","impacto"] },
-      ],
-    };
+    // WhatsApp direct chat
+    const phone = "541153323199"; // +54 11 5332 3199
+    const waLink = `https://wa.me/${phone}?text=${encodeURIComponent("Hola Luca! Te escribo por la edición de video. 👋")}`;
 
-    const $ = (id) => document.getElementById(id);
+    const btn1 = document.getElementById("btnWhatsApp");
+    const btn2 = document.getElementById("btnWhatsHero");
 
-    $("brandName").textContent = CONFIG.name;
-    $("footName").textContent = CONFIG.name;
-    $("headline").textContent = CONFIG.headline;
-    $("subline").textContent = CONFIG.subline;
-
-    $("btnReel").href = CONFIG.showreelUrl;
-
-    // TODOS LOS CTA -> WHATSAPP
-    $("btnWhats").href = CONFIG.whatsappUrl;
-    $("btnWhats2").href = CONFIG.whatsappUrl;
-    $("linkWA").href = CONFIG.whatsappUrl;
-    $("ctaWA").href = CONFIG.whatsappUrl;
-
-    $("kpi1").textContent = CONFIG.kpis[0];
-    $("kpi2").textContent = CONFIG.kpis[1];
-    $("kpi3").textContent = CONFIG.kpis[2];
-    $("kpi4").textContent = CONFIG.kpis[3];
-
-    // Render portfolio
-    const grid = $("portfolioGrid");
-    grid.innerHTML = "";
-    CONFIG.portfolio.forEach((item, i) => {
-      const a = document.createElement("a");
-      a.className = "work";
-      a.href = item.url || "#";
-      a.target = "_blank";
-      a.rel = "noreferrer";
-
-      const thumb = document.createElement("div");
-      thumb.className = "thumb";
-      thumb.textContent = `VIDEO ${i+1}`;
-
-      const inner = document.createElement("div");
-      inner.className = "workin";
-      inner.innerHTML = `
-        <h3 style="margin:0 0 6px">${item.title}</h3>
-        <p style="margin:0; color:var(--muted); font-size:13px">${item.desc}</p>
-        <div class="meta">${(item.tags||[]).map(t => `<span class="tag">${t}</span>`).join("")}</div>
-      `;
-
-      a.appendChild(thumb);
-      a.appendChild(inner);
-      grid.appendChild(a);
-    });
-
-    $("year").textContent = new Date().getFullYear();
+    if (btn1) btn1.href = waLink;
+    if (btn2) btn2.href = waLink;
   </script>
 </body>
 </html>
