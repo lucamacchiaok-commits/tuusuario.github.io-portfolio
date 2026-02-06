@@ -15,7 +15,6 @@
       --muted:#a8b0c0;
       --line:rgba(255,255,255,.10);
 
-      /* acento del sitio */
       --accent:#7c5cff;
       --accent2:#22c55e;
 
@@ -158,7 +157,7 @@
       gap:14px;
     }
 
-    /* CLIENTS — estilo referencia (centrada) */
+    /* CLIENTS — estilo centrado referencia */
     .client-card{
       padding:18px;
       border-radius: 22px;
@@ -273,7 +272,7 @@
       font-size:13.5px;
     }
 
-    /* TESTIMONIOS — paleta del sitio (sin rojizo) */
+    /* TESTIMONIOS — paleta del sitio */
     .test-card{
       padding:18px;
       border-radius: 18px;
@@ -344,7 +343,6 @@
     .contact-card h3{margin:0 0 6px; font-size:16px}
     .contact-card p{margin:0 0 12px; color:var(--muted); font-size:13.5px}
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns: 1fr}
       .grid-3{grid-template-columns: 1fr}
@@ -355,7 +353,6 @@
 </head>
 
 <body>
-  <!-- NAV -->
   <div class="nav">
     <div class="wrap nav-inner">
       <div class="brand">
@@ -373,12 +370,11 @@
 
       <div class="nav-cta">
         <a class="btn" href="#portfolio">Ver mi trabajo</a>
-        <a class="btn primary" id="btnNavContactar" href="#contacto">Contactar</a>
+        <a class="btn primary" href="#contacto">Contactar</a>
       </div>
     </div>
   </div>
 
-  <!-- HERO -->
   <header class="wrap hero" id="top">
     <div class="pill">
       <span>Editor de video</span>
@@ -399,7 +395,6 @@
         </div>
       </div>
 
-      <!-- Bloque de valor (sin métricas automáticas; solo estático) -->
       <div class="card hero-card">
         <div class="list">
           <div class="mini">
@@ -419,15 +414,14 @@
     </div>
   </header>
 
-  <!-- CLIENTES -->
   <section class="wrap section" id="clientes">
     <h2 class="h2">He trabajado con</h2>
 
     <div class="grid-3">
-      <!-- dj.cuenca (avatar con la foto que pediste poner en el círculo) -->
       <div class="client-card">
         <div class="client-avatar">
-          <img src="assets/assets/488386639_599642349762515_7119154842092892815_n.jpg" alt="dj.cuenca" />
+          <!-- ✅ RUTA CORREGIDA -->
+          <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
         </div>
         <div class="client-name">dj.cuenca</div>
         <div class="client-number">125K</div>
@@ -439,10 +433,10 @@
         </div>
       </div>
 
-      <!-- Adri Kastel -->
       <div class="client-card">
         <div class="client-avatar">
-          <img src="assets/assets/376214631_269607586005756_5790813686293717936_n.jpg" alt="Adri Kastel" />
+          <!-- ✅ RUTA CORREGIDA -->
+          <img src="assets/assets/adri-kastel.jpg" alt="Adri Kastel" />
         </div>
         <div class="client-name">Adri Kastel</div>
         <div class="client-number">29K</div>
@@ -454,10 +448,10 @@
         </div>
       </div>
 
-      <!-- Lalo Trading -->
       <div class="client-card">
         <div class="client-avatar">
-          <img src="assets/assets/channels4_profile.jpg" alt="Lalo Trading" />
+          <!-- ✅ RUTA CORREGIDA -->
+          <img src="assets/assets/lalo-trading.jpg" alt="Lalo Trading" />
         </div>
         <div class="client-name">Lalo Trading</div>
         <div class="client-number">25K</div>
@@ -471,13 +465,13 @@
     </div>
   </section>
 
-  <!-- SERVICIOS -->
   <section class="wrap section" id="servicios">
     <h2 class="h2">Servicios</h2>
 
     <div class="grid-3">
       <div class="card service-card">
         <div class="icon-sq" aria-hidden="true">
+          <!-- ✅ RUTA CORREGIDA -->
           <img src="assets/assets/15874.png" alt="" />
         </div>
         <div>
@@ -488,6 +482,7 @@
 
       <div class="card service-card">
         <div class="icon-sq" aria-hidden="true">
+          <!-- ✅ RUTA CORREGIDA -->
           <img src="assets/assets/4324682.png" alt="" />
         </div>
         <div>
@@ -498,6 +493,7 @@
 
       <div class="card service-card">
         <div class="icon-sq" aria-hidden="true">
+          <!-- ✅ RUTA CORREGIDA -->
           <img src="assets/assets/1533971.png" alt="" />
         </div>
         <div>
@@ -508,15 +504,13 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO (placeholder) -->
   <section class="wrap section" id="portfolio">
     <h2 class="h2">Portfolio</h2>
     <div class="card" style="padding:18px;">
-      <p class="muted" style="margin:0;">(Acá va tu grilla de trabajos / embeds. Si querés, después lo armamos igual de prolijo que el resto.)</p>
+      <p class="muted" style="margin:0;">(Acá va tu grilla de trabajos / embeds.)</p>
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
   <section class="wrap section" id="testimonios">
     <h2 class="h2">Testimonios</h2>
 
@@ -524,7 +518,8 @@
       <div class="test-card">
         <div class="test-head">
           <div class="test-avatar">
-            <img src="assets/assets/488386639_599642349762515_7119154842092892815_n.jpg" alt="dj.cuenca" />
+            <!-- ✅ RUTA CORREGIDA -->
+            <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca" />
           </div>
           <div>
             <div class="test-title">dj.cuenca</div>
@@ -544,8 +539,9 @@
 
       <div class="test-card">
         <div class="test-head">
-          <div class="test-avatar" style="background:rgba(124,92,255,.22);">
-            <img src="assets/assets/376214631_269607586005756_5790813686293717936_n.jpg" alt="Cliente 2" />
+          <div class="test-avatar">
+            <!-- ✅ RUTA CORREGIDA -->
+            <img src="assets/assets/adri-kastel.jpg" alt="Cliente 2" />
           </div>
           <div>
             <div class="test-title">Cliente 2</div>
@@ -565,8 +561,9 @@
 
       <div class="test-card">
         <div class="test-head">
-          <div class="test-avatar" style="background:rgba(34,197,94,.18); border-color: rgba(34,197,94,.35);">
-            <img src="assets/assets/channels4_profile.jpg" alt="Entrega y comunicación" />
+          <div class="test-avatar">
+            <!-- ✅ RUTA CORREGIDA -->
+            <img src="assets/assets/lalo-trading.jpg" alt="Entrega y comunicación" />
           </div>
           <div>
             <div class="test-title">Entrega y comunicación</div>
@@ -586,7 +583,6 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section class="wrap section" id="contacto">
     <h2 class="h2">Contacto</h2>
 
@@ -606,7 +602,6 @@
         </div>
       </div>
 
-      <!-- (Se elimina "Links rápidos" como pediste) -->
       <div class="card contact-card">
         <h3>Directo</h3>
         <p>Si tocás “Escribirme”, te manda a tu chat de WhatsApp automáticamente.</p>
@@ -620,7 +615,6 @@
   </footer>
 
   <script>
-    // Año
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // WhatsApp
@@ -630,13 +624,9 @@
 
     const btnWhatsapp = document.getElementById("btnWhatsapp");
     const btnHeroWhatsapp = document.getElementById("btnHeroWhatsapp");
-    const btnNavContactar = document.getElementById("btnNavContactar");
 
     if (btnWhatsapp) btnWhatsapp.href = waLink;
     if (btnHeroWhatsapp) btnHeroWhatsapp.href = waLink;
-
-    // (El botón "Contactar" del nav baja a contacto, no cambia)
-    // Si querés que "Contactar" también abra WhatsApp, decímelo y lo ajusto.
   </script>
 </body>
 </html>
