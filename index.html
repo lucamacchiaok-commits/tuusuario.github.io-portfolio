@@ -103,7 +103,7 @@
     .hero{ padding:30px 0 10px; }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1fr; /* ✅ panel derecho eliminado */
+      grid-template-columns: 1fr; /* panel derecho eliminado */
       gap:18px;
       align-items:stretch;
     }
@@ -252,7 +252,7 @@
     .iconbox img{
       width:22px; height:22px;
       object-fit:contain;
-      filter: brightness(0) invert(1); /* ✅ blanco */
+      filter: brightness(0) invert(1); /* blanco */
     }
     .service-title{ font-weight:900; margin:0 0 6px; }
     .service-desc{ margin:0; color:var(--muted); line-height:1.45; }
@@ -266,40 +266,25 @@
     @media (max-width: 920px){
       .portfolio-grid{ grid-template-columns: 1fr; }
     }
+
     .p-card{ overflow:hidden; }
     .p-thumb{
+      position:relative;
       display:block;
       width:100%;
-      aspect-ratio:16/9;
+      aspect-ratio: 16 / 9;
       background-size:cover;
       background-position:center;
-      position:relative;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
     }
-    .p-play{
+    .p-thumb::after{
+      content:"";
       position:absolute;
       inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.35) 100%);
+      pointer-events:none;
     }
-    .yt{
-      width:64px; height:44px;
-      border-radius:14px;
-      background: rgba(255,0,0,.70);
-      border:1px solid rgba(255,255,255,.20);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 16px 30px rgba(0,0,0,.35);
-      transition: transform .18s ease, background .18s ease;
-    }
-    .p-card:hover .yt{ transform: scale(1.06); background: rgba(255,0,0,.82); }
-    .p-info{
-      padding:14px 16px 16px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .p-title{ margin:0; font-weight:900; }
-    .p-sub{ margin:8px 0 0; color:var(--muted); font-weight:700; line-height:1.45; }
     .p-dot{
       position:absolute;
       top:10px;
@@ -311,8 +296,47 @@
       box-shadow: 0 0 0 4px rgba(255,59,59,.15);
       z-index:3;
     }
+    .p-play{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      z-index:2;
+    }
+    .p-play span{
+      width:66px;
+      height:44px;
+      border-radius:14px;
+      background: rgba(255, 0, 0, .65);
+      border: 1px solid rgba(255,255,255,.22);
+      display:grid;
+      place-items:center;
+      transition: transform .18s ease, background .18s ease;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
+    }
+    .p-card:hover .p-play span{
+      transform: scale(1.06);
+      background: rgba(255, 0, 0, .78);
+    }
+    .p-info{
+      padding:16px 16px 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .p-title{
+      margin:0;
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:-0.01em;
+    }
+    .p-sub{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-size:13px;
+      font-weight:700;
+      line-height:1.45;
+    }
 
-    /* Modal */
+    /* Modal video */
     .video-modal{
       position:fixed;
       inset:0;
@@ -428,7 +452,7 @@
     /* ---------- CONTACTO ---------- */
     .contact-grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr)); /* ✅ sin “Directo” */
+      grid-template-columns: repeat(2, minmax(0,1fr)); /* sin “Directo” */
       gap:14px;
     }
     @media (max-width: 920px){
@@ -475,26 +499,22 @@
         <div class="hero-left">
           <div class="kicker">Editor de video • Reels/Shorts • YouTube</div>
 
-          <!-- ✅ título en 2 renglones -->
           <h1 class="hero-title">
             Transformo videos aburridos<br>
             en piezas cinematográficas
           </h1>
 
           <p class="hero-sub">
-            Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales
+            Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales.
           </p>
 
           <div class="hero-cta">
-            <!-- ✅ WhatsApp con tu número -->
             <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">
               Escribime por WhatsApp
             </a>
             <a class="btn" href="#clientes">Ver clientes</a>
           </div>
         </div>
-
-        <!-- ✅ Panel derecho eliminado -->
       </div>
     </section>
 
@@ -502,7 +522,6 @@
     <section id="clientes">
       <h2 class="h2">He trabajado con</h2>
 
-      <!-- ✅ estilo centrado tipo referencia + hover -->
       <div class="grid3">
         <div class="card client-card hover-pop">
           <img class="avatar-xl" src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
@@ -531,7 +550,6 @@
     <section id="servicios">
       <h2 class="h2">Servicios</h2>
 
-      <!-- ✅ respetar colores del sitio + iconos blancos en caja color acento -->
       <div class="services-grid">
         <div class="card service-card hover-pop">
           <div class="iconbox">
@@ -539,7 +557,7 @@
           </div>
           <div>
             <p class="service-title">Reels / Shorts</p>
-            <p class="service-desc">Ritmo, cortes, subtítulos, zooms, memes, SFX, y edición enfocada en retención.</p>
+            <p class="service-desc">Ritmo, cortes, subtítulos, zooms, memes, SFX y edición enfocada en retención.</p>
           </div>
         </div>
 
@@ -565,91 +583,91 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO (VIDEOS) — entre Servicios y Testimonios -->
+    <!-- PORTFOLIO (VIDEOS) -->
     <section id="portfolio">
       <h2 class="h2">Portfolio</h2>
 
       <div class="portfolio-grid">
-        <!-- 1 ✅ TÍTULO CORREGIDO: Motion Graphics -->
-        <article class="card p-card hover-pop" style="position:relative;">
-          <span class="p-dot"></span>
+        <!-- 1: Motion Graphics -->
+        <article class="card p-card hover-pop">
           <a class="p-thumb js-video"
              href="#"
              data-video="2IT4PwT6RCE"
              data-title="Motion Graphics"
              style="background-image:url('https://i.ytimg.com/vi/2IT4PwT6RCE/hqdefault.jpg');">
-            <div class="p-play">
-              <div class="yt" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
+            <span class="p-dot"></span>
+            <div class="p-play" aria-hidden="true">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                   <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
                 </svg>
-              </div>
+              </span>
             </div>
           </a>
           <div class="p-info">
             <h3 class="p-title">Motion Graphics</h3>
-            <p class="p-sub">Ritmo rápido y alta retención para redes sociales</p>
+            <p class="p-sub">Ritmo rápido y alta retención para redes sociales.</p>
           </div>
         </article>
 
-        <!-- 2 ✅ TÍTULO CORREGIDO: Motion Graphics combinado con IA -->
-        <article class="card p-card hover-pop" style="position:relative;">
-          <span class="p-dot"></span>
+        <!-- 2: Motion Graphics combinado con IA -->
+        <article class="card p-card hover-pop">
           <a class="p-thumb js-video"
              href="#"
              data-video="tp3iZwvSAzE"
              data-title="Motion Graphics combinado con IA"
              style="background-image:url('https://i.ytimg.com/vi/tp3iZwvSAzE/hqdefault.jpg');">
-            <div class="p-play">
-              <div class="yt" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
+            <span class="p-dot"></span>
+            <div class="p-play" aria-hidden="true">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                   <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
                 </svg>
-              </div>
+              </span>
             </div>
           </a>
           <div class="p-info">
             <h3 class="p-title">Motion Graphics combinado con IA</h3>
-            <p class="p-sub">Animaciones dinámicas y efectos visuales para destacar tu contenido</p>
+            <p class="p-sub">Animaciones dinámicas y efectos visuales para destacar tu contenido.</p>
           </div>
         </article>
 
-        <!-- 3 ✅ TÍTULO CORREGIDO: Edición Dinámica -->
-        <article class="card p-card hover-pop" style="position:relative;">
-          <span class="p-dot"></span>
+        <!-- 3: Edición Dinámica -->
+        <article class="card p-card hover-pop">
           <a class="p-thumb js-video"
              href="#"
              data-video="waof2Eke34c"
              data-title="Edición Dinámica"
              style="background-image:url('https://i.ytimg.com/vi/waof2Eke34c/hqdefault.jpg');">
-            <div class="p-play">
-              <div class="yt" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
+            <span class="p-dot"></span>
+            <div class="p-play" aria-hidden="true">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                   <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
                 </svg>
-              </div>
+              </span>
             </div>
           </a>
           <div class="p-info">
             <h3 class="p-title">Edición Dinámica</h3>
-            <p class="p-sub">Edición estilo Motion Graphics</p>
+            <p class="p-sub">Edición estilo Motion Graphics.</p>
           </div>
         </article>
 
-        <!-- 4 (mantenido) -->
-        <article class="card p-card hover-pop" style="position:relative;">
-          <span class="p-dot"></span>
+        <!-- 4: Proyecto 4 -->
+        <article class="card p-card hover-pop">
           <a class="p-thumb js-video"
              href="#"
              data-video="vWv_2xGrTKU"
              data-title="Proyecto 4"
              style="background-image:url('https://i.ytimg.com/vi/vWv_2xGrTKU/hqdefault.jpg');">
-            <div class="p-play">
-              <div class="yt" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
+            <span class="p-dot"></span>
+            <div class="p-play" aria-hidden="true">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                   <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
                 </svg>
-              </div>
+              </span>
             </div>
           </a>
           <div class="p-info">
@@ -658,25 +676,25 @@
           </div>
         </article>
 
-        <!-- 5 ✅ VSL agregado -->
-        <article class="card p-card hover-pop" style="position:relative;">
-          <span class="p-dot"></span>
+        <!-- 5: VSL -->
+        <article class="card p-card hover-pop">
           <a class="p-thumb js-video"
              href="#"
              data-video="VCnEL47SSdc"
              data-title="VSL"
              style="background-image:url('https://i.ytimg.com/vi/VCnEL47SSdc/hqdefault.jpg');">
-            <div class="p-play">
-              <div class="yt" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
+            <span class="p-dot"></span>
+            <div class="p-play" aria-hidden="true">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
                   <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
                 </svg>
-              </div>
+              </span>
             </div>
           </a>
           <div class="p-info">
             <h3 class="p-title">VSL</h3>
-            <p class="p-sub">Video Sales Letter</p>
+            <p class="p-sub">Video Sales Letter.</p>
           </div>
         </article>
       </div>
@@ -686,7 +704,6 @@
     <section id="testimonios">
       <h2 class="h2">Testimonios</h2>
 
-      <!-- ✅ colores del sitio (sin look rojizo) + hover -->
       <div class="testi-grid">
         <div class="card t-card hover-pop">
           <div class="t-top">
@@ -699,7 +716,7 @@
 
           <div class="stars">★★★★★</div>
 
-          <p class="quote">“la calidad de edicion supero lo que esperaba, muy profecional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video”</p>
+          <p class="quote">“La calidad de edición superó lo que esperaba. Muy profesional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video.”</p>
 
           <div class="t-foot">
             <span class="dot-ok"></span>
@@ -751,13 +768,12 @@
     <section id="contacto">
       <h2 class="h2">Contacto</h2>
 
-      <!-- ✅ sin “Directo” + hover -->
       <div class="contact-grid">
         <div class="card contact-card hover-pop">
           <p class="contact-title">WhatsApp</p>
           <p class="contact-desc">Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
           <div class="contact-actions">
-            <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">Escribirme</a>
+            <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">Escribime</a>
           </div>
         </div>
 
@@ -765,7 +781,7 @@
           <p class="contact-title">Twitter</p>
           <p class="contact-desc">Escribime y coordinamos.</p>
           <div class="contact-actions">
-            <!-- ✅ botón “Twitter” ya no está, queda solo “Escribime” -->
+            <!-- botón "Twitter" eliminado -->
             <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
           </div>
         </div>
