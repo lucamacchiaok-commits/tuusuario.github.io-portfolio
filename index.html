@@ -257,9 +257,7 @@
     .service-title{ font-weight:900; margin:0 0 6px; }
     .service-desc{ margin:0; color:var(--muted); line-height:1.45; }
 
-    /* ==========================================================
-       PORTFOLIO (VIDEOS) — agregado entre Servicios y Testimonios
-       ========================================================== */
+    /* ---------- PORTFOLIO (VIDEOS) ---------- */
     .portfolio-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -268,51 +266,40 @@
     @media (max-width: 920px){
       .portfolio-grid{ grid-template-columns: 1fr; }
     }
-
-    .p-card{
-      overflow:hidden;
-      border-radius: var(--radius);
-      position:relative;
-    }
+    .p-card{ overflow:hidden; }
     .p-thumb{
-      position:relative;
+      display:block;
       width:100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio:16/9;
       background-size:cover;
       background-position:center;
-      display:block;
-    }
-    .p-thumb:after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.06) 0%, rgba(0,0,0,.38) 100%);
+      position:relative;
     }
     .p-play{
       position:absolute;
       inset:0;
-      display:grid;
-      place-items:center;
-      z-index:2;
-      pointer-events:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-    .p-play .yt{
-      width:72px;
-      height:48px;
-      border-radius:16px;
-      background: rgba(255,0,0,.65);
-      border: 1px solid rgba(255,255,255,.22);
-      display:grid;
-      place-items:center;
-      filter: drop-shadow(0 14px 28px rgba(0,0,0,.40));
+    .yt{
+      width:64px; height:44px;
+      border-radius:14px;
+      background: rgba(255,0,0,.70);
+      border:1px solid rgba(255,255,255,.20);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 16px 30px rgba(0,0,0,.35);
       transition: transform .18s ease, background .18s ease;
     }
-    .p-card:hover .p-play .yt{
-      transform: scale(1.06);
-      background: rgba(255,0,0,.78);
+    .p-card:hover .yt{ transform: scale(1.06); background: rgba(255,0,0,.82); }
+    .p-info{
+      padding:14px 16px 16px;
+      border-top:1px solid rgba(255,255,255,.08);
     }
-    .p-play svg{ width:18px; height:18px; }
-
+    .p-title{ margin:0; font-weight:900; }
+    .p-sub{ margin:8px 0 0; color:var(--muted); font-weight:700; line-height:1.45; }
     .p-dot{
       position:absolute;
       top:10px;
@@ -321,30 +308,11 @@
       height:9px;
       border-radius:999px;
       background:#ff3b3b;
-      box-shadow: 0 0 0 4px rgba(255,59,59,.14);
+      box-shadow: 0 0 0 4px rgba(255,59,59,.15);
       z-index:3;
     }
 
-    .p-info{
-      padding:16px 16px 18px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-    }
-    .p-title{
-      margin:0;
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:-0.01em;
-    }
-    .p-sub{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-weight:700;
-      line-height:1.45;
-      font-size:13px;
-    }
-
-    /* Modal videos */
+    /* Modal */
     .video-modal{
       position:fixed;
       inset:0;
@@ -355,7 +323,6 @@
       padding:20px;
     }
     .video-modal.is-open{ display:grid; }
-
     .video-modal-box{
       width:min(980px, 100%);
       border-radius: 18px;
@@ -364,26 +331,6 @@
       background: rgba(10,12,16,.92);
       box-shadow: 0 30px 90px rgba(0,0,0,.55);
     }
-    .video-modal-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .video-modal-top strong{ font-size:14px; }
-    .video-modal-close{
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border-radius: 12px;
-      padding:8px 10px;
-      font-weight:900;
-      transition: transform .18s ease;
-    }
-    .video-modal-close:hover{ transform: scale(1.03); }
     .video-modal-frame{
       position:relative;
       width:100%;
@@ -397,6 +344,26 @@
       height:100%;
       border:0;
     }
+    .video-modal-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .video-modal-top strong{font-size:14px}
+    .video-modal-close{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding:8px 10px;
+      font-weight:900;
+      transition: transform .18s ease;
+    }
+    .video-modal-close:hover{transform: scale(1.03)}
 
     /* ---------- TESTIMONIOS ---------- */
     .testi-grid{
@@ -489,6 +456,7 @@
       <div class="navlinks">
         <a href="#clientes">Clientes</a>
         <a href="#servicios">Servicios</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="#testimonios">Testimonios</a>
         <a href="#contacto">Contacto</a>
       </div>
@@ -597,18 +565,18 @@
       </div>
     </section>
 
-    <!-- ✅ PORTFOLIO (VIDEOS) — entre Servicios y Testimonios -->
+    <!-- PORTFOLIO (VIDEOS) — entre Servicios y Testimonios -->
     <section id="portfolio">
       <h2 class="h2">Portfolio</h2>
 
       <div class="portfolio-grid">
-        <!-- 1 (corrección: acá poner "Motion Graphics combinado con IA") -->
-        <article class="card p-card hover-pop">
+        <!-- 1 ✅ TÍTULO CORREGIDO: Motion Graphics -->
+        <article class="card p-card hover-pop" style="position:relative;">
           <span class="p-dot"></span>
           <a class="p-thumb js-video"
              href="#"
              data-video="2IT4PwT6RCE"
-             data-title="Motion Graphics combinado con IA"
+             data-title="Motion Graphics"
              style="background-image:url('https://i.ytimg.com/vi/2IT4PwT6RCE/hqdefault.jpg');">
             <div class="p-play">
               <div class="yt" aria-hidden="true">
@@ -619,18 +587,18 @@
             </div>
           </a>
           <div class="p-info">
-            <h3 class="p-title">Motion Graphics combinado con IA</h3>
+            <h3 class="p-title">Motion Graphics</h3>
             <p class="p-sub">Ritmo rápido y alta retención para redes sociales</p>
           </div>
         </article>
 
-        <!-- 2 (corrección: este poner "Edición Dinámica") -->
-        <article class="card p-card hover-pop">
+        <!-- 2 ✅ TÍTULO CORREGIDO: Motion Graphics combinado con IA -->
+        <article class="card p-card hover-pop" style="position:relative;">
           <span class="p-dot"></span>
           <a class="p-thumb js-video"
              href="#"
              data-video="tp3iZwvSAzE"
-             data-title="Edición Dinámica"
+             data-title="Motion Graphics combinado con IA"
              style="background-image:url('https://i.ytimg.com/vi/tp3iZwvSAzE/hqdefault.jpg');">
             <div class="p-play">
               <div class="yt" aria-hidden="true">
@@ -641,18 +609,18 @@
             </div>
           </a>
           <div class="p-info">
-            <h3 class="p-title">Edición Dinámica</h3>
+            <h3 class="p-title">Motion Graphics combinado con IA</h3>
             <p class="p-sub">Animaciones dinámicas y efectos visuales para destacar tu contenido</p>
           </div>
         </article>
 
-        <!-- 3 -->
-        <article class="card p-card hover-pop">
+        <!-- 3 ✅ TÍTULO CORREGIDO: Edición Dinámica -->
+        <article class="card p-card hover-pop" style="position:relative;">
           <span class="p-dot"></span>
           <a class="p-thumb js-video"
              href="#"
              data-video="waof2Eke34c"
-             data-title="Motion Graphics"
+             data-title="Edición Dinámica"
              style="background-image:url('https://i.ytimg.com/vi/waof2Eke34c/hqdefault.jpg');">
             <div class="p-play">
               <div class="yt" aria-hidden="true">
@@ -663,18 +631,18 @@
             </div>
           </a>
           <div class="p-info">
-            <h3 class="p-title">Motion Graphics</h3>
+            <h3 class="p-title">Edición Dinámica</h3>
             <p class="p-sub">Edición estilo Motion Graphics</p>
           </div>
         </article>
 
-        <!-- 4 -->
-        <article class="card p-card hover-pop">
+        <!-- 4 (mantenido) -->
+        <article class="card p-card hover-pop" style="position:relative;">
           <span class="p-dot"></span>
           <a class="p-thumb js-video"
              href="#"
              data-video="vWv_2xGrTKU"
-             data-title="Edición Narrativa"
+             data-title="Proyecto 4"
              style="background-image:url('https://i.ytimg.com/vi/vWv_2xGrTKU/hqdefault.jpg');">
             <div class="p-play">
               <div class="yt" aria-hidden="true">
@@ -685,13 +653,13 @@
             </div>
           </a>
           <div class="p-info">
-            <h3 class="p-title">Edición Narrativa</h3>
-            <p class="p-sub">Storytelling visual que conecta con tu audiencia</p>
+            <h3 class="p-title">Proyecto 4</h3>
+            <p class="p-sub">Contenido • alcance</p>
           </div>
         </article>
 
-        <!-- 5 (nuevo: VSL) -->
-        <article class="card p-card hover-pop">
+        <!-- 5 ✅ VSL agregado -->
+        <article class="card p-card hover-pop" style="position:relative;">
           <span class="p-dot"></span>
           <a class="p-thumb js-video"
              href="#"
@@ -708,7 +676,7 @@
           </a>
           <div class="p-info">
             <h3 class="p-title">VSL</h3>
-            <p class="p-sub">Estructura, ritmo y claridad para ventas</p>
+            <p class="p-sub">Video Sales Letter</p>
           </div>
         </article>
       </div>
@@ -744,7 +712,6 @@
             <img class="avatar-sm" src="assets/assets/adri-kastel.jpg" alt="Adri kaste">
             <div>
               <p class="t-name">Adri kaste</p>
-              <!-- ✅ mismo formato que dj.cuenca, pero subtítulo long-form -->
               <p class="t-sub">Cliente • YouTube long-form</p>
             </div>
           </div>
@@ -764,7 +731,6 @@
             <img class="avatar-sm" src="assets/assets/lalo-trading.jpg" alt="lalo trading">
             <div>
               <p class="t-name">lalo trading</p>
-              <!-- ✅ mismo formato que dj.cuenca, pero subtítulo long-form -->
               <p class="t-sub">Cliente • YouTube long-form</p>
             </div>
           </div>
@@ -799,7 +765,7 @@
           <p class="contact-title">Twitter</p>
           <p class="contact-desc">Escribime y coordinamos.</p>
           <div class="contact-actions">
-            <!-- ✅ sacado el botón "Twitter" -->
+            <!-- ✅ botón “Twitter” ya no está, queda solo “Escribime” -->
             <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
           </div>
         </div>
@@ -809,7 +775,7 @@
     <div class="footer">© <span id="y"></span> Luca Macchia</div>
   </div>
 
-  <!-- MODAL VIDEOS -->
+  <!-- MODAL de video -->
   <div class="video-modal" id="videoModal" aria-hidden="true">
     <div class="video-modal-box" role="dialog" aria-modal="true">
       <div class="video-modal-top">
@@ -872,4 +838,3 @@
   </script>
 </body>
 </html>
-
