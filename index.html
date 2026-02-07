@@ -257,6 +257,138 @@
     .service-title{ font-weight:900; margin:0 0 6px; }
     .service-desc{ margin:0; color:var(--muted); line-height:1.45; }
 
+    /* ---------- ✅ PORTFOLIO (VIDEOS) — agregado SIN tocar lo demás ---------- */
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    @media (max-width: 920px){
+      .portfolio-grid{ grid-template-columns: 1fr; }
+    }
+
+    .p-card{
+      padding:0;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .p-thumb{
+      position:relative;
+      display:block;
+      width:100%;
+      aspect-ratio: 16 / 9;
+      background-size:cover;
+      background-position:center;
+      background-color: rgba(255,255,255,.03);
+    }
+    .p-thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.40) 100%);
+      pointer-events:none;
+    }
+
+    .p-play{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      z-index:2;
+    }
+    .p-play span{
+      width:66px;
+      height:44px;
+      border-radius:14px;
+      background: rgba(255, 0, 0, .65);
+      border: 1px solid rgba(255,255,255,.22);
+      display:grid;
+      place-items:center;
+      transition: transform .18s ease, background .18s ease;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
+      will-change: transform;
+    }
+    .p-card:hover .p-play span{
+      transform: scale(1.06);
+      background: rgba(255, 0, 0, .78);
+    }
+    .p-play svg{ width:18px; height:18px; }
+
+    .p-info{
+      padding:16px 16px 18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+    }
+    .p-title{
+      margin:0;
+      font-weight:900;
+      font-size:18px;
+      letter-spacing:-0.01em;
+    }
+    .p-sub{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    /* Modal de video */
+    .video-modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      place-items:center;
+      background: rgba(0,0,0,.72);
+      z-index:9999;
+      padding:20px;
+    }
+    .video-modal.is-open{ display:grid; }
+
+    .video-box{
+      width:min(980px, 100%);
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,12,16,.92);
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+    }
+    .video-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .video-top strong{ font-size:14px; }
+    .video-close{
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding:8px 10px;
+      font-weight:900;
+      transition: transform .18s ease;
+    }
+    .video-close:hover{ transform: scale(1.03); }
+    .video-frame{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+    }
+    .video-frame iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    /* ---------- /PORTFOLIO ---------- */
+
     /* ---------- TESTIMONIOS ---------- */
     .testi-grid{
       display:grid;
@@ -456,6 +588,98 @@
       </div>
     </section>
 
+    <!-- ✅ PORTFOLIO (VIDEOS) — ENTRE SERVICIOS Y TESTIMONIOS -->
+    <section id="portfolio">
+      <h2 class="h2">Portfolio</h2>
+
+      <div class="portfolio-grid">
+        <!-- 1 -->
+        <article class="card p-card hover-pop">
+          <a class="p-thumb js-video"
+             href="#"
+             data-video="2IT4PwT6RCE"
+             data-title="Motion Graphics"
+             style="background-image:url('https://i.ytimg.com/vi/2IT4PwT6RCE/hqdefault.jpg');">
+            <div class="p-play">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+          <div class="p-info">
+            <h3 class="p-title">Motion Graphics</h3>
+            <p class="p-sub">Edición estilo Motion Graphics</p>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="card p-card hover-pop">
+          <a class="p-thumb js-video"
+             href="#"
+             data-video="tp3iZwvSAzE"
+             data-title="Edición Dinámica"
+             style="background-image:url('https://i.ytimg.com/vi/tp3iZwvSAzE/hqdefault.jpg');">
+            <div class="p-play">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+          <div class="p-info">
+            <h3 class="p-title">Edición Dinámica</h3>
+            <p class="p-sub">Ritmo rápido y alta retención para redes sociales</p>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="card p-card hover-pop">
+          <a class="p-thumb js-video"
+             href="#"
+             data-video="waof2Eke34c"
+             data-title="Motion Graphics"
+             style="background-image:url('https://i.ytimg.com/vi/waof2Eke34c/hqdefault.jpg');">
+            <div class="p-play">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+          <div class="p-info">
+            <h3 class="p-title">Motion Graphics</h3>
+            <p class="p-sub">Animaciones dinámicas y efectos visuales para destacar tu contenido</p>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="card p-card hover-pop">
+          <a class="p-thumb js-video"
+             href="#"
+             data-video="vWv_2xGrTKU"
+             data-title="Contenido Viral"
+             style="background-image:url('https://i.ytimg.com/vi/vWv_2xGrTKU/hqdefault.jpg');">
+            <div class="p-play">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+          <div class="p-info">
+            <h3 class="p-title">Contenido Viral</h3>
+            <p class="p-sub">Estrategias de edición para maximizar el alcance</p>
+          </div>
+        </article>
+      </div>
+    </section>
+    <!-- ✅ /PORTFOLIO -->
+
     <!-- TESTIMONIOS -->
     <section id="testimonios">
       <h2 class="h2">Testimonios</h2>
@@ -486,7 +710,6 @@
             <img class="avatar-sm" src="assets/assets/adri-kastel.jpg" alt="Adri kaste">
             <div>
               <p class="t-name">Adri kaste</p>
-              <!-- ✅ mismo formato que dj.cuenca, pero subtítulo long-form -->
               <p class="t-sub">Cliente • YouTube long-form</p>
             </div>
           </div>
@@ -506,7 +729,6 @@
             <img class="avatar-sm" src="assets/assets/lalo-trading.jpg" alt="lalo trading">
             <div>
               <p class="t-name">lalo trading</p>
-              <!-- ✅ mismo formato que dj.cuenca, pero subtítulo long-form -->
               <p class="t-sub">Cliente • YouTube long-form</p>
             </div>
           </div>
@@ -551,9 +773,66 @@
     <div class="footer">© <span id="y"></span> Luca Macchia</div>
   </div>
 
+  <!-- ✅ MODAL DE VIDEO (agregado) -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-box" role="dialog" aria-modal="true">
+      <div class="video-top">
+        <strong id="videoTitle">Video</strong>
+        <button class="video-close" id="videoClose" type="button">Cerrar</button>
+      </div>
+      <div class="video-frame" id="videoFrame"></div>
+    </div>
+  </div>
+
   <script>
     // año dinámico
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // ✅ Modal videos (YouTube no-cookie)
+    (function(){
+      const modal = document.getElementById('videoModal');
+      const frame = document.getElementById('videoFrame');
+      const title = document.getElementById('videoTitle');
+      const closeBtn = document.getElementById('videoClose');
+
+      function openVideo(id, t){
+        title.textContent = t || 'Video';
+        frame.innerHTML =
+          '<iframe ' +
+            'src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" ' +
+            'title="' + (t || 'Video') + '" ' +
+            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+            'allowfullscreen>' +
+          '</iframe>';
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeVideo(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        frame.innerHTML = '';
+      }
+
+      document.addEventListener('click', function(e){
+        const a = e.target.closest('.js-video');
+        if(!a) return;
+        e.preventDefault();
+
+        const id = a.getAttribute('data-video');
+        const t = a.getAttribute('data-title') || 'Video';
+        if(id) openVideo(id, t);
+      });
+
+      closeBtn.addEventListener('click', closeVideo);
+      modal.addEventListener('click', function(e){
+        if(e.target === modal) closeVideo();
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && modal.classList.contains('is-open')) closeVideo();
+      });
+    })();
   </script>
 </body>
 </html>
