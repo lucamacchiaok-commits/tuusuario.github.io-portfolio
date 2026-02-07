@@ -16,7 +16,6 @@
       --line:rgba(255,255,255,.10);
 
       --accent:#7c5cff;
-      --accent2:#22c55e;
 
       --shadow: 0 12px 30px rgba(0,0,0,.35);
       --radius:18px;
@@ -30,7 +29,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
         radial-gradient(1000px 600px at 15% 10%, rgba(124,92,255,.18), transparent 60%),
-        radial-gradient(900px 500px at 85% 0%, rgba(34,197,94,.10), transparent 55%),
+        radial-gradient(900px 500px at 85% 0%, rgba(124,92,255,.10), transparent 55%),
         var(--bg);
       color:var(--text);
       line-height:1.35;
@@ -105,9 +104,7 @@
     }
 
     /* HERO */
-    .hero{
-      padding:38px 0 10px;
-    }
+    .hero{padding:38px 0 10px;}
     .hero-grid{
       display:grid;
       grid-template-columns: 1fr;
@@ -172,7 +169,7 @@
       padding:16px;
     }
 
-    /* Hover movimiento en cards/botones (pediste menos estático) */
+    /* Hover movimiento en cards/botones */
     .hover-pop{
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
     }
@@ -183,7 +180,7 @@
       background: rgba(255,255,255,.04);
     }
 
-    /* CLIENTES (estilo tipo “referencia”) */
+    /* CLIENTES */
     .clients-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -208,7 +205,7 @@
       inset:-1px;
       background:
         radial-gradient(800px 420px at 50% 0%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(700px 380px at 0% 100%, rgba(34,197,94,.12), transparent 55%);
+        radial-gradient(700px 380px at 0% 100%, rgba(124,92,255,.14), transparent 55%);
       opacity:.85;
       pointer-events:none;
     }
@@ -260,10 +257,11 @@
       background: rgba(255,255,255,.05);
       color: var(--muted);
     }
+    /* “Cliente activo” ya NO verde: violeta para mantener estética */
     .badge.green{
       color: rgba(230,233,239,.95);
-      border-color: rgba(34,197,94,.35);
-      background: rgba(34,197,94,.10);
+      border-color: rgba(124,92,255,.40);
+      background: rgba(124,92,255,.12);
     }
     .badge i{
       width:14px; height:14px;
@@ -274,11 +272,11 @@
       font-size:11px;
       line-height:1;
     }
-    .badge.green i{background: rgba(34,197,94,.25)}
+    .badge.green i{background: rgba(124,92,255,.25)}
     .badge.purple{border-color: rgba(124,92,255,.35); background: rgba(124,92,255,.10); color: rgba(230,233,239,.95)}
     .badge.gray{border-color: rgba(255,255,255,.12)}
 
-    /* SERVICIOS (con iconos en cuadrado color acento) */
+    /* SERVICIOS */
     .service-card{
       display:flex;
       gap:14px;
@@ -298,7 +296,7 @@
     .service-ico img{
       width:22px; height:22px;
       object-fit:contain;
-      filter: brightness(0) invert(1); /* blanco */
+      filter: brightness(0) invert(1);
     }
     .service-title{
       margin:0;
@@ -312,7 +310,7 @@
       font-size:13px;
     }
 
-    /* TESTIMONIOS (colores de tu pagina, no rojizo) */
+    /* TESTIMONIOS (sin rojizo, sin verde) */
     .testi{
       padding:18px;
       position:relative;
@@ -324,7 +322,7 @@
       inset:-1px;
       background:
         radial-gradient(700px 380px at 0% 0%, rgba(124,92,255,.18), transparent 55%),
-        radial-gradient(700px 380px at 100% 100%, rgba(34,197,94,.10), transparent 55%);
+        radial-gradient(700px 380px at 100% 100%, rgba(124,92,255,.10), transparent 55%);
       opacity:.70;
       pointer-events:none;
     }
@@ -399,9 +397,7 @@
     }
     .btn-row{display:flex; gap:10px; flex-wrap:wrap}
 
-    /* =========================
-       PORTFOLIO (videos)
-       ========================= */
+    /* PORTFOLIO (videos) */
     .portfolio-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -587,7 +583,6 @@
         <div>
           <div class="pill">Editor de video • Reels/Shorts • YouTube</div>
 
-          <!-- Título forzado a 2 renglones -->
           <h1 class="h1">
             Transformo videos aburridos<br>
             en piezas cinematográficas
@@ -669,8 +664,7 @@
       <div class="grid-3">
         <article class="card service-card hover-pop">
           <div class="service-ico">
-            <!-- icono 2 (blanco) -->
-            <img src="assets/assets/15874.png" alt="">
+            <img src="assets/assets/15874.png" alt="Icono Reels / Shorts">
           </div>
           <div>
             <h3 class="service-title">Reels / Shorts</h3>
@@ -680,8 +674,7 @@
 
         <article class="card service-card hover-pop">
           <div class="service-ico">
-            <!-- icono 3 (blanco) -->
-            <img src="assets/assets/4324682.png" alt="">
+            <img src="assets/assets/4324682.png" alt="Icono YouTube long-form">
           </div>
           <div>
             <h3 class="service-title">YouTube long-form</h3>
@@ -691,8 +684,7 @@
 
         <article class="card service-card hover-pop">
           <div class="service-ico">
-            <!-- icono 4 (blanco) -->
-            <img src="assets/assets/1533971.png" alt="">
+            <img src="assets/assets/1533971.png" alt="Icono Motion Graphics">
           </div>
           <div>
             <h3 class="service-title">Motion Graphics en After Effects</h3>
@@ -702,12 +694,11 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO (entre Servicios y Testimonios) -->
+    <!-- PORTFOLIO -->
     <section id="portfolio">
       <h2 class="h2">Portfolio</h2>
 
       <div class="portfolio-grid">
-        <!-- 1 -->
         <article class="port-card hover-pop">
           <span class="port-dot"></span>
           <a class="port-thumb js-video"
@@ -729,7 +720,6 @@
           </div>
         </article>
 
-        <!-- 2 -->
         <article class="port-card hover-pop">
           <span class="port-dot"></span>
           <a class="port-thumb js-video"
@@ -751,7 +741,6 @@
           </div>
         </article>
 
-        <!-- 3 -->
         <article class="port-card hover-pop">
           <span class="port-dot"></span>
           <a class="port-thumb js-video"
@@ -773,7 +762,6 @@
           </div>
         </article>
 
-        <!-- 4 -->
         <article class="port-card hover-pop">
           <span class="port-dot"></span>
           <a class="port-thumb js-video"
@@ -887,8 +875,6 @@
             <a class="btn btn-primary hover-pop" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
           </div>
         </article>
-
-        <!-- (Directo eliminado) -->
       </div>
     </section>
 
@@ -960,3 +946,4 @@
   </script>
 </body>
 </html>
+
