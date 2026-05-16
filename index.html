@@ -1,856 +1,713 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portafolio — Luca Macchia</title>
-  <meta name="description" content="Portafolio de edición de video: Reels/Shorts y YouTube long-form." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Luca Macchia — Editor de Video</title>
+<meta name="description" content="Editor de video profesional. Contenido vertical (Reels/Shorts) y horizontal (YouTube). Edición cinematográfica enfocada en retención." />
 
-  <style>
-    :root{
-      --bg:#0b0f17;
-      --card:#101828;
-      --text:#e6e9ef;
-      --muted:#a8b0c0;
-      --line:rgba(255,255,255,.10);
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-      /* acento */
-      --accent:#7c5cff;
-      --accent2:#22c55e;
+<style>
+  :root{
+    --bg:#f4f3ef;
+    --surface:#ffffff;
+    --ink:#0d0d0c;
+    --ink-soft:#5a5954;
+    --line:rgba(13,13,12,.10);
+    --line-soft:rgba(13,13,12,.06);
+    --accent:#e8552a;
+    --accent-ink:#ffffff;
+    --radius:22px;
+    --radius-sm:14px;
+    --w:1180px;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
 
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --w:1100px;
-    }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body{
+    font-family:"Manrope", system-ui, sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 12% -5%, rgba(232,85,42,.06), transparent 60%),
+      radial-gradient(700px 600px at 100% 0%, rgba(13,13,12,.04), transparent 55%);
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--w); margin:0 auto; padding:0 26px; position:relative; z-index:1; }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(1000px 600px at 15% 10%, rgba(124,92,255,.20), transparent 60%),
-        radial-gradient(900px 500px at 85% 0%, rgba(34,197,94,.10), transparent 55%),
-        var(--bg);
-    }
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:var(--w); margin:0 auto; padding:24px; }
+  h1,h2,h3,.display{ font-family:"Bricolage Grotesque", system-ui, sans-serif; font-weight:700; letter-spacing:-.02em; line-height:1.04; }
 
-    /* ---------- NAV ---------- */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,15,23,.55);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    .nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 24px; max-width:var(--w); margin:0 auto; }
-    .brand{ display:flex; align-items:center; gap:10px; font-weight:700; }
-    .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(124,92,255,.18); }
-    .navlinks{ display:flex; align-items:center; gap:18px; color:var(--muted); font-weight:600; font-size:14px; }
-    .navlinks a:hover{ color:var(--text); }
-    .navactions{ display:flex; align-items:center; gap:10px; }
+  /* ---------- NAV ---------- */
+  .nav{ position:sticky; top:0; z-index:60; padding:16px 0; transition:padding .3s var(--ease); }
+  .nav.scrolled{ padding:10px 0; }
+  .nav-inner{
+    max-width:var(--w); margin:0 auto; padding:12px 16px 12px 22px;
+    display:flex; align-items:center; justify-content:space-between; gap:18px;
+    background:rgba(255,255,255,.7); backdrop-filter:blur(18px) saturate(1.4);
+    border:1px solid var(--line-soft); border-radius:100px;
+    box-shadow:0 8px 30px rgba(13,13,12,.05);
+    margin-left:26px; margin-right:26px;
+  }
+  .brand{ display:flex; align-items:center; gap:11px; font-family:"Bricolage Grotesque"; font-weight:800; font-size:18px; letter-spacing:-.03em; }
+  .brand .mk{ width:30px; height:30px; border-radius:9px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:15px; font-weight:800; }
+  .nav-links{ display:flex; gap:6px; align-items:center; }
+  .nav-links a{ font-size:14px; font-weight:600; color:var(--ink-soft); padding:9px 15px; border-radius:100px; transition:.2s var(--ease); }
+  .nav-links a:hover{ color:var(--ink); background:rgba(13,13,12,.05); }
+  .nav-cta{ background:var(--ink); color:#fff; padding:11px 20px; border-radius:100px; font-weight:700; font-size:14px; transition:.25s var(--ease); white-space:nowrap; }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 12px 24px rgba(13,13,12,.22); }
+  .burger{ display:none; background:none; border:none; cursor:pointer; padding:8px; }
+  .burger span{ display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; border-radius:2px; transition:.3s; }
 
-    /* ---------- BUTTONS + HOVER MOTION ---------- */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color:var(--text);
-      font-weight:700;
-      cursor:pointer;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-      will-change: transform;
-      user-select:none;
-    }
-    .btn.primary{
-      background: linear-gradient(180deg, rgba(124,92,255,.95), rgba(124,92,255,.70));
-      border-color: rgba(124,92,255,.55);
-      box-shadow: 0 14px 34px rgba(124,92,255,.18);
-    }
-    .btn:hover{
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 18px 45px rgba(0,0,0,.35);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.05);
-    }
-    .btn.primary:hover{
-      box-shadow: 0 18px 55px rgba(124,92,255,.25);
-      border-color: rgba(124,92,255,.65);
-    }
+  /* ---------- HERO ---------- */
+  .hero{ padding:104px 0 84px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .kicker{
+    display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:600;
+    color:var(--ink-soft); background:var(--surface); border:1px solid var(--line);
+    padding:8px 16px; border-radius:100px; margin-bottom:30px;
+  }
+  .kicker .pulse{ width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(232,85,42,.16); }
+  .hero h1{ font-size:clamp(2.4rem, 6.4vw, 5.4rem); max-width:none; margin:0 auto; }
+  .hero h1 .alt{ font-style:normal; color:var(--accent); position:relative; }
+  .hero p{ margin:28px auto 0; font-size:clamp(1.05rem,1.6vw,1.28rem); color:var(--ink-soft); max-width:48ch; }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:14px; margin-top:40px; justify-content:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:15px;
+    padding:15px 26px; border-radius:100px; cursor:pointer; transition:.28s var(--ease);
+    border:1px solid var(--line);
+  }
+  .btn.primary{ background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+  .btn.primary:hover{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(232,85,42,.32); }
+  .btn.ghost{ background:var(--surface); color:var(--ink); }
+  .btn.ghost:hover{ transform:translateY(-3px); box-shadow:0 14px 28px rgba(13,13,12,.10); }
+  .btn .arr{ transition:transform .28s var(--ease); }
+  .btn:hover .arr{ transform:translate(3px,-3px); }
 
-    /* ---------- CARDS + HOVER MOTION ---------- */
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hover-pop{
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      will-change: transform;
-    }
-    .hover-pop:hover{
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-      border-color: rgba(255,255,255,.14);
-    }
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:74px 0; position:relative; }
+  .sec-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:46px; flex-wrap:wrap; }
+  .sec-tag{ font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+  .sec-head h2{ font-size:clamp(2rem,4vw,3.1rem); }
+  .sec-head p{ color:var(--ink-soft); font-size:1.02rem; max-width:42ch; }
 
-    /* ---------- HERO ---------- */
-    .hero{ padding:30px 0 10px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1fr; /* panel derecho eliminado */
-      gap:18px;
-      align-items:stretch;
-    }
-    .hero-left{
-      padding:28px;
-      border-radius: 22px;
-      background:
-        radial-gradient(700px 380px at 20% 30%, rgba(124,92,255,.20), transparent 60%),
-        radial-gradient(650px 380px at 90% 10%, rgba(124,92,255,.10), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow);
-    }
-    .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-weight:700;
-      font-size:13px;
-      margin-bottom:14px;
-    }
-    .hero-title{
-      font-size: clamp(36px, 4.6vw, 58px);
-      line-height: 1.02;
-      margin: 6px 0 12px;
-      letter-spacing: -0.02em;
-    }
-    .hero-sub{
-      color: var(--muted);
-      max-width: 60ch;
-      font-size: 16px;
-      line-height: 1.45;
-      margin:0 0 18px;
-    }
-    .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+  /* ---------- CLIENTES ---------- */
+  .clients{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .client{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; display:flex; align-items:center; gap:18px; transition:.3s var(--ease);
+  }
+  .client:hover{ transform:translateY(-5px); box-shadow:0 20px 40px rgba(13,13,12,.07); border-color:rgba(13,13,12,.16); }
+  .client img{ width:60px; height:60px; border-radius:50%; object-fit:cover; }
+  .client .meta b{ font-family:"Bricolage Grotesque"; font-size:1.05rem; display:block; }
+  .client .meta span{ font-size:.86rem; color:var(--ink-soft); }
+  .client .badge{ margin-left:auto; font-size:.74rem; font-weight:700; color:#16834a; background:rgba(22,131,74,.10); padding:6px 11px; border-radius:100px; white-space:nowrap; }
 
-    /* ---------- SECTIONS ---------- */
-    section{ padding:34px 0 6px; }
-    .h2{ font-size:22px; margin:0 0 14px; letter-spacing:-0.01em; }
+  /* ---------- SERVICIOS ---------- */
+  .services{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .service{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:34px 30px; transition:.3s var(--ease);
+  }
+  .service:hover{ transform:translateY(-5px); box-shadow:0 22px 44px rgba(13,13,12,.08); }
+  .service .ic{ width:54px; height:54px; border-radius:14px; background:var(--bg); display:grid; place-items:center; margin-bottom:22px; border:1px solid var(--line-soft); }
+  .service .ic img{ width:28px; height:28px; object-fit:contain; }
+  .service h3{ font-size:1.28rem; margin-bottom:12px; }
+  .service p{ color:var(--ink-soft); font-size:.96rem; }
 
-    /* ---------- CLIENTS (He trabajado con) ---------- */
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .grid3{ grid-template-columns: 1fr; }
-    }
+  /* ---------- PORTFOLIO (CARRUSEL) ---------- */
+  .pf-block{ margin-bottom:60px; }
+  .pf-block:last-child{ margin-bottom:0; }
+  .pf-block-head{ display:flex; align-items:center; gap:16px; margin-bottom:34px; }
+  .pf-block-head .n{ font-family:"Bricolage Grotesque"; font-weight:800; font-size:1rem; color:var(--accent); border:1px solid var(--accent); width:38px; height:38px; border-radius:11px; display:grid; place-items:center; }
+  .pf-block-head h3{ font-size:clamp(1.5rem,3vw,2.1rem); }
+  .pf-block-head .ln{ flex:1; height:1px; background:var(--line); }
+  .pf-block-head .count{ font-family:"Bricolage Grotesque"; font-weight:800; font-size:1rem; color:var(--ink-soft); }
+  .pf-block-head .count b{ color:var(--ink); }
 
-    .client-card{
-      padding:22px 18px 18px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .client-card:before{
-      content:"";
-      position:absolute; inset:-120px -120px auto auto;
-      width:260px; height:260px;
-      background: radial-gradient(circle, rgba(124,92,255,.22), transparent 60%);
-      transform: rotate(18deg);
-      pointer-events:none;
-    }
-    .avatar-xl{
-      width:82px; height:82px;
-      border-radius: 999px;
-      object-fit:cover;
-      border:3px solid rgba(124,92,255,.45);
-      box-shadow: 0 16px 30px rgba(0,0,0,.35);
-      margin: 4px auto 10px;
-      display:block;
-      background:#0d1220;
-    }
-    .client-name{
-      font-weight:800;
-      font-size:18px;
-      margin: 0 0 6px;
-    }
-    .client-metric{
-      font-size:44px;
-      letter-spacing:-0.03em;
-      font-weight:900;
-      margin: 0;
-      color: var(--accent);
-    }
-    .client-metric small{
-      display:block;
-      font-size:13px;
-      color: var(--muted);
-      font-weight:700;
-      margin-top:2px;
-      letter-spacing:0;
-    }
-    .client-badge{
-      margin: 14px auto 0;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-weight:800;
-      font-size:13px;
-    }
-    .check{
-      width:16px; height:16px; border-radius:5px;
-      background: rgba(34,197,94,.18);
-      border:1px solid rgba(34,197,94,.45);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size:12px;
-      color: #b7ffd2;
-      line-height:1;
-    }
+  .carousel{ position:relative; display:flex; align-items:center; gap:26px; }
 
-    /* ---------- SERVICES ---------- */
-    .services-grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .services-grid{ grid-template-columns: 1fr; }
-    }
-    .service-card{
-      padding:18px;
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-    }
-    .iconbox{
-      width:42px; height:42px;
-      border-radius:12px;
-      background: rgba(124,92,255,.18);
-      border:1px solid rgba(124,92,255,.35);
-      display:flex; align-items:center; justify-content:center;
-      flex:0 0 auto;
-    }
-    .iconbox img{
-      width:22px; height:22px;
-      object-fit:contain;
-      filter: brightness(0) invert(1); /* blanco */
-    }
-    .service-title{ font-weight:900; margin:0 0 6px; }
-    .service-desc{ margin:0; color:var(--muted); line-height:1.45; }
+  /* dots verticales laterales (estilo Olletix) */
+  .vdots{ display:flex; flex-direction:column; gap:14px; align-items:center; flex-shrink:0; }
+  .vdot{ width:8px; height:8px; border-radius:50%; background:rgba(13,13,12,.18); border:none; cursor:pointer; padding:0; transition:.35s var(--ease); }
+  .vdot.active{ background:var(--ink); height:34px; border-radius:5px; }
 
-    /* ---------- PORTFOLIO (VIDEOS) ---------- */
-    .portfolio-grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .portfolio-grid{ grid-template-columns: 1fr; }
-    }
+  .stage{
+    position:relative; flex:1; perspective:1500px; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .carousel.vertical .stage{ min-height:660px; }
+  .carousel.horizontal .stage{ min-height:480px; }
 
-    .p-card{ overflow:hidden; }
-    .p-thumb{
-      position:relative;
-      display:block;
-      width:100%;
-      aspect-ratio: 16 / 9;
-      background-size:cover;
-      background-position:center;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-    }
-    .p-thumb::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.35) 100%);
-      pointer-events:none;
-    }
-    .p-dot{
-      position:absolute;
-      top:10px;
-      right:10px;
-      width:9px;
-      height:9px;
-      border-radius:999px;
-      background:#ff3b3b;
-      box-shadow: 0 0 0 4px rgba(255,59,59,.15);
-      z-index:3;
-    }
-    .p-play{
-      position:absolute;
-      inset:0;
-      display:grid;
-      place-items:center;
-      z-index:2;
-    }
-    .p-play span{
-      width:66px;
-      height:44px;
-      border-radius:14px;
-      background: rgba(255, 0, 0, .65);
-      border: 1px solid rgba(255,255,255,.22);
-      display:grid;
-      place-items:center;
-      transition: transform .18s ease, background .18s ease;
-      filter: drop-shadow(0 10px 22px rgba(0,0,0,.35));
-    }
-    .p-card:hover .p-play span{
-      transform: scale(1.06);
-      background: rgba(255, 0, 0, .78);
-    }
-    .p-info{
-      padding:16px 16px 18px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .p-title{
-      margin:0;
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:-0.01em;
-    }
-    .p-sub{
-      margin:8px 0 0;
-      color: var(--muted);
-      font-size:13px;
-      font-weight:700;
-      line-height:1.45;
-    }
+  /* PARQUEADO A LA DERECHA (oculto, esperando) — no se ve en reposo */
+  .slide{
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%) translateX(62%) scale(.72) rotateY(-16deg);
+    opacity:0; pointer-events:none; z-index:0;
+    transition:transform .7s var(--ease), opacity .55s var(--ease);
+    will-change:transform, opacity;
+  }
+  .carousel.vertical .slide{ width:392px; }
+  .carousel.horizontal .slide{ width:min(880px, 96%); }
 
-    /* Modal video */
-    .video-modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      place-items:center;
-      background: rgba(0,0,0,.72);
-      z-index:9999;
-      padding:20px;
-    }
-    .video-modal.is-open{ display:grid; }
-    .video-modal-box{
-      width:min(980px, 100%);
-      border-radius: 18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(10,12,16,.92);
-      box-shadow: 0 30px 90px rgba(0,0,0,.55);
-    }
-    .video-modal-frame{
-      position:relative;
-      width:100%;
-      aspect-ratio: 16/9;
-      background:#000;
-    }
-    .video-modal-frame iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-    }
-    .video-modal-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .video-modal-top strong{font-size:14px}
-    .video-modal-close{
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border-radius: 12px;
-      padding:8px 10px;
-      font-weight:900;
-      transition: transform .18s ease;
-    }
-    .video-modal-close:hover{transform: scale(1.03)}
+  /* PARQUEADO A LA IZQUIERDA (oculto) */
+  .slide.is-left{
+    transform:translate(-50%,-50%) translateX(-62%) scale(.72) rotateY(16deg);
+    opacity:0; z-index:0;
+  }
 
-    /* ---------- TESTIMONIOS ---------- */
-    .testi-grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .testi-grid{ grid-template-columns: 1fr; }
-    }
-    .t-card{
-      padding:18px;
-      position:relative;
-      overflow:hidden;
-    }
-    .t-card:before{
-      content:"";
-      position:absolute; inset:-120px auto auto -120px;
-      width:260px; height:260px;
-      background: radial-gradient(circle, rgba(124,92,255,.18), transparent 60%);
-      pointer-events:none;
-    }
-    .t-top{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      margin-bottom:10px;
-    }
-    .avatar-sm{
-      width:44px; height:44px;
-      border-radius:999px;
-      object-fit:cover;
-      border:2px solid rgba(124,92,255,.45);
-      background:#0d1220;
-    }
-    .t-name{ margin:0; font-weight:900; }
-    .t-sub{ margin:2px 0 0; color:var(--muted); font-weight:700; font-size:13px; }
-    .stars{ color: rgba(124,92,255,.95); font-weight:900; letter-spacing:1px; margin: 8px 0 10px; }
-    .quote{
-      margin:0;
-      color: var(--text);
-      font-style: italic;
-      line-height: 1.45;
-    }
-    .t-foot{
-      margin-top:14px;
-      padding-top:12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color: var(--muted);
-      font-weight:800;
-      font-size:13px;
-    }
-    .dot-ok{
-      width:10px; height:10px; border-radius:999px;
-      background: rgba(124,92,255,.65);
-      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
-    }
+  /* ACTIVO: centrado, grande, nítido — emerge desde el costado creciendo */
+  .slide.is-active{
+    opacity:1; pointer-events:auto; z-index:5;
+    transform:translate(-50%,-50%) translateX(0) scale(1) rotateY(0);
+  }
 
-    /* ---------- CONTACTO ---------- */
-    .contact-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr)); /* sin “Directo” */
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .contact-grid{ grid-template-columns: 1fr; }
-    }
-    .contact-card{ padding:18px; }
-    .contact-title{ margin:0 0 6px; font-weight:900; }
-    .contact-desc{ margin:0 0 12px; color:var(--muted); line-height:1.45; }
-    .contact-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+  .vid{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; cursor:pointer; transition:.32s var(--ease); width:100%;
+    box-shadow:0 30px 70px rgba(13,13,12,.16);
+  }
+  .vid .frame{ position:relative; background:#111; overflow:hidden; }
+  .carousel.vertical .vid .frame{ aspect-ratio:9/16; }
+  .carousel.horizontal .vid .frame{ aspect-ratio:16/9; }
+  .vid .frame img{ width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease); }
+  .vid:hover .frame img{ transform:scale(1.04); }
+  .vid .frame::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 58%, rgba(0,0,0,.42)); }
+  .play{
+    position:absolute; inset:0; margin:auto; width:72px; height:72px; z-index:2;
+    background:rgba(255,255,255,.95); border-radius:50%; display:grid; place-items:center;
+    transition:.3s var(--ease); box-shadow:0 10px 30px rgba(0,0,0,.32);
+  }
+  .play svg{ width:26px; height:26px; fill:var(--ink); margin-left:4px; }
+  .vid:hover .play{ transform:scale(1.1); background:var(--accent); }
+  .vid:hover .play svg{ fill:#fff; }
+  .vid .cap{ padding:20px 24px; }
+  .vid .cap b{ font-family:"Bricolage Grotesque"; font-size:1.1rem; display:block; letter-spacing:-.01em; }
+  .vid .cap span{ font-size:.88rem; color:var(--ink-soft); }
+  .vid .frame .ph{ position:absolute; inset:0; display:grid; place-items:center; color:rgba(255,255,255,.55); font-size:.85rem; font-weight:600; text-align:center; padding:24px; }
 
-    /* ---------- FOOTER ---------- */
-    .footer{ padding:26px 0 40px; color:rgba(255,255,255,.45); font-weight:700; font-size:13px; }
-  </style>
+  /* flechas */
+  .nav-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:20;
+    width:54px; height:54px; border-radius:50%; border:1px solid var(--line);
+    background:rgba(255,255,255,.94); backdrop-filter:blur(8px); cursor:pointer;
+    display:grid; place-items:center; transition:.26s var(--ease); box-shadow:0 10px 26px rgba(13,13,12,.12);
+  }
+  .nav-arrow:hover{ background:var(--ink); border-color:var(--ink); transform:translateY(-50%) scale(1.08); }
+  .nav-arrow svg{ width:20px; height:20px; stroke:var(--ink); stroke-width:2.4; fill:none; transition:.26s; }
+  .nav-arrow:hover svg{ stroke:#fff; }
+  .nav-arrow.prev{ left:-8px; }
+  .nav-arrow.next{ right:-8px; }
+
+  /* ---------- TESTIMONIOS ---------- */
+  .tst{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .testimonial{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 28px; display:flex; flex-direction:column; gap:18px; transition:.3s var(--ease);
+  }
+  .testimonial:hover{ transform:translateY(-5px); box-shadow:0 22px 44px rgba(13,13,12,.08); }
+  .stars{ color:var(--accent); font-size:1rem; letter-spacing:2px; }
+  .testimonial q{ font-size:1rem; line-height:1.65; quotes:none; }
+  .testimonial q::before,.testimonial q::after{ content:""; }
+  .t-by{ display:flex; align-items:center; gap:13px; margin-top:auto; padding-top:8px; }
+  .t-by img{ width:44px; height:44px; border-radius:50%; object-fit:cover; }
+  .t-by b{ font-family:"Bricolage Grotesque"; font-size:.96rem; display:block; }
+  .t-by span{ font-size:.8rem; color:var(--ink-soft); }
+
+  /* ---------- CONTACTO ---------- */
+  .cta-box{
+    background:var(--ink); color:#fff; border-radius:32px; padding:70px 50px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta-box::before{ content:""; position:absolute; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(232,85,42,.4), transparent 65%); top:-220px; right:-160px; }
+  .cta-box h2{ font-size:clamp(2rem,4.5vw,3.4rem); position:relative; }
+  .cta-box p{ color:rgba(255,255,255,.7); margin:18px auto 36px; max-width:44ch; position:relative; }
+  .cta-box .btn.primary:hover{ box-shadow:0 16px 40px rgba(232,85,42,.5); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:44px 0; border-top:1px solid var(--line); }
+  .foot{ display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; color:var(--ink-soft); font-size:.9rem; }
+  .foot a{ font-weight:600; }
+  .foot a:hover{ color:var(--ink); }
+
+  /* ---------- MODAL ---------- */
+  /* ---------- VIDEO INLINE ---------- */
+  .vid .frame iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0; z-index:6;
+    border-radius:inherit;
+  }
+  .frame.is-playing::after{ display:none; }
+  .frame.is-playing .play{ display:none; }
+  .frame.is-playing img{ opacity:0; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{ opacity:0; transform:translateY(26px); transition:.8s var(--ease); }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1000px){
+    .clients,.services,.tst{ grid-template-columns:1fr; }
+  }
+  @media (max-width:760px){
+    .nav-links{ display:none; }
+    .burger{ display:block; }
+    .nav-inner{ margin-left:18px; margin-right:18px; }
+    .wrap{ padding:0 18px; }
+    .hero{ padding:56px 0 44px; }
+    section{ padding:54px 0; }
+    .cta-box{ padding:50px 26px; }
+    .carousel{ gap:14px; }
+    .carousel.vertical .slide{ width:74%; }
+    .carousel.horizontal .slide{ width:96%; }
+    .carousel.vertical .stage{ min-height:560px; }
+    .carousel.horizontal .stage{ min-height:280px; }
+    .vdot.active{ height:26px; }
+    .nav-arrow{ width:42px; height:42px; }
+    .nav-arrow svg{ width:16px; height:16px; }
+    .nav-arrow.prev{ left:-4px; }
+    .nav-arrow.next{ right:-4px; }
+    .nav-links.show{ display:flex; position:absolute; top:74px; left:18px; right:18px; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:14px; }
+    .nav-links.show a{ width:100%; }
+  }
+</style>
 </head>
-
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="inner">
-      <div class="brand">
-        <span class="dot"></span>
-        <span>Luca Macchia</span>
-      </div>
 
-      <div class="navlinks">
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#inicio" class="brand"><span class="mk">L</span> Luca Macchia</a>
+      <div class="nav-links" id="navLinks">
         <a href="#clientes">Clientes</a>
         <a href="#servicios">Servicios</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#testimonios">Testimonios</a>
-        <a href="#contacto">Contacto</a>
       </div>
+      <a class="nav-cta" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">Contactar</a>
+      <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
 
-      <div class="navactions">
-        <a class="btn" href="#clientes">Ver mi trabajo</a>
-        <a class="btn primary" href="#contacto">Contactar</a>
+  <!-- HERO -->
+  <header class="hero wrap" id="inicio">
+    <div class="kicker reveal"><span class="pulse"></span> Editor de video • Reels/Shorts • YouTube</div>
+    <h1 class="reveal">Transformo videos aburridos<br><span class="alt">en piezas cinematográficas</span></h1>
+    <p class="reveal">Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales.</p>
+    <div class="hero-cta reveal">
+      <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">
+        Escribime por WhatsApp <span class="arr">↗</span>
+      </a>
+      <a class="btn ghost" href="#portfolio">Ver mi trabajo</a>
+    </div>
+  </header>
+
+  <!-- CLIENTES -->
+  <section id="clientes" class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">Clientes</div>
+        <h2>He trabajado con</h2>
+      </div>
+      <p>Creadores y marcas que confían en mi edición para crecer.</p>
+    </div>
+    <div class="clients">
+      <div class="client reveal">
+        <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
+        <div class="meta"><b>dj.cuenca</b><span>125k seguidores</span></div>
+        <span class="badge">✓ Activo</span>
+      </div>
+      <div class="client reveal">
+        <img src="assets/assets/adri-kastel.jpg" alt="Adri Kastel">
+        <div class="meta"><b>Adri Kastel</b><span>29k seguidores</span></div>
+        <span class="badge">✓ Activo</span>
+      </div>
+      <div class="client reveal">
+        <img src="assets/assets/lalo-trading.jpg" alt="Lalo Trading">
+        <div class="meta"><b>Lalo Trading</b><span>25k seguidores</span></div>
+        <span class="badge">✓ Activo</span>
+      </div>
+      <div class="client reveal">
+        <img src="assets/assets/soyfedelucena.jpg" alt="soyfedelucena">
+        <div class="meta"><b>soyfedelucena</b><span>14k seguidores</span></div>
+        <span class="badge">✓ Activo</span>
+      </div>
+      <div class="client reveal">
+        <img src="assets/assets/marcoshernangil.jpg" alt="marcoshernangil">
+        <div class="meta"><b>marcoshernangil</b><span>22k seguidores</span></div>
+        <span class="badge">✓ Activo</span>
+      </div>
+      <div class="client reveal">
+        <img src="assets/assets/santimia.jpg" alt="santim.ia">
+        <div class="meta"><b>santim.ia</b><span>4k seguidores</span></div>
+        <span class="badge">✓ Activo</span>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="wrap">
-    <!-- HERO -->
-    <section class="hero" id="inicio">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="kicker">Editor de video • Reels/Shorts • YouTube</div>
-
-          <h1 class="hero-title">
-            Transformo videos aburridos<br>
-            en piezas cinematográficas
-          </h1>
-
-          <p class="hero-sub">
-            Transformo tus ideas en experiencias visuales que conectan, inspiran y generan resultados reales.
-          </p>
-
-          <div class="hero-cta">
-            <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">
-              Escribime por WhatsApp
-            </a>
-            <a class="btn" href="#clientes">Ver clientes</a>
-          </div>
-        </div>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">Servicios</div>
+        <h2>Qué hago</h2>
       </div>
-    </section>
-
-    <!-- CLIENTES -->
-    <section id="clientes">
-      <h2 class="h2">He trabajado con</h2>
-
-      <div class="grid3">
-        <div class="card client-card hover-pop">
-          <img class="avatar-xl" src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
-          <p class="client-name">dj.cuenca</p>
-          <p class="client-metric">125k <small>seguidores</small></p>
-          <div class="client-badge"><span class="check">✓</span> Cliente activo</div>
-        </div>
-
-        <div class="card client-card hover-pop">
-          <img class="avatar-xl" src="assets/assets/adri-kastel.jpg" alt="Adri Kastel">
-          <p class="client-name">Adri Kastel</p>
-          <p class="client-metric">29k <small>seguidores</small></p>
-          <div class="client-badge"><span class="check">✓</span> Cliente activo</div>
-        </div>
-
-        <div class="card client-card hover-pop">
-          <img class="avatar-xl" src="assets/assets/lalo-trading.jpg" alt="Lalo Trading">
-          <p class="client-name">Lalo Trading</p>
-          <p class="client-metric">25k <small>seguidores</small></p>
-          <div class="client-badge"><span class="check">✓</span> Cliente activo</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section id="servicios">
-      <h2 class="h2">Servicios</h2>
-
-      <div class="services-grid">
-        <div class="card service-card hover-pop">
-          <div class="iconbox">
-            <img src="assets/assets/15874.png" alt="Reels/Shorts icon">
-          </div>
-          <div>
-            <p class="service-title">Reels / Shorts</p>
-            <p class="service-desc">Ritmo, cortes, subtítulos, zooms, memes, SFX y edición enfocada en retención.</p>
-          </div>
-        </div>
-
-        <div class="card service-card hover-pop">
-          <div class="iconbox">
-            <img src="assets/assets/4324682.png" alt="YouTube long-form icon">
-          </div>
-          <div>
-            <p class="service-title">YouTube long-form</p>
-            <p class="service-desc">Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
-          </div>
-        </div>
-
-        <div class="card service-card hover-pop">
-          <div class="iconbox">
-            <img src="assets/assets/1533971.png" alt="Motion Graphics icon">
-          </div>
-          <div>
-            <p class="service-title">Motion Graphics en After Effects</p>
-            <p class="service-desc">Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO (VIDEOS) -->
-    <section id="portfolio">
-      <h2 class="h2">Portfolio</h2>
-
-      <div class="portfolio-grid">
-        <!-- 1: Motion Graphics -->
-        <article class="card p-card hover-pop">
-          <a class="p-thumb js-video"
-             href="#"
-             data-video="2IT4PwT6RCE"
-             data-title="Motion Graphics"
-             style="background-image:url('https://i.ytimg.com/vi/2IT4PwT6RCE/hqdefault.jpg');">
-            <span class="p-dot"></span>
-            <div class="p-play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
-                </svg>
-              </span>
-            </div>
-          </a>
-          <div class="p-info">
-            <h3 class="p-title">Motion Graphics</h3>
-            <p class="p-sub">Ritmo rápido y alta retención para redes sociales.</p>
-          </div>
-        </article>
-
-        <!-- 2: Motion Graphics combinado con IA -->
-        <article class="card p-card hover-pop">
-          <a class="p-thumb js-video"
-             href="#"
-             data-video="tp3iZwvSAzE"
-             data-title="Motion Graphics combinado con IA"
-             style="background-image:url('https://i.ytimg.com/vi/tp3iZwvSAzE/hqdefault.jpg');">
-            <span class="p-dot"></span>
-            <div class="p-play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
-                </svg>
-              </span>
-            </div>
-          </a>
-          <div class="p-info">
-            <h3 class="p-title">Motion Graphics combinado con IA</h3>
-            <p class="p-sub">Animaciones dinámicas y efectos visuales para destacar tu contenido.</p>
-          </div>
-        </article>
-
-        <!-- 3: Edición Dinámica -->
-        <article class="card p-card hover-pop">
-          <a class="p-thumb js-video"
-             href="#"
-             data-video="waof2Eke34c"
-             data-title="Edición Dinámica"
-             style="background-image:url('https://i.ytimg.com/vi/waof2Eke34c/hqdefault.jpg');">
-            <span class="p-dot"></span>
-            <div class="p-play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
-                </svg>
-              </span>
-            </div>
-          </a>
-          <div class="p-info">
-            <h3 class="p-title">Edición Dinámica</h3>
-            <p class="p-sub">Edición estilo Motion Graphics.</p>
-          </div>
-        </article>
-
-        <!-- 4: Proyecto 4 -->
-        <article class="card p-card hover-pop">
-          <a class="p-thumb js-video"
-             href="#"
-             data-video="vWv_2xGrTKU"
-             data-title="Proyecto 4"
-             style="background-image:url('https://i.ytimg.com/vi/vWv_2xGrTKU/hqdefault.jpg');">
-            <span class="p-dot"></span>
-            <div class="p-play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
-                </svg>
-              </span>
-            </div>
-          </a>
-          <div class="p-info">
-            <h3 class="p-title">Proyecto 4</h3>
-            <p class="p-sub">Contenido • alcance</p>
-          </div>
-        </article>
-
-        <!-- 5: VSL -->
-        <article class="card p-card hover-pop">
-          <a class="p-thumb js-video"
-             href="#"
-             data-video="VCnEL47SSdc"
-             data-title="VSL"
-             style="background-image:url('https://i.ytimg.com/vi/VCnEL47SSdc/hqdefault.jpg');">
-            <span class="p-dot"></span>
-            <div class="p-play" aria-hidden="true">
-              <span>
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" fill="white"/>
-                </svg>
-              </span>
-            </div>
-          </a>
-          <div class="p-info">
-            <h3 class="p-title">VSL</h3>
-            <p class="p-sub">Video Sales Letter.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- TESTIMONIOS -->
-    <section id="testimonios">
-      <h2 class="h2">Testimonios</h2>
-
-      <div class="testi-grid">
-        <div class="card t-card hover-pop">
-          <div class="t-top">
-            <img class="avatar-sm" src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
-            <div>
-              <p class="t-name">dj.cuenca</p>
-              <p class="t-sub">Cliente • Shorts/Reels</p>
-            </div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p class="quote">“La calidad de edición superó lo que esperaba. Muy profesional a la hora de trabajar y entiende perfectamente las indicaciones a la hora de editar un video.”</p>
-
-          <div class="t-foot">
-            <span class="dot-ok"></span>
-            <span>Proyecto verificado</span>
-          </div>
-        </div>
-
-        <div class="card t-card hover-pop">
-          <div class="t-top">
-            <img class="avatar-sm" src="assets/assets/adri-kastel.jpg" alt="Adri kaste">
-            <div>
-              <p class="t-name">Adri kaste</p>
-              <p class="t-sub">Cliente • YouTube long-form</p>
-            </div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p class="quote">“Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.”</p>
-
-          <div class="t-foot">
-            <span class="dot-ok"></span>
-            <span>Proyecto verificado</span>
-          </div>
-        </div>
-
-        <div class="card t-card hover-pop">
-          <div class="t-top">
-            <img class="avatar-sm" src="assets/assets/lalo-trading.jpg" alt="lalo trading">
-            <div>
-              <p class="t-name">lalo trading</p>
-              <p class="t-sub">Cliente • YouTube long-form</p>
-            </div>
-          </div>
-
-          <div class="stars">★★★★★</div>
-
-          <p class="quote">“Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención.”</p>
-
-          <div class="t-foot">
-            <span class="dot-ok"></span>
-            <span>Proyecto verificado</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-      <h2 class="h2">Contacto</h2>
-
-      <div class="contact-grid">
-        <div class="card contact-card hover-pop">
-          <p class="contact-title">WhatsApp</p>
-          <p class="contact-desc">Es la forma más rápida. Contame tu idea, duración, estilo y deadline.</p>
-          <div class="contact-actions">
-            <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">Escribime</a>
-          </div>
-        </div>
-
-        <div class="card contact-card hover-pop">
-          <p class="contact-title">Twitter</p>
-          <p class="contact-desc">Escribime y coordinamos.</p>
-          <div class="contact-actions">
-            <!-- botón "Twitter" eliminado -->
-            <a class="btn primary" href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Escribime</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">© <span id="y"></span> Luca Macchia</div>
-  </div>
-
-  <!-- MODAL de video -->
-  <div class="video-modal" id="videoModal" aria-hidden="true">
-    <div class="video-modal-box" role="dialog" aria-modal="true">
-      <div class="video-modal-top">
-        <strong id="videoModalTitle">Video</strong>
-        <button class="video-modal-close" id="videoModalClose" type="button">Cerrar</button>
-      </div>
-      <div class="video-modal-frame" id="videoModalFrame"></div>
+      <p>Edición enfocada en retención, ritmo y narrativa.</p>
     </div>
-  </div>
+    <div class="services">
+      <div class="service reveal">
+        <div class="ic"><img src="assets/assets/15874.png" alt=""></div>
+        <h3>Reels / Shorts</h3>
+        <p>Ritmo, cortes, subtítulos, zooms, memes, SFX y edición enfocada en retención.</p>
+      </div>
+      <div class="service reveal">
+        <div class="ic"><img src="assets/assets/4324682.png" alt=""></div>
+        <h3>YouTube long-form</h3>
+        <p>Storytelling, estructura, ritmo, limpieza de audio, motion y capítulos.</p>
+      </div>
+      <div class="service reveal">
+        <div class="ic"><img src="assets/assets/1533971.png" alt=""></div>
+        <h3>Motion Graphics</h3>
+        <p>Animaciones, títulos, transiciones y gráficos para que el video se sienta pro y dinámico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">Portfolio</div>
+        <h2>Una selección de mis mejores trabajos</h2>
+      </div>
+      <p>Edito dos formatos: contenido vertical para redes y contenido horizontal para YouTube.</p>
+    </div>
+
+    <!-- ===== DIVISIÓN 1: CONTENIDO VERTICAL ===== -->
+    <div class="pf-block reveal">
+      <div class="pf-block-head">
+        <span class="n">01</span>
+        <h3>Contenido Vertical</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="carousel vertical" data-carousel="cv">
+        <div class="vdots"></div>
+        <button class="nav-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="nav-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="stage">
+
+            <!-- ===== VIDEO VERTICAL 1 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="5yKdTp4bdaU" data-orient="v" data-title="Reel">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>Reel dinámico</b><span>Edición con ritmo y subtítulos</span></div>
+              </div>
+            </div>
+
+            <!-- ===== VIDEO VERTICAL 2 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="efqpxJs3FCI" data-orient="v" data-title="Reel">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>Short / Reel</b><span>Cortes, zooms y SFX</span></div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== DIVISIÓN 2: CONTENIDO HORIZONTAL ===== -->
+    <div class="pf-block reveal">
+      <div class="pf-block-head">
+        <span class="n">02</span>
+        <h3>Contenido Horizontal</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="carousel horizontal" data-carousel="ch">
+        <div class="vdots"></div>
+        <button class="nav-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="nav-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="stage">
+
+            <!-- ===== VIDEO HORIZONTAL 1 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="d441ZnRGCLY" data-orient="h" data-title="YouTube long-form">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>YouTube long-form</b><span>Edición completa · storytelling y ritmo</span></div>
+              </div>
+            </div>
+
+            <!-- ===== VIDEO HORIZONTAL 2 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="VCnEL47SSdc" data-orient="h" data-title="YouTube long-form">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>YouTube long-form</b><span>Montaje, audio y motion graphics</span></div>
+              </div>
+            </div>
+
+            <!-- ===== VIDEO HORIZONTAL 3 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="2IT4PwT6RCE" data-orient="h" data-title="YouTube long-form">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>YouTube long-form</b><span>Narrativa y retención</span></div>
+              </div>
+            </div>
+
+            <!-- ===== VIDEO HORIZONTAL 4 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="waof2Eke34c" data-orient="h" data-title="YouTube long-form">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>YouTube long-form</b><span>Edición dinámica y limpieza de audio</span></div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-tag">Testimonios</div>
+        <h2>Lo que dicen los clientes</h2>
+      </div>
+      <p>Resultados reales, proyectos verificados.</p>
+    </div>
+    <div class="tst">
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <q>La calidad de edición superó lo que esperaba. Muy profesional a la hora de trabajar y entiende perfectamente las indicaciones.</q>
+        <div class="t-by">
+          <img src="assets/assets/dj-cuenca.jpg" alt="dj.cuenca">
+          <div><b>dj.cuenca</b><span>Cliente • Shorts/Reels</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <q>Entendió perfecto el estilo. Entregó variantes y quedó listo para publicar.</q>
+        <div class="t-by">
+          <img src="assets/assets/adri-kastel.jpg" alt="Adri Kastel">
+          <div><b>Adri Kastel</b><span>Cliente • YouTube long-form</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <q>Rápido, prolijo y con criterio. Se nota la experiencia en ritmo y retención.</q>
+        <div class="t-by">
+          <img src="assets/assets/lalo-trading.jpg" alt="Lalo Trading">
+          <div><b>Lalo Trading</b><span>Cliente • YouTube long-form</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <q>Excelente edición, encajó muy bien con mi perfil y logró que un reel llegue a más de 100k de visitas.</q>
+        <div class="t-by">
+          <img src="assets/assets/marcoshernangil.jpg" alt="marcoshernangil">
+          <div><b>marcoshernangil</b><span>Cliente • Reels</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <q>Muy buena la edición, le dio a mi perfil que se vea más minimalista.</q>
+        <div class="t-by">
+          <img src="assets/assets/soyfedelucena.jpg" alt="soyfedelucena">
+          <div><b>soyfedelucena</b><span>Cliente • Reels</span></div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <q>Muy buen trabajo a la hora de editar el VSL.</q>
+        <div class="t-by">
+          <img src="assets/assets/santimia.jpg" alt="santim.ia">
+          <div><b>santim.ia</b><span>Cliente • VSL</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="wrap">
+    <div class="cta-box reveal">
+      <h2>¿Tenés un proyecto en mente?</h2>
+      <p>Contame tu idea, duración, estilo y deadline. Te respondo rápido por WhatsApp.</p>
+      <a class="btn primary" href="https://wa.me/541153323199?text=Hola%20Luca%2C%20quiero%20hablar%20sobre%20edici%C3%B3n%20de%20video." target="_blank" rel="noopener">
+        Escribime por WhatsApp <span class="arr">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap foot">
+      <span>© <span id="y"></span> Luca Macchia — Editor de video</span>
+      <a href="https://x.com/Lucaeditor_" target="_blank" rel="noopener">Twitter / X ↗</a>
+    </div>
+  </footer>
 
   <script>
-    // año dinámico
-    document.getElementById("y").textContent = new Date().getFullYear();
+  // año
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Modal videos (YouTube no-cookie)
-    (function(){
-      const modal = document.getElementById('videoModal');
-      const modalFrame = document.getElementById('videoModalFrame');
-      const modalTitle = document.getElementById('videoModalTitle');
-      const closeBtn = document.getElementById('videoModalClose');
+  // nav scroll
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30));
 
-      function openVideo(id, title){
-        modalTitle.textContent = title || 'Video';
-        modalFrame.innerHTML =
-          '<iframe ' +
-            'src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" ' +
-            'title="' + (title || 'Video') + '" ' +
-            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
-            'allowfullscreen>' +
-          '</iframe>';
+  // menú móvil
+  document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('show');
+  });
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('show')));
 
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
+  // reveal on scroll
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach((el,i) => {
+    el.style.transitionDelay = (i % 4 * 0.07) + 's';
+    io.observe(el);
+  });
+
+  // ---------- VIDEOS: thumbnail HD + reproducción INLINE ----------
+  document.querySelectorAll('.vid').forEach(card => {
+    const id = card.getAttribute('data-yt').trim();
+    const frame = card.querySelector('.frame');
+    const ph = card.querySelector('.ph');
+    if (!id) return;
+
+    // thumbnail de alta calidad con fallback automático si viene en negro/vacío
+    const img = document.createElement('img');
+    img.alt = card.getAttribute('data-title') || 'Video';
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    let tried = 0;
+    const sources = [
+      'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg',
+      'https://i.ytimg.com/vi/' + id + '/sddefault.jpg',
+      'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'
+    ];
+    img.src = sources[0];
+    img.onerror = () => { tried++; if (tried < sources.length) img.src = sources[tried]; };
+    frame.insertBefore(img, frame.firstChild);
+    if (ph) ph.remove();
+
+    let playing = false;
+    card.addEventListener('click', () => {
+      const slide = card.closest('.slide');
+      if (slide && !slide.classList.contains('is-active')) return; // solo el del frente
+      if (playing) return;
+      playing = true;
+      frame.classList.add('is-playing');
+      const ifr = document.createElement('iframe');
+      ifr.src = 'https://www.youtube.com/embed/' + id +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      ifr.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      ifr.allowFullscreen = true;
+      ifr.loading = 'eager';
+      frame.appendChild(ifr);
+    });
+  });
+
+  // ---------- CARRUSEL COVERFLOW DIRECCIONAL ----------
+  document.querySelectorAll('.carousel').forEach(car => {
+    const slides = Array.from(car.querySelectorAll('.slide'));
+    const prev = car.querySelector('.nav-arrow.prev');
+    const next = car.querySelector('.nav-arrow.next');
+    const vdots = car.querySelector('.vdots');
+    let i = 0, busy = false;
+    const total = slides.length;
+
+    slides.forEach((_, idx) => {
+      const d = document.createElement('button');
+      d.className = 'vdot' + (idx === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Ir al video ' + (idx + 1));
+      d.addEventListener('click', () => jump(idx));
+      vdots.appendChild(d);
+    });
+
+    function updateDots(){
+      vdots.querySelectorAll('.vdot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+    }
+
+    // estado inicial
+    slides[0].classList.add('is-active');
+    updateDots();
+
+    function go(dir){            // dir = 1 (next) | -1 (prev)
+      if (busy || total < 2) return;
+      busy = true;
+      const oldI = i;
+      i = (i + dir + total) % total;
+      const cur = slides[oldI];
+      const nxt = slides[i];
+
+      // el que sale: se va al lado opuesto a donde entra el nuevo
+      cur.classList.remove('is-active');
+      if (dir === 1){ cur.classList.add('is-left'); }   // next: sale por la izquierda
+      else { cur.classList.remove('is-left'); }          // prev: sale por la derecha (default)
+
+      // el que entra: lo parqueamos del lado correcto ANTES de activarlo
+      if (dir === 1){ nxt.classList.remove('is-left'); } // next: entra desde la derecha (default)
+      else { nxt.classList.add('is-left'); }             // prev: entra desde la izquierda
+
+      // forzar reflow para que el navegador registre la posición de salida
+      void nxt.offsetWidth;
+
+      requestAnimationFrame(() => {
+        nxt.classList.remove('is-left');
+        nxt.classList.add('is-active');
+        updateDots();
+      });
+
+      setTimeout(() => { busy = false; }, 720);
+    }
+
+    function jump(target){
+      if (target === i) return;
+      go(target > i ? 1 : -1);
+      // si está lejos, completar el salto exacto
+      if (Math.abs(target - i) >= 1 && target !== i){
+        clearTimeout(jump._t);
+        jump._t = setTimeout(function step(){
+          if (i === target){ return; }
+          go(target > i ? 1 : -1);
+          jump._t = setTimeout(step, 360);
+        }, 360);
       }
+    }
 
-      function closeVideo(){
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-        modalFrame.innerHTML = '';
-      }
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
 
-      document.addEventListener('click', function(e){
-        const a = e.target.closest('.js-video');
-        if(!a) return;
-        e.preventDefault();
-
-        const id = a.getAttribute('data-video');
-        const title = a.getAttribute('data-title') || 'Video';
-        if(id) openVideo(id, title);
-      });
-
-      closeBtn.addEventListener('click', closeVideo);
-      modal.addEventListener('click', function(e){
-        if(e.target === modal) closeVideo();
-      });
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && modal.classList.contains('is-open')) closeVideo();
-      });
-    })();
-  </script>
+    let sx = 0;
+    car.addEventListener('touchstart', e => sx = e.touches[0].clientX, {passive:true});
+    car.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  });
+</script>
 </body>
 </html>
