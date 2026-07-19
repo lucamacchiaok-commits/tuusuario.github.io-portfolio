@@ -249,6 +249,17 @@
   .frame.is-playing .play{ display:none; }
   .frame.is-playing img{ opacity:0; }
 
+  .vid-close{
+    position:absolute; top:10px; right:10px; z-index:7;
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(0,0,0,.55); color:#fff; border:1px solid rgba(255,255,255,.25);
+    display:none; align-items:center; justify-content:center;
+    cursor:pointer; transition:background .2s ease, transform .2s ease;
+    backdrop-filter:blur(2px);
+  }
+  .vid-close:hover{ background:rgba(0,0,0,.8); transform:scale(1.06); }
+  .frame.is-playing .vid-close{ display:flex; }
+
   /* ---------- REVEAL ---------- */
   .reveal{ opacity:0; transform:translateY(26px); transition:.8s var(--ease); }
   .reveal.in{ opacity:1; transform:none; }
@@ -424,6 +435,36 @@
               </div>
             </div>
 
+            <!-- ===== VIDEO VERTICAL 3 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="2VrK9mnDG7E" data-orient="v" data-title="Reel">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>Short / Reel</b><span>Edición vertical</span></div>
+              </div>
+            </div>
+
+            <!-- ===== VIDEO VERTICAL 4 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="WFucynfbrNw" data-orient="v" data-title="Reel">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>Short / Reel</b><span>Edición vertical</span></div>
+              </div>
+            </div>
+
+            <!-- ===== VIDEO VERTICAL 5 ===== -->
+            <div class="slide">
+              <div class="vid" data-yt="aUdq-9jcYlY" data-orient="v" data-title="Reel">
+                <div class="frame">
+                  <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="cap"><b>Short / Reel</b><span>Edición vertical</span></div>
+              </div>
+            </div>
+
         </div>
       </div>
     </div>
@@ -591,6 +632,8 @@
   });
 
   // ---------- VIDEOS: thumbnail HD + reproducción INLINE ----------
+  const videoStoppers = []; // guarda una función "stop" por cada tarjeta de video
+
   document.querySelectorAll('.vid').forEach(card => {
     const id = card.getAttribute('data-yt').trim();
     const frame = card.querySelector('.frame');
@@ -613,11 +656,28 @@
     frame.insertBefore(img, frame.firstChild);
     if (ph) ph.remove();
 
+    // botón para cerrar el video manualmente
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'vid-close';
+    closeBtn.setAttribute('aria-label', 'Cerrar video');
+    closeBtn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16"><line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+    frame.appendChild(closeBtn);
+
     let playing = false;
-    card.addEventListener('click', () => {
-      const slide = card.closest('.slide');
-      if (slide && !slide.classList.contains('is-active')) return; // solo el del frente
+
+    function stopVideo(){
+      if (!playing) return;
+      playing = false;
+      frame.classList.remove('is-playing');
+      const ifr = frame.querySelector('iframe');
+      if (ifr) ifr.remove(); // remover el iframe corta la reproducción por completo
+    }
+    videoStoppers.push(stopVideo);
+
+    function playVideo(){
       if (playing) return;
+      // corta cualquier otro video que esté sonando antes de arrancar este
+      videoStoppers.forEach(stop => stop());
       playing = true;
       frame.classList.add('is-playing');
       const ifr = document.createElement('iframe');
@@ -626,8 +686,23 @@
       ifr.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       ifr.allowFullscreen = true;
       ifr.loading = 'eager';
-      frame.appendChild(ifr);
+      frame.insertBefore(ifr, closeBtn);
+    }
+
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.vid-close')){ stopVideo(); return; }
+      const slide = card.closest('.slide');
+      if (slide && !slide.classList.contains('is-active')) return; // solo el del frente
+      playVideo();
     });
+
+    // exponer stop para que el carrusel pueda cortarlo al cambiar de slide
+    card._stopVideo = stopVideo;
+  });
+
+  // si el usuario cambia de pestaña, pausamos todo (no queda sonando de fondo)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) videoStoppers.forEach(stop => stop());
   });
 
   // ---------- CARRUSEL COVERFLOW DIRECCIONAL ----------
@@ -662,6 +737,10 @@
       i = (i + dir + total) % total;
       const cur = slides[oldI];
       const nxt = slides[i];
+
+      // corta el video del slide que sale para que no siga sonando de fondo
+      const curVid = cur.querySelector('.vid');
+      if (curVid && curVid._stopVideo) curVid._stopVideo();
 
       // el que sale: se va al lado opuesto a donde entra el nuevo
       cur.classList.remove('is-active');
